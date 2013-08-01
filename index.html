@@ -1,0 +1,930 @@
+<html>
+<head>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="css/bootstrap-responsive.min.css" rel="stylesheet"> -->
+    <link href="css/jquery-ui.min.css" rel="stylesheet">
+    
+    <style>
+        .q_row
+    	{
+    	    clear: left;
+    	}
+    	
+        .q_corner_start
+    	{
+    	    width: 110px;
+    	    height: 110px;
+    	    float: left;
+    	    background-color: gray;
+    	}
+    	
+    	.q_corner_end
+    	{
+    	    width: 110px;
+    	    height: 110px;
+    	    float: left;
+    	    background-color: gray;
+    	}
+    	
+    	.q_border_hz
+    	{
+    	    width: 110px;
+    	    height: 50px;
+    	    float: left;
+    	    background-color: gray;
+    	}
+    	
+    	.q_border_vt
+    	{
+    	    width: 50px;
+    	    height: 110px;
+    	    float: left;
+    	    background-color: gray;
+    	}
+    	
+    	.q_tile
+    	{
+    	    width: 50px;
+    	    height: 50px;
+    	    background-color: blue;    	    
+    	    float: left;
+    	}
+    	
+    	.q_fence_hz
+    	{
+    	    width: 48px;
+    	    height: 8px;
+    	    float: left;
+    	    border: 1px solid white;
+    	    background-color: white;
+    	}
+    	
+    	.q_fence_vt
+    	{
+    	    width: 8px;
+    	    height: 48px;
+    	    float: left;
+    	    border: 1px solid white;
+    	    background-color: white;
+    	}
+    	    	
+    	.q_fence_rotated
+    	{
+    	    -webkit-transform: rotate(90deg);  /* Chrome, Safari 3.1+ */
+	    -moz-transform: rotate(90deg);  /* Firefox 3.5-15 */
+	    -ms-transform: rotate(90deg);  /* IE 9 */
+	    -o-transform: rotate(90deg);  /* Opera 10.50-12.00 */
+   	    transform: rotate(90deg);  /* Firefox 16+, IE 10+, Opera 12.10+ */
+    	}
+
+    	.q_fence_rotator
+    	{
+    	    width: 20px;
+    	    height: 20px;
+    	    border-radius: 10px;
+    	    background-color: yellow;
+    	    position: absolute;
+    	    display: none;
+    	}
+    	
+    	.q_fence_rotator_vt
+    	{
+    	    left: -6px;
+    	    top: 7px;    	    
+    	}
+    	
+    	.q_fence_rotator_hz
+    	{
+    	    left: 7px;
+    	    top: -6px;    	    
+    	}
+    	
+    	.q_fence_confirm
+    	{
+    	    width: 20px;
+    	    height: 20px;
+    	    border-radius: 10px;
+    	    background-color: green;
+    	    position: absolute;
+    	    left: -6px;
+    	    top: 80px;
+    	    display: none;
+    	}
+    	
+    	.q_fence_confirm_vt
+    	{
+    	    left: -6px;
+    	    top: 80px;    	    
+    	}
+
+    	.q_fence_confirm_hz
+    	{
+    	    left: 80px;
+    	    top: -6px;    	    
+    	}
+    	   	    	
+    	.q_fence_handle
+    	{
+    	    width: 8px;
+    	    height: 8px;
+    	    border: 1px solid pink;
+    	    background-color: pink;
+    	    position: absolute;
+    	    display: none;
+    	}
+    	
+    	.q_fence_handle_vt
+    	{
+    	    top: 49px;
+    	    left: -1px;
+    	}
+    	
+    	.q_fence_handle_hz
+    	{
+    	    top: -1px;
+    	    left: 49px;
+    	}
+    	    	    	    	
+    	.q_fence_intersection
+    	{
+    	    width: 10px;
+    	    height: 10px;
+    	    float: left;
+    	    border: 0;
+    	    background-color: white;
+    	}
+
+    	.q_fence_border_hz
+    	{
+    	    width: 108px;
+    	    height: 8px;
+    	    float: left;
+    	    border: 1px solid white;
+    	    background-color: white;
+    	}
+    	   	
+    	.q_fence_border_vt
+    	{
+    	    width: 8px;
+    	    height: 108px;
+    	    float: left;
+    	    border: 1px solid white;
+    	    background-color: white;
+    	}
+    	
+    	.q_fence_active
+    	{
+    	    background-color: black;
+    	    border: 1px solid red;
+    	}
+    	
+    	.q_fence_placed
+    	{
+    	    background-color: red;
+    	    border: 1px solid red;
+    	}
+    	
+    	.pawn
+    	{
+    	    width: 40px;
+    	    height: 40px;
+    	    border-radius: 19px;
+    	    border: 2px solid black;
+    	    margin: 3px;
+    	}
+    	
+    	.pawn_green
+    	{
+    	    background-color: green;
+    	}
+    	   	
+    	.pawn_yellow
+    	{
+    	    background-color: yellow;
+    	}
+    	
+    	.pawn_next
+    	{
+    	    width: 40px;
+    	    height: 40px;
+    	    border-radius: 19px;
+    	    border: 2px solid black;
+    	    margin: 3px;
+    	    opacity: 0.5;
+    	    display: none;
+    	    border: 2px dashed white;
+    	}
+    	
+    	.pawn_next_0
+    	{
+    	    position: absolute;
+    	    top: -62px;
+    	}
+    	
+    	.pawn_next_180
+    	{
+    	    position: absolute;
+    	    top: 57px;
+    	}
+
+    	.pawn_next_90
+    	{
+    	    position: absolute;
+    	    top: -3px;
+    	    left: 60px;
+    	}
+    	
+    	.pawn_next_270
+    	{
+    	    position: absolute;
+    	    top: -3px;
+    	    left: -60px
+    	}
+    	
+    	.pawn_confirm
+    	{
+    	    width: 16px;
+    	    height: 16px;
+    	    border-radius: 7px;
+    	    border: 1px solid black;
+    	    margin: 11px;
+    	    background-color: black;
+    	    display: none;
+    	}
+    	
+    	#pawn_green
+    	{
+    	    position: relative;
+    	}
+    	
+    	#pawn_yellow
+    	{
+    	    position: relative;
+    	}
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="brand" href="#">Quoridor</a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="http://en.wikipedia.org/wiki/Quoridor" target="blank">About</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </div>
+    </div>
+    
+    <div class="container" style="margin-top: 40px;">
+
+        <div class="q_row">
+            <div class="q_corner_start"></div>
+            <div class="q_fence_border_vt"></div>
+            <div class="q_border_vt"></div>
+            <div class="q_fence_border_vt"></div>
+            <div class="q_border_vt"></div>
+            <div class="q_fence_border_vt"></div>
+            <div class="q_border_vt"></div>
+            <div class="q_fence_border_vt"></div>
+            <div class="q_border_vt"></div>
+            <div class="q_fence_border_vt"></div>
+            <div class="q_border_vt"></div>
+            <div class="q_fence_border_vt"></div>
+            <div class="q_border_vt"></div>
+            <div class="q_fence_border_vt"></div>
+            <div class="q_border_vt"></div>
+            <div class="q_fence_border_vt"></div>
+            <div class="q_border_vt"></div>
+            <div class="q_fence_border_vt"></div>
+            <div class="q_border_vt"></div>
+            <div class="q_fence_border_vt"></div>
+            <div class="q_corner_end"></div>
+        </div>
+
+        <div class="q_row">
+            <div class="q_fence_border_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_border_hz"></div>
+        </div>
+        
+        <div class="q_row">
+            <div class="q_border_hz"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile">
+            	<div id="pawn_green">
+          	    <!-- <div class="pawn_confirm"></div> -->
+          	    <div class="pawn pawn_green"></div>
+          	    <div class="pawn_next pawn_next_0"></div>
+          	    <div class="pawn_next pawn_next_180"></div>
+          	    <div class="pawn_next pawn_next_90"></div>
+          	    <div class="pawn_next pawn_next_270"></div>
+               	</div>
+            </div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_border_hz"></div>
+        </div>
+        
+        <div class="q_row">
+            <div class="q_fence_border_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_border_hz"></div>
+        </div>
+        
+        
+        <div class="q_row">
+            <div class="q_border_hz"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_border_hz"></div>
+        </div>
+        
+        <div class="q_row">
+            <div class="q_fence_border_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_border_hz"></div>
+        </div>                
+        
+        
+        <div class="q_row">
+            <div class="q_border_hz"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_border_hz"></div>
+        </div>
+        
+        <div class="q_row">
+            <div class="q_fence_border_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_border_hz"></div>
+        </div>
+                        
+        
+        <div class="q_row">
+            <div class="q_border_hz"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_border_hz"></div>
+        </div>
+        
+        <div class="q_row">
+            <div class="q_fence_border_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_border_hz"></div>
+        </div>                
+
+        
+        <div class="q_row">
+            <div class="q_border_hz"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_border_hz"></div>
+        </div>
+        
+        <div class="q_row">
+            <div class="q_fence_border_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_border_hz"></div>
+        </div>
+                        
+        
+        <div class="q_row">
+            <div class="q_border_hz"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_border_hz"></div>
+        </div>
+        
+        <div class="q_row">
+            <div class="q_fence_border_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_border_hz"></div>
+        </div>
+                        
+        
+        <div class="q_row">
+            <div class="q_border_hz"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_border_hz"></div>
+        </div>
+        
+        <div class="q_row">
+            <div class="q_fence_border_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_border_hz"></div>
+        </div>                
+
+        
+        <div class="q_row">
+            <div class="q_border_hz"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_border_hz"></div>
+        </div>
+        
+        <div class="q_row">
+            <div class="q_fence_border_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_border_hz"></div>
+        </div>                
+
+        
+        <div class="q_row">
+            <div class="q_border_hz"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile">
+            	<div id="pawn_yellow">
+          	    <!-- <div class="pawn_confirm"></div> -->
+          	    <div class="pawn pawn_yellow"></div>
+          	    <div class="pawn_next pawn_next_0"></div>
+          	    <div class="pawn_next pawn_next_180"></div>
+          	    <div class="pawn_next pawn_next_90"></div>
+          	    <div class="pawn_next pawn_next_270"></div>
+               	</div>
+            </div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_tile"></div>
+            <div class="q_fence_vt"></div>
+            <div class="q_border_hz"></div>
+        </div>
+        
+        <div class="q_row">
+            <div class="q_fence_border_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_hz"></div>
+            <div class="q_fence_intersection"></div>
+            <div class="q_fence_border_hz"></div>
+        </div>        
+
+        <div class="q_row">
+            <div class="q_corner_start"></div>
+            <div class="q_fence_border_vt"></div>
+            <div class="q_border_vt"></div>
+            <div class="q_fence_border_vt"></div>
+            <div class="q_border_vt"></div>
+            <div class="q_fence_border_vt"></div>
+            <div class="q_border_vt"></div>
+            <div class="q_fence_border_vt"></div>
+            <div class="q_border_vt"></div>
+            <div class="q_fence_border_vt"></div>
+            <div class="q_border_vt"></div>
+            <div class="q_fence_border_vt"></div>
+            <div class="q_border_vt"></div>
+            <div class="q_fence_border_vt"></div>
+            <div class="q_border_vt"></div>
+            <div class="q_fence_border_vt"></div>
+            <div class="q_border_vt"></div>
+            <div class="q_fence_border_vt"></div>
+            <div class="q_border_vt"></div>
+            <div class="q_fence_border_vt"></div>
+            <div class="q_corner_end"></div>
+        </div>
+        
+    </div> <!-- /container -->
+
+    <script src="js/jquery-2.0.3.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.overlaps.js"></script>
+    
+    <script>    	
+    	$(document).ready(function() {	    
+	    var fenceObj = $( '#template_fence_vt' );
+	    $( '#template_fence_vt' ).hover(
+	        function(){ $( this ).children().show(); },
+	        function(){ $( this ).children().hide(); }
+	    );
+	    $( '.q_fence_rotator' ).click(
+	    	function(){
+	    	    $( this ).parent().toggleClass( 'q_fence_rotated' );
+	    	}
+	    );
+	    $( '.q_fence_confirm' ).click(
+	    	function(){
+	    	    var fence = $( this ).parent();
+	    	    fence.removeClass( 'q_fence_active' ).addClass( 'q_fence_placed' );
+	    	    fence.draggable( 'destroy' );
+	    	    fence.children().remove();
+	    	}
+	    );
+	    
+	    $( '.q_fence_border_vt' ).not( '#template_fence_vt').replaceWith(
+	    	$( '#template_fence_vt').clone( true ).attr( 'id', null )
+	    );
+	    $( '#template_fence_vt' ).hide();
+	    $( '#template_fence_hz' ).hide();
+	    
+	    $( '.pawn' ).click(
+	        function(){
+	            $( this ).siblings().show();
+	            //console.log( $( this ).siblings( '.pawn_next_90' ).overlaps( '.q_tile' ) );
+	            $( this ).siblings().each(
+	            	function( index, element ){
+	            	    //console.log( $( this ).overlaps( '.q_tile' ) );
+	            	    if( $( this ).overlaps( '.q_tile' ).length == 0 )
+	            	    {
+	            	    	console.log( $( this ).attr( 'class' ) );
+	            	    	console.log( $( this ) );
+	            	    	$( this ).hide();
+	            	    }
+	            	}
+	            );
+	        }
+	    );
+	    
+	    $( '.pawn_next' ).click(
+	    	function(){	    	    
+	    	    var pawn_container = $( this ).parent();
+	    	    
+	    	    var pawn_top = 'hey';
+	    	    var pawn_left = 'hey';
+
+	    	    switch( $( this ).attr( "class" ) )
+	    	    {
+	    	    	case 'pawn_next pawn_next_0':
+	    	    	    pawn_top = ( pawn_container.offset().top - 60 );
+	    	    	    pawn_left = pawn_container.offset().left;
+	    	    	    break;
+	    	    	case 'pawn_next pawn_next_90':
+	    	    	    pawn_top = pawn_container.offset().top;
+	    	    	    pawn_left = ( pawn_container.offset().left + 60 );
+	    	    	    break;
+	    	    	case 'pawn_next pawn_next_180':
+	    	    	    pawn_top = ( pawn_container.offset().top + 60 );
+	    	    	    pawn_left = pawn_container.offset().left;
+	    	    	    break;
+	    	    	case 'pawn_next pawn_next_270':
+	    	    	    pawn_top = pawn_container.offset().top;
+	    	    	    pawn_left = ( pawn_container.offset().left - 60 );
+	    	    	    break;
+	    	    }
+
+                    pawn_container.offset( { top: pawn_top, left: pawn_left } );
+                    $( this ).parent().children( '.pawn_next' ).hide(); 
+	    	}
+	    );
+	    
+	    $( '.q_fence_active' ).draggable( {
+	    	snap: '.q_fence_hz',
+	    	snapMode: "both",
+	    	handle: '.q_fence_handle',
+	    	//revert: "invalid",
+	    	//grid: [ 60, 60 ]
+	    } );
+	    $( '.q_fence_intersection' ).droppable( {
+	    	accept: '.q_fence_handle',
+	    	drop: function( event, ui ) {
+	    	    var fence = ui.draggable;
+	            //alert( "hi" );
+	        }
+    	    } );
+    	});
+    </script>
+    
+    <div class='q_fence_border_vt q_fence_active' id='template_fence_vt'>
+    	<div class='q_fence_rotator q_fence_rotator_vt'><span class="ui-icon ui-icon-refresh" style="margin: 2px;"></span></div>
+    	<div class='q_fence_handle q_fence_handle_vt'><span class="ui-icon ui-icon-arrow-4" style="position: absolute; top: -5px; left: -4px;"></span></div>
+    	<div class='q_fence_confirm q_fence_confirm_vt'><span class="ui-icon ui-icon-check" style="margin: 2px;"></span></div>
+    </div>
+    <div class='q_fence_border_hz q_fence_active' id='template_fence_hz'>
+    	<div class='q_fence_rotator q_fence_rotator_hz'><span class="ui-icon ui-icon-refresh" style="margin: 2px;"></span></div>
+    	<div class='q_fence_handle q_fence_handle_hz'><span class="ui-icon ui-icon-arrow-4" style="position: absolute; top: -5px; left: -4px;"></span></div>
+    	<div class='q_fence_confirm q_fence_confirm_hz'><span class="ui-icon ui-icon-check" style="margin: 2px;"></span></div>
+    </div>
+</body>
+</html>

@@ -5,56 +5,50 @@
     <link href="css/jquery-ui.min.css" rel="stylesheet">
     
     <style>
+		.q_controlpanel
+		{
+			margin-top: 10px;
+		}
+		
+		#turn
+		{
+			font-weight: bold;
+			color: green;
+		}
+		
+		#green_fence_count
+		{
+			font-weight: bold;
+		}
+
+		#blue_fence_count
+		{
+			font-weight: bold;
+		}
+				
         .q_gameboard
         {
-			width: 535px;
+			width: 530px;
+			height: 530px;
+			padding: 10px;
 			margin-left: auto;
 			margin-right: auto;
-			margin-top: 20px;
+			margin-top: 10px;
+			background-image: URL( 'img/free_hires_wood_texture_9.jpg' );
+			position: relative;
 		}
         
         .q_row
     	{
     	    clear: left;
     	}
-    	
-        .q_corner_start
-    	{
-    	    width: 110px;
-    	    height: 110px;
-    	    float: left;
-    	    background-color: gray;
-    	}
-    	
-    	.q_corner_end
-    	{
-    	    width: 110px;
-    	    height: 110px;
-    	    float: left;
-    	    background-color: gray;
-    	}
-    	
-    	.q_border_hz
-    	{
-    	    width: 110px;
-    	    height: 50px;
-    	    float: left;
-    	    background-color: gray;
-    	}
-    	
-    	.q_border_vt
-    	{
-    	    width: 50px;
-    	    height: 110px;
-    	    float: left;
-    	    background-color: gray;
-    	}
-    	
+
     	.q_tile
     	{
     	    width: 50px;
     	    height: 50px;
-    	    background-color: blue;    	    
+    	    background-color: rgba(255, 255, 255, 0.3);
+    	    border-radius: 4px;
     	    float: left;
     	    margin-left: 10px;
     	}
@@ -63,103 +57,73 @@
     	{
     	    width: 50px;
     	    height: 50px;
-    	    background-color: blue;    	    
+    	    background-color: rgba(255, 255, 255, 0.3);
+    	    border-radius: 4px;
     	    float: left;
-    	}
-     	
-    	.q_fence_hz
-    	{
-    	    width: 48px;
-    	    height: 8px;
-    	    float: left;
-    	    border: 1px solid white;
-    	    background-color: white;
     	}
     	
-    	.q_fence_vt
+    	#fence
     	{
-    	    width: 8px;
-    	    height: 48px;
-    	    float: left;
-    	    border: 1px solid white;
-    	    background-color: white;
-    	}
-    	    	
-    	.q_fence_rotated
-    	{
-    	    -webkit-transform: rotate(90deg);  /* Chrome, Safari 3.1+ */
-	    -moz-transform: rotate(90deg);  /* Firefox 3.5-15 */
-	    -ms-transform: rotate(90deg);  /* IE 9 */
-	    -o-transform: rotate(90deg);  /* Opera 10.50-12.00 */
-   	    transform: rotate(90deg);  /* Firefox 16+, IE 10+, Opera 12.10+ */
-    	}
-
+			width: 8px;
+            height: 108px;
+            background-color: black;
+    	    border: 1px solid black;
+            float: left;
+            position: absolute;
+			//display: none;
+		}
+		
     	.q_fence_rotator
     	{
     	    width: 20px;
     	    height: 20px;
     	    border-radius: 10px;
-    	    background-color: yellow;
+    	    background-color: blue;
     	    position: absolute;
-    	    display: none;
-    	}
-    	
-    	.q_fence_rotator_vt
-    	{
     	    left: -6px;
-    	    top: 7px;    	    
+    	    top: 6px;
     	}
     	
-    	.q_fence_rotator_hz
+    	.q_fence_remove
     	{
-    	    left: 7px;
-    	    top: -6px;    	    
+    	    width: 20px;
+    	    height: 20px;
+    	    //border-radius: 10px;
+    	    background-color: red;
+    	    position: absolute;
+    	    left: -6px;
+    	    top: 80px;
     	}
     	
     	.q_fence_confirm
     	{
     	    width: 20px;
     	    height: 20px;
-    	    border-radius: 10px;
+    	    //border-radius: 10px;
     	    background-color: green;
     	    position: absolute;
+    	    top: 43px;
     	    left: -6px;
-    	    top: 80px;
-    	    display: none;
     	}
-    	
-    	.q_fence_confirm_vt
+    	    	
+    	.q_fence_rotated
     	{
-    	    left: -6px;
-    	    top: 80px;    	    
+    	    -webkit-transform: rotate(90deg);  /* Chrome, Safari 3.1+ */
+			-moz-transform: rotate(90deg);  /* Firefox 3.5-15 */
+			-ms-transform: rotate(90deg);  /* IE 9 */
+			-o-transform: rotate(90deg);  /* Opera 10.50-12.00 */
+			transform: rotate(90deg);  /* Firefox 16+, IE 10+, Opera 12.10+ */
     	}
-
-    	.q_fence_confirm_hz
-    	{
-    	    left: 80px;
-    	    top: -6px;    	    
-    	}
-    	   	    	
-    	.q_fence_handle
-    	{
-    	    width: 8px;
-    	    height: 8px;
-    	    border: 1px solid pink;
-    	    background-color: pink;
-    	    position: absolute;
-    	    top: 49px;
-    	    left: -1px;
-    	    display: none;
-    	}
-    	    	    	    	
+    	   	    	    	
     	.q_fence_intersection
     	{
     	    width: 10px;
     	    height: 10px;
     	    float: left;
     	    border: 0;
-    	    background-color: white;
+    	    border-radius: 2px;
     	    margin-left: 50px;
+    	    position: relative;
     	}
     	
     	.q_fence_active
@@ -188,9 +152,9 @@
     	    background-color: green;
     	}
     	   	
-    	.pawn_yellow
+    	.pawn_blue
     	{
-    	    background-color: yellow;
+    	    background-color: blue;
     	}
     	
     	.pawn_next
@@ -230,31 +194,15 @@
     	    left: -60px
     	}
     	
-    	.pawn_confirm
-    	{
-    	    width: 16px;
-    	    height: 16px;
-    	    border-radius: 7px;
-    	    border: 1px solid black;
-    	    margin: 11px;
-    	    background-color: black;
-    	    display: none;
-    	}
-    	
     	#pawn_green
     	{
     	    position: relative;
     	}
     	
-    	#pawn_yellow
+    	#pawn_blue
     	{
     	    position: relative;
     	}
-    	
-    	#template_fence
-    	{
-			display: none;
-		}
     </style>
 </head>
 <body>
@@ -279,15 +227,29 @@
     </div>
     
     <div class="container" style="margin-top: 40px;">
-
-		<div class="q_gameboard">
+		<div id="controlpanel" class="q_controlpanel">
+			<div class="row">
+				<div class="span4 offset4">Turn: <span id="turn">Blue</span></div>
+			</div>
+			<div class="row">
+				<div class="span2 offset4">Green Fences: <span id="green_fence_count">10</span></div>
+				<div class="span2">Blue Fences: <span id="blue_fence_count">10</span></div>
+			</div>
+			<!--
+			<div class="row">
+				<div class="span6"></div>
+				<div class="span6"></div>
+			</div>
+			-->
+		</div>
+		<div id="gameboard" class="q_gameboard">
 			<div class="q_row">
 				<div class="q_tile_no_margin"></div>
 				<div class="q_tile"></div>
 				<div class="q_tile"></div>
 				<div class="q_tile"></div>
 				<div class="q_tile">
-					<div id="pawn_green">
+					<div id="pawn_Green" class="pawn_container">
 					<!-- <div class="pawn_confirm"></div> -->
 					<div class="pawn pawn_green"></div>
 					<div class="pawn_next pawn_next_0"></div>
@@ -487,9 +449,9 @@
 				<div class="q_tile"></div>
 				<div class="q_tile"></div>
 				<div class="q_tile">
-					<div id="pawn_yellow">
+					<div id="pawn_Blue" class="pawn_container">
 					<!-- <div class="pawn_confirm"></div> -->
-					<div class="pawn pawn_yellow"></div>
+					<div class="pawn pawn_blue"></div>
 					<div class="pawn_next pawn_next_0"></div>
 					<div class="pawn_next pawn_next_180"></div>
 					<div class="pawn_next pawn_next_90"></div>
@@ -510,32 +472,35 @@
     <script src="js/jquery.overlaps.js"></script>
     
     <script>    	
-    	$(document).ready(function() {
-
-			$( '#template_fence' ).hover(
-				function(){ $( this ).children().show(); },
-				function(){ $( this ).children().hide(); }
-			);
-			
-			$( '.q_fence_intersection' ).hover(
-				function(){ $( this ).css( 'background-color', 'red' ); },
-				function(){ $( this ).css( 'background-color', 'white' ); }
-			);
+    	$(document).ready(function() {		
+				
+			$( '.q_fence_intersection' ).click(function(){
+				$( '.pawn_next' ).fadeOut();
+				console.log( $( this ).position().top + ":" + $( this ).position().left );
+				place_fence( this );
+				$( this ).off( 'click' );
+			});
 			
 			$( '.q_fence_rotator' ).click(function(){
 				$( this ).parent().toggleClass( 'q_fence_rotated' );
 			});
 			
+			$( '.q_fence_confirm' ).click(function(){
+				console.log( $( this ).parent() );
+				
+				$( this ).parent().removeClass( 'q_fence_active' ).children().hide();
+				
+				changeTurn();				
+			});
+						
+			$( '.q_fence_delete' ).click(function(){
+				$( this ).parent().remove();
+			});
+						
 			$( '.pawn' ).click(function(){
-				$( this ).siblings().show();
-				$( this ).siblings().each(
-					function( index, element ){
-						if( $( this ).overlaps( '.q_tile' ).length == 0 )
-						{
-							$( this ).hide();
-						}
-					}
-				);
+				pawn_next( $( this ).parent() );
+				$( '.q_fence_active' ).remove();
+				show_intersections();
 			});
 			
 			$( '.pawn_next' ).click(function(){	    	    
@@ -565,17 +530,69 @@
 				}
 
 				pawn_container.offset( { top: pawn_top, left: pawn_left } );
-				$( this ).parent().children( '.pawn_next' ).hide(); 
+				$( this ).parent().children( '.pawn_next' ).hide();
+				
+				changeTurn();
 			});
-	    
-			//$( '.q_fence_intersection' );
+			
+			function changeTurn()
+			{
+				color = $( '#turn' ).text();
+				
+				//$( '#pawn_' + color ).children().hide();
+				
+				if( color == 'Green' )
+				{
+					color = 'Blue';
+				}
+				else
+				{
+					color = "Green";
+				}
+				
+				$( '#turn' ).text( color ).css( 'color', color );
+				
+				pawn_next( $( '#pawn_' + color ) );
+				
+				show_intersections();
+			}
+			
+			function show_intersections()
+			{
+				$( '.q_fence_intersection' ).css( 'background-color', 'rgba( 255,255,255,0.5 )' );
+			}
+			
+			function pawn_next( pawn_container ){
+				$( pawn_container ).children( '.pawn_next' ).fadeIn().each(
+					function( index, element ){
+						if( $( this ).overlaps( '.q_tile' ).length == 0 )
+						{
+							$( this ).hide();
+						}
+						
+						if( $( this ).overlaps( '.pawn' ).length != 0 )
+						{
+							$( this ).hide();
+						}
+					}
+				);
+			}
+			
+			function place_fence( fence_intersection )
+			{
+				console.log( fence_intersection );
+				$( fence_intersection ).append( $( '#fence' ).clone( true ).offset( { top: -50, left: 0 } ).addClass( 'q_fence_active' ).show() );
+				$( '.q_fence_intersection').css( 'background-color', '' );
+			}
+			
+			changeTurn();
 		});
     </script>
     
-    <div class='q_fence q_fence_active' id='template_fence'>
+    <div id='fence' class='q_fence'>
     	<div class='q_fence_rotator'><span class="ui-icon ui-icon-refresh" style="margin: 2px;"></span></div>
-    	<div class='q_fence_handle'><span class="ui-icon ui-icon-arrow-4" style="position: absolute; top: -5px; left: -4px;"></span></div>
-    	<div class='q_fence_confirm'><span class="ui-icon ui-icon-check" style="margin: 2px;"></span></div>
+    	<div class='q_fence_confirm'><span class="ui-icon ui-icon-ok" style="margin: 2px;"></span></div> -->
+    	<div class='q_fence_remove'><span class="ui-icon ui-icon-remove" style="margin: 2px;"></span></div>
     </div>
 </body>
 </html>

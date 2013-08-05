@@ -478,7 +478,6 @@
 				$( '.pawn_next' ).fadeOut();
 				console.log( $( this ).position().top + ":" + $( this ).position().left );
 				place_fence( this );
-				$( this ).off( 'click' );
 			});
 			
 			$( '.q_fence_rotator' ).click(function(){
@@ -488,9 +487,11 @@
 			$( '.q_fence_confirm' ).click(function(){
 				console.log( $( this ).parent() );
 				
-				$( this ).parent().removeClass( 'q_fence_active' ).children().hide();
+				$( this ).parent().removeClass( 'q_fence_active' ).children().remove();
+                
+				$( this ).parent().parent().off( 'click' );
 				
-				changeTurn();				
+                changeTurn();				
 			});
 						
 			$( '.q_fence_delete' ).click(function(){

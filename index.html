@@ -62,7 +62,7 @@
     	    float: left;
     	}
     	
-    	#fence
+    	.q_fence
     	{
 			width: 8px;
             height: 108px;
@@ -129,7 +129,7 @@
     	.q_fence_active
     	{
     	    background-color: red;
-    	    border: 1px solid black;
+    	    border: 1px solid red;
     	}
     	
     	.q_fence_placed
@@ -493,8 +493,11 @@
 				changeTurn();				
 			});
 						
-			$( '.q_fence_delete' ).click(function(){
+			$( '.q_fence_remove' ).click(function(){
 				$( this ).parent().remove();
+				$( this ).parent().parent().on( 'click' );
+				pawn_next( $( '#pawn_' + $( '#turn' ).text() ) );
+				show_intersections();
 			});
 						
 			$( '.pawn' ).click(function(){
@@ -581,7 +584,7 @@
 			function place_fence( fence_intersection )
 			{
 				console.log( fence_intersection );
-				$( fence_intersection ).append( $( '#fence' ).clone( true ).offset( { top: -50, left: 0 } ).addClass( 'q_fence_active' ).show() );
+				$( fence_intersection ).append( $( '#fence' ).clone( true ).offset( { top: -50, left: 0 } ).removeAttr( 'id' ).addClass( 'q_fence_active' ).show() );
 				$( '.q_fence_intersection').css( 'background-color', '' );
 			}
 			

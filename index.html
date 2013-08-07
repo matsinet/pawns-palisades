@@ -5,204 +5,204 @@
     <link href="css/jquery-ui.min.css" rel="stylesheet">
     
     <style>
-		.q_controlpanel
-		{
-			margin-top: 10px;
-		}
-		
-		#turn
-		{
-			font-weight: bold;
-			color: green;
-		}
-		
-		#green_fence_count
-		{
-			font-weight: bold;
-		}
+        .q_controlpanel
+        {
+            margin-top: 10px;
+        }
+        
+        #turn
+        {
+            font-weight: bold;
+            color: green;
+        }
+        
+        #green_fence_count
+        {
+            font-weight: bold;
+        }
 
-		#blue_fence_count
-		{
-			font-weight: bold;
-		}
-				
+        #blue_fence_count
+        {
+            font-weight: bold;
+        }
+                
         .q_gameboard
         {
-			width: 530px;
-			height: 530px;
-			padding: 10px;
-			margin-left: auto;
-			margin-right: auto;
-			margin-top: 10px;
-			background-image: URL( 'img/free_hires_wood_texture_9.jpg' );
-			position: relative;
-		}
+            width: 530px;
+            height: 530px;
+            padding: 10px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 10px;
+            background-image: URL( 'img/free_hires_wood_texture_9.jpg' );
+            position: relative;
+        }
         
         .q_row
-    	{
-    	    clear: left;
-    	}
+        {
+            clear: left;
+        }
 
-    	.q_tile
-    	{
-    	    width: 50px;
-    	    height: 50px;
-    	    background-color: rgba(255, 255, 255, 0.3);
-    	    border-radius: 4px;
-    	    float: left;
-    	    margin-left: 10px;
-    	}
+        .q_tile
+        {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            float: left;
+            margin-left: 10px;
+        }
  
-    	.q_tile_no_margin
-    	{
-    	    width: 50px;
-    	    height: 50px;
-    	    background-color: rgba(255, 255, 255, 0.3);
-    	    border-radius: 4px;
-    	    float: left;
-    	}
-    	
-    	.q_fence
-    	{
-			width: 8px;
+        .q_tile_no_margin
+        {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            float: left;
+        }
+        
+        .q_fence
+        {
+            width: 8px;
             height: 108px;
             background-color: black;
-    	    border: 1px solid black;
+            border: 1px solid black;
             float: left;
             position: absolute;
-			//display: none;
-		}
-		
-    	.q_fence_rotator
-    	{
-    	    width: 20px;
-    	    height: 20px;
-    	    border-radius: 10px;
-    	    background-color: blue;
-    	    position: absolute;
-    	    left: -6px;
-    	    top: 6px;
-    	}
-    	
-    	.q_fence_remove
-    	{
-    	    width: 20px;
-    	    height: 20px;
-    	    //border-radius: 10px;
-    	    background-color: red;
-    	    position: absolute;
-    	    left: -6px;
-    	    top: 80px;
-    	}
-    	
-    	.q_fence_confirm
-    	{
-    	    width: 20px;
-    	    height: 20px;
-    	    //border-radius: 10px;
-    	    background-color: green;
-    	    position: absolute;
-    	    top: 43px;
-    	    left: -6px;
-    	}
-    	    	
-    	.q_fence_rotated
-    	{
-    	    -webkit-transform: rotate(90deg);  /* Chrome, Safari 3.1+ */
-			-moz-transform: rotate(90deg);  /* Firefox 3.5-15 */
-			-ms-transform: rotate(90deg);  /* IE 9 */
-			-o-transform: rotate(90deg);  /* Opera 10.50-12.00 */
-			transform: rotate(90deg);  /* Firefox 16+, IE 10+, Opera 12.10+ */
-    	}
-    	   	    	    	
-    	.q_fence_intersection
-    	{
-    	    width: 10px;
-    	    height: 10px;
-    	    float: left;
-    	    border: 0;
-    	    border-radius: 2px;
-    	    margin-left: 50px;
-    	    position: relative;
-    	}
-    	
-    	.q_fence_active
-    	{
-    	    background-color: red;
-    	    border: 1px solid red;
-    	}
-    	
-    	.q_fence_placed
-    	{
-    	    background-color: black;
-    	    border: 1px solid black;
-    	}
-    	
-    	.pawn
-    	{
-    	    width: 40px;
-    	    height: 40px;
-    	    border-radius: 19px;
-    	    border: 2px solid black;
-    	    margin: 3px;
-    	}
-    	
-    	.pawn_green
-    	{
-    	    background-color: green;
-    	}
-    	   	
-    	.pawn_blue
-    	{
-    	    background-color: blue;
-    	}
-    	
-    	.pawn_next
-    	{
-    	    width: 40px;
-    	    height: 40px;
-    	    border-radius: 19px;
-    	    margin: 3px;
-    	    display: none;
-    	    border: 2px dashed white;
-    	    background-color: rgba(255, 255, 255, 0.5);
-    	}
-    	
-    	.pawn_next_0
-    	{
-    	    position: absolute;
-    	    top: -62px;
-    	}
-    	
-    	.pawn_next_180
-    	{
-    	    position: absolute;
-    	    top: 57px;
-    	}
+            //display: none;
+        }
+        
+        .q_fence_rotator
+        {
+            width: 20px;
+            height: 20px;
+            border-radius: 10px;
+            background-color: blue;
+            position: absolute;
+            left: -6px;
+            top: 6px;
+        }
+        
+        .q_fence_remove
+        {
+            width: 20px;
+            height: 20px;
+            //border-radius: 10px;
+            background-color: red;
+            position: absolute;
+            left: -6px;
+            top: 80px;
+        }
+        
+        .q_fence_confirm
+        {
+            width: 20px;
+            height: 20px;
+            //border-radius: 10px;
+            background-color: green;
+            position: absolute;
+            top: 43px;
+            left: -6px;
+        }
+                
+        .q_fence_rotated
+        {
+            -webkit-transform: rotate(90deg);  /* Chrome, Safari 3.1+ */
+            -moz-transform: rotate(90deg);  /* Firefox 3.5-15 */
+            -ms-transform: rotate(90deg);  /* IE 9 */
+            -o-transform: rotate(90deg);  /* Opera 10.50-12.00 */
+            transform: rotate(90deg);  /* Firefox 16+, IE 10+, Opera 12.10+ */
+        }
+                               
+        .q_fence_intersection
+        {
+            width: 10px;
+            height: 10px;
+            float: left;
+            border: 0;
+            border-radius: 2px;
+            margin-left: 50px;
+            position: relative;
+        }
+        
+        .q_fence_active
+        {
+            background-color: red;
+            border: 1px solid red;
+        }
+        
+        .q_fence_placed
+        {
+            background-color: black;
+            border: 1px solid black;
+        }
+        
+        .pawn
+        {
+            width: 40px;
+            height: 40px;
+            border-radius: 19px;
+            border: 2px solid black;
+            margin: 3px;
+        }
+        
+        .pawn_green
+        {
+            background-color: green;
+        }
+               
+        .pawn_blue
+        {
+            background-color: blue;
+        }
+        
+        .pawn_next
+        {
+            width: 40px;
+            height: 40px;
+            border-radius: 19px;
+            margin: 3px;
+            display: none;
+            border: 2px dashed white;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .pawn_next_0
+        {
+            position: absolute;
+            top: -62px;
+        }
+        
+        .pawn_next_180
+        {
+            position: absolute;
+            top: 57px;
+        }
 
-    	.pawn_next_90
-    	{
-    	    position: absolute;
-    	    top: -3px;
-    	    left: 60px;
-    	}
-    	
-    	.pawn_next_270
-    	{
-    	    position: absolute;
-    	    top: -3px;
-    	    left: -60px
-    	}
-    	
-    	#pawn_green
-    	{
-    	    position: relative;
-    	}
-    	
-    	#pawn_blue
-    	{
-    	    position: relative;
-    	}
+        .pawn_next_90
+        {
+            position: absolute;
+            top: -3px;
+            left: 60px;
+        }
+        
+        .pawn_next_270
+        {
+            position: absolute;
+            top: -3px;
+            left: -60px
+        }
+        
+        #pawn_green
+        {
+            position: relative;
+        }
+        
+        #pawn_blue
+        {
+            position: relative;
+        }
     </style>
 </head>
 <body>
@@ -227,243 +227,243 @@
     </div>
     
     <div class="container" style="margin-top: 40px;">
-		<div id="controlpanel" class="q_controlpanel">
-			<div class="row">
-				<div class="span4 offset4">Turn: <span id="turn">Blue</span></div>
-			</div>
-			<div class="row">
-				<div class="span2 offset4">Green Fences: <span id="green_fence_count">10</span></div>
-				<div class="span2">Blue Fences: <span id="blue_fence_count">10</span></div>
-			</div>
-			<!--
-			<div class="row">
-				<div class="span6"></div>
-				<div class="span6"></div>
-			</div>
-			-->
-		</div>
-		<div id="gameboard" class="q_gameboard">
-			<div class="q_row">
-				<div class="q_tile_no_margin"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile">
-					<div id="pawn_Green" class="pawn_container">
-					<!-- <div class="pawn_confirm"></div> -->
-					<div class="pawn pawn_green"></div>
-					<div class="pawn_next pawn_next_0"></div>
-					<div class="pawn_next pawn_next_180"></div>
-					<div class="pawn_next pawn_next_90"></div>
-					<div class="pawn_next pawn_next_270"></div>
-					</div>
-				</div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-			</div>
-			
-			<div class="q_row">
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-			</div>
-			
-			
-			<div class="q_row">
-				<div class="q_tile_no_margin"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-			</div>
-			
-			<div class="q_row">
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-			</div>        
-			
-			
-			<div class="q_row">
-				<div class="q_tile_no_margin"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-			</div>
-					
-			<div class="q_row">
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-			</div>
-							
-			
-			<div class="q_row">
-				<div class="q_tile_no_margin"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-			</div>
-			
-			<div class="q_row">
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-			</div>                
+        <div id="controlpanel" class="q_controlpanel">
+            <div class="row">
+                <div class="span4 offset4">Turn: <span id="turn">Blue</span></div>
+            </div>
+            <div class="row">
+                <div class="span2 offset4">Green Fences: <span id="green_fence_count">10</span></div>
+                <div class="span2">Blue Fences: <span id="blue_fence_count">10</span></div>
+            </div>
+            <!--
+            <div class="row">
+                <div class="span6"></div>
+                <div class="span6"></div>
+            </div>
+            -->
+        </div>
+        <div id="gameboard" class="q_gameboard">
+            <div class="q_row">
+                <div class="q_tile_no_margin"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile">
+                    <div id="pawn_Green" class="pawn_container">
+                    <!-- <div class="pawn_confirm"></div> -->
+                    <div class="pawn pawn_green"></div>
+                    <div class="pawn_next pawn_next_0"></div>
+                    <div class="pawn_next pawn_next_180"></div>
+                    <div class="pawn_next pawn_next_90"></div>
+                    <div class="pawn_next pawn_next_270"></div>
+                    </div>
+                </div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+            </div>
+            
+            <div class="q_row">
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+            </div>
+            
+            
+            <div class="q_row">
+                <div class="q_tile_no_margin"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+            </div>
+            
+            <div class="q_row">
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+            </div>        
+            
+            
+            <div class="q_row">
+                <div class="q_tile_no_margin"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+            </div>
+                    
+            <div class="q_row">
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+            </div>
+                            
+            
+            <div class="q_row">
+                <div class="q_tile_no_margin"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+            </div>
+            
+            <div class="q_row">
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+            </div>                
 
-			
-			<div class="q_row">
-				<div class="q_tile_no_margin"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-			</div>
-			
-			<div class="q_row">
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-			</div>
-							
-			
-			<div class="q_row">
-				<div class="q_tile_no_margin"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-			</div>
-			
-			<div class="q_row">
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-			</div>
-							
-			
-			<div class="q_row">
-				<div class="q_tile_no_margin"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-			</div>
-			
-			<div class="q_row">
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-			</div>                
+            
+            <div class="q_row">
+                <div class="q_tile_no_margin"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+            </div>
+            
+            <div class="q_row">
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+            </div>
+                            
+            
+            <div class="q_row">
+                <div class="q_tile_no_margin"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+            </div>
+            
+            <div class="q_row">
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+            </div>
+                            
+            
+            <div class="q_row">
+                <div class="q_tile_no_margin"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+            </div>
+            
+            <div class="q_row">
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+            </div>                
 
-			
-			<div class="q_row">
-				<div class="q_tile_no_margin"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-			</div>
-			
-			<div class="q_row">
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-				<div class="q_fence_intersection"></div>
-			</div>                
+            
+            <div class="q_row">
+                <div class="q_tile_no_margin"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+            </div>
+            
+            <div class="q_row">
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+            </div>                
 
-			<div class="q_row">
-				<div class="q_tile_no_margin"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile">
-					<div id="pawn_Blue" class="pawn_container">
-					<!-- <div class="pawn_confirm"></div> -->
-					<div class="pawn pawn_blue"></div>
-					<div class="pawn_next pawn_next_0"></div>
-					<div class="pawn_next pawn_next_180"></div>
-					<div class="pawn_next pawn_next_90"></div>
-					<div class="pawn_next pawn_next_270"></div>
-					</div>
-				</div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-				<div class="q_tile"></div>
-			</div>
-		</div> <!-- /gameboard --> 
+            <div class="q_row">
+                <div class="q_tile_no_margin"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile">
+                    <div id="pawn_Blue" class="pawn_container">
+                    <!-- <div class="pawn_confirm"></div> -->
+                    <div class="pawn pawn_blue"></div>
+                    <div class="pawn_next pawn_next_0"></div>
+                    <div class="pawn_next pawn_next_180"></div>
+                    <div class="pawn_next pawn_next_90"></div>
+                    <div class="pawn_next pawn_next_270"></div>
+                    </div>
+                </div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+            </div>
+        </div> <!-- /gameboard --> 
     </div> <!-- /container -->
 
     <script src="js/jquery-2.0.3.min.js"></script>
@@ -471,132 +471,132 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.overlaps.js"></script>
     
-    <script>    	
-    	$(document).ready(function() {		
-				
-			$( '.q_fence_intersection' ).click(function(){
-				$( '.pawn_next' ).fadeOut();
-				console.log( $( this ).position().top + ":" + $( this ).position().left );
-				place_fence( this );
-			});
-			
-			$( '.q_fence_rotator' ).click(function(){
-				$( this ).parent().toggleClass( 'q_fence_rotated' );
-			});
-			
-			$( '.q_fence_confirm' ).click(function(){
-				console.log( $( this ).parent() );
-				
-				$( this ).parent().removeClass( 'q_fence_active' ).children().remove();
+    <script>        
+        $(document).ready(function() {        
                 
-				$( this ).parent().parent().off( 'click' );
-				
-                changeTurn();				
-			});
-						
-			$( '.q_fence_remove' ).click(function(){
-				$( this ).parent().remove();
-				$( this ).parent().parent().on( 'click' );
-				pawn_next( $( '#pawn_' + $( '#turn' ).text() ) );
-				show_intersections();
-			});
-						
-			$( '.pawn' ).click(function(){
-				pawn_next( $( this ).parent() );
-				$( '.q_fence_active' ).remove();
-				show_intersections();
-			});
-			
-			$( '.pawn_next' ).click(function(){	    	    
-				var pawn_container = $( this ).parent();
-				
-				var pawn_top = 'hey';
-				var pawn_left = 'hey';
+            $( '.q_fence_intersection' ).click(function(){
+                $( '.pawn_next' ).fadeOut();
+                console.log( $( this ).position().top + ":" + $( this ).position().left );
+                place_fence( this );
+            });
+            
+            $( '.q_fence_rotator' ).click(function(){
+                $( this ).parent().toggleClass( 'q_fence_rotated' );
+            });
+            
+            $( '.q_fence_confirm' ).click(function(){
+                console.log( $( this ).parent() );
+                
+                $( this ).parent().removeClass( 'q_fence_active' ).children().remove();
+                
+                $( this ).parent().parent().off( 'click' );
+                
+                changeTurn();                
+            });
+                        
+            $( '.q_fence_remove' ).click(function(){
+                $( this ).parent().remove();
+                $( this ).parent().parent().on( 'click' );
+                pawn_next( $( '#pawn_' + $( '#turn' ).text() ) );
+                show_intersections();
+            });
+                        
+            $( '.pawn' ).click(function(){
+                pawn_next( $( this ).parent() );
+                $( '.q_fence_active' ).remove();
+                show_intersections();
+            });
+            
+            $( '.pawn_next' ).click(function(){                
+                var pawn_container = $( this ).parent();
+                
+                var pawn_top = 'hey';
+                var pawn_left = 'hey';
 
-				switch( $( this ).attr( "class" ) )
-				{
-					case 'pawn_next pawn_next_0':
-						pawn_top = ( pawn_container.offset().top - 60 );
-						pawn_left = pawn_container.offset().left;
-						break;
-					case 'pawn_next pawn_next_90':
-						pawn_top = pawn_container.offset().top;
-						pawn_left = ( pawn_container.offset().left + 60 );
-						break;
-					case 'pawn_next pawn_next_180':
-						pawn_top = ( pawn_container.offset().top + 60 );
-						pawn_left = pawn_container.offset().left;
-						break;
-					case 'pawn_next pawn_next_270':
-						pawn_top = pawn_container.offset().top;
-						pawn_left = ( pawn_container.offset().left - 60 );
-						break;
-				}
+                switch( $( this ).attr( "class" ) )
+                {
+                    case 'pawn_next pawn_next_0':
+                        pawn_top = ( pawn_container.offset().top - 60 );
+                        pawn_left = pawn_container.offset().left;
+                        break;
+                    case 'pawn_next pawn_next_90':
+                        pawn_top = pawn_container.offset().top;
+                        pawn_left = ( pawn_container.offset().left + 60 );
+                        break;
+                    case 'pawn_next pawn_next_180':
+                        pawn_top = ( pawn_container.offset().top + 60 );
+                        pawn_left = pawn_container.offset().left;
+                        break;
+                    case 'pawn_next pawn_next_270':
+                        pawn_top = pawn_container.offset().top;
+                        pawn_left = ( pawn_container.offset().left - 60 );
+                        break;
+                }
 
-				pawn_container.offset( { top: pawn_top, left: pawn_left } );
-				$( this ).parent().children( '.pawn_next' ).hide();
-				
-				changeTurn();
-			});
-			
-			function changeTurn()
-			{
-				color = $( '#turn' ).text();
-				
-				//$( '#pawn_' + color ).children().hide();
-				
-				if( color == 'Green' )
-				{
-					color = 'Blue';
-				}
-				else
-				{
-					color = "Green";
-				}
-				
-				$( '#turn' ).text( color ).css( 'color', color );
-				
-				pawn_next( $( '#pawn_' + color ) );
-				
-				show_intersections();
-			}
-			
-			function show_intersections()
-			{
-				$( '.q_fence_intersection' ).css( 'background-color', 'rgba( 255,255,255,0.5 )' );
-			}
-			
-			function pawn_next( pawn_container ){
-				$( pawn_container ).children( '.pawn_next' ).fadeIn().each(
-					function( index, element ){
-						if( $( this ).overlaps( '.q_tile' ).length == 0 )
-						{
-							$( this ).hide();
-						}
-						
-						if( $( this ).overlaps( '.pawn' ).length != 0 )
-						{
-							$( this ).hide();
-						}
-					}
-				);
-			}
-			
-			function place_fence( fence_intersection )
-			{
-				console.log( fence_intersection );
-				$( fence_intersection ).append( $( '#fence' ).clone( true ).offset( { top: -50, left: 0 } ).removeAttr( 'id' ).addClass( 'q_fence_active' ).show() );
-				$( '.q_fence_intersection').css( 'background-color', '' );
-			}
-			
-			changeTurn();
-		});
+                pawn_container.offset( { top: pawn_top, left: pawn_left } );
+                $( this ).parent().children( '.pawn_next' ).hide();
+                
+                changeTurn();
+            });
+            
+            function changeTurn()
+            {
+                color = $( '#turn' ).text();
+                
+                //$( '#pawn_' + color ).children().hide();
+                
+                if( color == 'Green' )
+                {
+                    color = 'Blue';
+                }
+                else
+                {
+                    color = "Green";
+                }
+                
+                $( '#turn' ).text( color ).css( 'color', color );
+                
+                pawn_next( $( '#pawn_' + color ) );
+                
+                show_intersections();
+            }
+            
+            function show_intersections()
+            {
+                $( '.q_fence_intersection' ).css( 'background-color', 'rgba( 255,255,255,0.5 )' );
+            }
+            
+            function pawn_next( pawn_container ){
+                $( pawn_container ).children( '.pawn_next' ).fadeIn().each(
+                    function( index, element ){
+                        if( $( this ).overlaps( '.q_tile' ).length == 0 )
+                        {
+                            $( this ).hide();
+                        }
+                        
+                        if( $( this ).overlaps( '.pawn' ).length != 0 )
+                        {
+                            $( this ).hide();
+                        }
+                    }
+                );
+            }
+            
+            function place_fence( fence_intersection )
+            {
+                console.log( fence_intersection );
+                $( fence_intersection ).append( $( '#fence' ).clone( true ).offset( { top: -50, left: 0 } ).removeAttr( 'id' ).addClass( 'q_fence_active' ).show() );
+                $( '.q_fence_intersection').css( 'background-color', '' );
+            }
+            
+            changeTurn();
+        });
     </script>
     
     <div id='fence' class='q_fence'>
-    	<div class='q_fence_rotator'><span class="ui-icon ui-icon-refresh" style="margin: 2px;"></span></div>
-    	<div class='q_fence_confirm'><span class="ui-icon ui-icon-ok" style="margin: 2px;"></span></div> -->
-    	<div class='q_fence_remove'><span class="ui-icon ui-icon-remove" style="margin: 2px;"></span></div>
+        <div class='q_fence_rotator'><span class="ui-icon ui-icon-refresh" style="margin: 2px;"></span></div>
+        <div class='q_fence_confirm'><span class="ui-icon ui-icon-ok" style="margin: 2px;"></span></div> -->
+        <div class='q_fence_remove'><span class="ui-icon ui-icon-remove" style="margin: 2px;"></span></div>
     </div>
 </body>
 </html>

@@ -26,6 +26,11 @@
             font-weight: bold;
         }
                 
+        #fence
+        {
+                /* display: none; */
+        }
+
         .q_gameboard
         {
             width: 530px;
@@ -474,11 +479,11 @@
     <script>        
         $(document).ready(function() {        
                 
-            $( '.q_fence_intersection' ).click(function(){
-                $( '.pawn_next' ).fadeOut();
-                console.log( $( this ).position().top + ":" + $( this ).position().left );
-                place_fence( this );
-            });
+            //$( '.q_fence_intersection' ).click(function(){
+            //    $( this ).off( 'click' );
+            //    place_fence( this );
+            //});
+            $( '.q_fence_intersection' ).on( 'click', place_fence );
             
             $( '.q_fence_rotator' ).click(function(){
                 $( this ).parent().toggleClass( 'q_fence_rotated' );
@@ -495,17 +500,16 @@
             });
                         
             $( '.q_fence_remove' ).click(function(){
-                $( this ).parent().remove();
-                $( this ).parent().parent().on( 'click' );
                 pawn_next( $( '#pawn_' + $( '#turn' ).text() ) );
                 show_intersections();
-            });
+                $( this ).parent().remove();
+            }).parent().parent().on( 'click', place_fence );
                         
-            $( '.pawn' ).click(function(){
-                pawn_next( $( this ).parent() );
-                $( '.q_fence_active' ).remove();
-                show_intersections();
-            });
+            //$( '.pawn' ).click(function(){
+            //    pawn_next( $( this ).parent() );
+            //    $( '.q_fence_active' ).remove();
+            //    show_intersections();
+            //});
             
             $( '.pawn_next' ).click(function(){                
                 var pawn_container = $( this ).parent();
@@ -582,10 +586,13 @@
                 );
             }
             
-            function place_fence( fence_intersection )
+            function place_fence( event )
             {
-                console.log( fence_intersection );
-                $( fence_intersection ).append( $( '#fence' ).clone( true ).offset( { top: -50, left: 0 } ).removeAttr( 'id' ).addClass( 'q_fence_active' ).show() );
+                $( this ).off( 'click' );
+                $( '.pawn_next' ).fadeOut();
+                $( '#fence' ).clone( true ).offset( { top: -50, left: 0 } )
+                    .removeAttr( 'id' ).addClass( 'q_fence_active' ).show().appendTo( $( this ) );
+
                 $( '.q_fence_intersection').css( 'background-color', '' );
             }
             
@@ -595,7 +602,7 @@
     
     <div id='fence' class='q_fence'>
         <div class='q_fence_rotator'><span class="ui-icon ui-icon-refresh" style="margin: 2px;"></span></div>
-        <div class='q_fence_confirm'><span class="ui-icon ui-icon-ok" style="margin: 2px;"></span></div> -->
+        <div class='q_fence_confirm'><span class="ui-icon ui-icon-ok" style="margin: 2px;"></span></div>
         <div class='q_fence_remove'><span class="ui-icon ui-icon-remove" style="margin: 2px;"></span></div>
     </div>
 </body>

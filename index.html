@@ -28,15 +28,7 @@
                 
         #fence
         {
-                /* display: none; */
-        }
-
-        #intersections
-        {
-            left: 0;
-            top: 0;
-            position: absolute;
-            padding: 10px;
+            display: none;
         }
 
         .q_gameboard
@@ -497,7 +489,7 @@
             $( '.q_fence_remove' ).click(function(){
                 $( this ).parent().remove();
                 pawn_next( $( '#pawn_' + $( '#turn' ).text() ) );
-                $( '#intersections' ).show();
+                $( '.q_fence_intersection' ).fadeIn();
             });
                         
             $( '.pawn_next' ).click(function(){                
@@ -551,7 +543,7 @@
                 
                 pawn_next( $( '#pawn_' + color ) );
                 
-                $( '#intersections' ).fadeIn();
+                $( '.q_fence_intersection' ).fadeIn();
 
             }
             
@@ -578,7 +570,7 @@
                 //$( '#fence' ).clone( true ).offset( { top: -50, left: 0 } )
                 $( '#fence' ).clone( true ).css( { top: iPosition.top, left: iPosition.left+50 } )
                     .removeAttr( 'id' ).addClass( 'q_fence_active' ).show().appendTo( $( '#gameboard' ) );
-                $( '#intersections' ).fadeOut();
+                $( '.q_fence_intersection' ).fadeOut();
             }
             
             changeTurn();

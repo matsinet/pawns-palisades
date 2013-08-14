@@ -56,7 +56,6 @@
             border-radius: 4px;
             float: left;
             margin-left: 10px;
-            margin-bottom: 10px;
         }
  
         .q_tile_no_margin
@@ -94,7 +93,7 @@
         {
             width: 20px;
             height: 20px;
-            //border-radius: 10px;
+            border-radius: 10px;
             background-color: red;
             position: absolute;
             left: -6px;
@@ -489,7 +488,7 @@
             $( '.q_fence_remove' ).click(function(){
                 $( this ).parent().remove();
                 pawn_next( $( '#pawn_' + $( '#turn' ).text() ) );
-                $( '.q_fence_intersection' ).fadeIn();
+                $( '.q_fence_intersection' ).css( 'pointer-events', 'auto');
             });
                         
             $( '.pawn_next' ).click(function(){                
@@ -543,7 +542,7 @@
                 
                 pawn_next( $( '#pawn_' + color ) );
                 
-                $( '.q_fence_intersection' ).fadeIn();
+                $( '.q_fence_intersection' ).css( 'pointer-events', 'auto');
 
             }
             
@@ -567,10 +566,9 @@
             {
                 $( '.pawn_next' ).fadeOut();
                 iPosition = $( this ).position();
-                //$( '#fence' ).clone( true ).offset( { top: -50, left: 0 } )
-                $( '#fence' ).clone( true ).css( { top: iPosition.top, left: iPosition.left+50 } )
+                $( '#fence' ).clone( true ).css( { top: iPosition.top-50, left: iPosition.left+50 } )
                     .removeAttr( 'id' ).addClass( 'q_fence_active' ).show().appendTo( $( '#gameboard' ) );
-                $( '.q_fence_intersection' ).fadeOut();
+                $( '.q_fence_intersection' ).css( 'pointer-events', 'none');
             }
             
             changeTurn();

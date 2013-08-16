@@ -33,9 +33,9 @@
 
         .q_gameboard
         {
-            width: 530px;
-            height: 530px;
-            padding: 10px;
+            width: 550px;
+            height: 550px;
+            padding-top: 10px;
             margin-left: auto;
             margin-right: auto;
             margin-top: 10px;
@@ -60,11 +60,7 @@
  
         .q_tile_no_margin
         {
-            width: 50px;
-            height: 50px;
-            background-color: rgba(255, 255, 255, 0.3);
-            border-radius: 4px;
-            float: left;
+            margin-left: 0px;
         }
         
         .q_fence
@@ -142,6 +138,13 @@
             margin-left: 50px;
             position: relative;
             background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .q_fence_intersection_pad
+        {
+            width: 10px;
+            height: 10px;
+            float: left;
         }
         
         .q_fence_active
@@ -262,7 +265,7 @@
         </div>
         <div id="gameboard" class="q_gameboard">
             <div class="q_row">
-                <div class="q_tile_no_margin"></div>
+                <div class="q_tile"></div>
                 <div class="q_tile"></div>
                 <div class="q_tile"></div>
                 <div class="q_tile"></div>
@@ -283,6 +286,7 @@
             </div>
             
             <div class="q_row">
+                <div class="q_fence_intersection_pad"></div>
                 <div class="q_fence_intersection"></div>
                 <div class="q_fence_intersection"></div>
                 <div class="q_fence_intersection"></div>
@@ -294,30 +298,7 @@
             </div>
             
             <div class="q_row">
-                <div class="q_tile_no_margin"></div>
                 <div class="q_tile"></div>
-                <div class="q_tile"></div>
-                <div class="q_tile"></div>
-                <div class="q_tile"></div>
-                <div class="q_tile"></div>
-                <div class="q_tile"></div>
-                <div class="q_tile"></div>
-                <div class="q_tile"></div>
-            </div>
-            
-            <div class="q_row">
-                <div class="q_fence_intersection"></div>
-                <div class="q_fence_intersection"></div>
-                <div class="q_fence_intersection"></div>
-                <div class="q_fence_intersection"></div>
-                <div class="q_fence_intersection"></div>
-                <div class="q_fence_intersection"></div>
-                <div class="q_fence_intersection"></div>
-                <div class="q_fence_intersection"></div>
-            </div>
-            
-            <div class="q_row">
-                <div class="q_tile_no_margin"></div>
                 <div class="q_tile"></div>
                 <div class="q_tile"></div>
                 <div class="q_tile"></div>
@@ -329,6 +310,7 @@
             </div>
             
             <div class="q_row">
+                <div class="q_fence_intersection_pad"></div>
                 <div class="q_fence_intersection"></div>
                 <div class="q_fence_intersection"></div>
                 <div class="q_fence_intersection"></div>
@@ -340,30 +322,7 @@
             </div>
             
             <div class="q_row">
-                <div class="q_tile_no_margin"></div>
                 <div class="q_tile"></div>
-                <div class="q_tile"></div>
-                <div class="q_tile"></div>
-                <div class="q_tile"></div>
-                <div class="q_tile"></div>
-                <div class="q_tile"></div>
-                <div class="q_tile"></div>
-                <div class="q_tile"></div>
-            </div>
-            
-            <div class="q_row">
-                <div class="q_fence_intersection"></div>
-                <div class="q_fence_intersection"></div>
-                <div class="q_fence_intersection"></div>
-                <div class="q_fence_intersection"></div>
-                <div class="q_fence_intersection"></div>
-                <div class="q_fence_intersection"></div>
-                <div class="q_fence_intersection"></div>
-                <div class="q_fence_intersection"></div>
-            </div>
-            
-            <div class="q_row">
-                <div class="q_tile_no_margin"></div>
                 <div class="q_tile"></div>
                 <div class="q_tile"></div>
                 <div class="q_tile"></div>
@@ -375,6 +334,7 @@
             </div>
             
             <div class="q_row">
+                <div class="q_fence_intersection_pad"></div>
                 <div class="q_fence_intersection"></div>
                 <div class="q_fence_intersection"></div>
                 <div class="q_fence_intersection"></div>
@@ -386,30 +346,7 @@
             </div>
             
             <div class="q_row">
-                <div class="q_tile_no_margin"></div>
                 <div class="q_tile"></div>
-                <div class="q_tile"></div>
-                <div class="q_tile"></div>
-                <div class="q_tile"></div>
-                <div class="q_tile"></div>
-                <div class="q_tile"></div>
-                <div class="q_tile"></div>
-                <div class="q_tile"></div>
-            </div>
-            
-            <div class="q_row">
-                <div class="q_fence_intersection"></div>
-                <div class="q_fence_intersection"></div>
-                <div class="q_fence_intersection"></div>
-                <div class="q_fence_intersection"></div>
-                <div class="q_fence_intersection"></div>
-                <div class="q_fence_intersection"></div>
-                <div class="q_fence_intersection"></div>
-                <div class="q_fence_intersection"></div>
-            </div>
-            
-            <div class="q_row">
-                <div class="q_tile_no_margin"></div>
                 <div class="q_tile"></div>
                 <div class="q_tile"></div>
                 <div class="q_tile"></div>
@@ -421,6 +358,7 @@
             </div>
             
             <div class="q_row">
+                <div class="q_fence_intersection_pad"></div>
                 <div class="q_fence_intersection"></div>
                 <div class="q_fence_intersection"></div>
                 <div class="q_fence_intersection"></div>
@@ -432,7 +370,7 @@
             </div>
             
             <div class="q_row">
-                <div class="q_tile_no_margin"></div>
+                <div class="q_tile"></div>
                 <div class="q_tile"></div>
                 <div class="q_tile"></div>
                 <div class="q_tile"></div>
@@ -444,6 +382,79 @@
             </div>
             
             <div class="q_row">
+                <div class="q_fence_intersection_pad"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+            </div>
+            
+            <div class="q_row">
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+            </div>
+            
+            <div class="q_row">
+                <div class="q_fence_intersection_pad"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+            </div>
+            
+            <div class="q_row">
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+            </div>
+            
+            <div class="q_row">
+                <div class="q_fence_intersection_pad"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+                <div class="q_fence_intersection"></div>
+            </div>
+            
+            <div class="q_row">
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+                <div class="q_tile"></div>
+            </div>
+            
+            <div class="q_row">
+                <div class="q_fence_intersection_pad"></div>
                 <div class="q_fence_intersection"></div>
                 <div class="q_fence_intersection"></div>
                 <div class="q_fence_intersection"></div>
@@ -455,7 +466,7 @@
             </div>                
             
             <div class="q_row">
-                <div class="q_tile_no_margin"></div>
+                <div class="q_tile"></div>
                 <div class="q_tile"></div>
                 <div class="q_tile"></div>
                 <div class="q_tile"></div>

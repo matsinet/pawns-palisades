@@ -311,8 +311,23 @@
                         
                         if( $( this ).overlaps( '.pawn' ).length != 0 )
                         {
-                            $( this ).hide();
+                            switch( $( this ).attr( 'class' ) )
+                            {
+                                case 'pawn_next pawn_next_0':
+                                    $( this ).css( 'top', -122 );
+                                    break;
+                            }
                         }
+                        else
+                        {
+                            switch( $( this ).attr( 'class' ) )
+                            {
+                                case 'pawn_next pawn_next_0':
+                                    $( this ).css( 'top', -62 );
+                                    break;
+                            }
+                        }
+
                     }
                 );
                 $( '.q_fence_placed' ).each(
@@ -356,7 +371,6 @@
                            }
                     }
                 );
-                console.log( 'pawn:'+pawn_container.parent().attr( 'data-column' )+pawn_container.parent().attr( 'data-row' ) );
             }
             
             function place_fence( event )
@@ -375,7 +389,8 @@
                 }
                 else
                 {
-                    console.log( 'Sorry, You are out of fences' );
+                    alert( 'Sorry, You are out of fences' );
+                    console.log( $( '#turn' ).text()+' is out of fences' );
                 }
             }
 

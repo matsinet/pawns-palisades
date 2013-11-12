@@ -444,6 +444,7 @@
                 } );
                 
                 $( '.q_fence_confirm' ).click( function(){
+                    console.log( 'fence '+$( this ).parent().attr( 'id' )+' was placed' );
                     $( this ).parent().removeClass( 'q_fence_active' ).addClass( 'q_fence_placed' ).children().remove();
                     
                     fence_count = $( '#'+$( '#turn' ).text()+'_fence_count' );

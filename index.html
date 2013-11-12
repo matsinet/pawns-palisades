@@ -317,6 +317,9 @@
                 );
                 $( '.q_fence_placed' ).each(
                     function( index, element ){
+
+                           row_minus_1 = parseInt( $( this ).attr( 'data-row' ) )-1;
+                           row_plus_1 = parseInt( $( this ).attr( 'data-row' ) )+1;
                            if( $( this ).attr( 'data-orientation' ) == 'h' )
                            {
                                if(
@@ -325,10 +328,10 @@
                                )
                                {
                                    $( pawn_container ).children( '.pawn_next_180' ).fadeOut();
-                               }        
+                               }
                                if(
-                                   pawn_container.parent().attr( 'id' ) == $( this ).attr( 'data-column' )+( $( this ).attr( 'data-row' )+1  )
-                                   || pawn_container.parent().attr( 'id' ) == ( String.fromCharCode( $( this ).attr( 'data-column' ).charCodeAt(0)-1 ) )+( $( this ).attr( 'data-row' )+1 )
+                                   pawn_container.parent().attr( 'id' ) == $( this ).attr( 'data-column' )+row_plus_1
+                                   || pawn_container.parent().attr( 'id' ) == ( String.fromCharCode( $( this ).attr( 'data-column' ).charCodeAt(0)-1 ) )+row_plus_1
                                )
                                {
                                    $( pawn_container ).children( '.pawn_next_0' ).fadeOut();
@@ -338,17 +341,17 @@
                            {
                                if(
                                    pawn_container.parent().attr( 'id' ) == $( this ).attr( 'data-column' )+$( this ).attr( 'data-row' )
-                                   || pawn_container.parent().attr( 'id' ) == $( this ).attr( 'data-column' )+( $( this ).attr( 'data-row' )-1 )
+                                   || pawn_container.parent().attr( 'id' ) == $( this ).attr( 'data-column' )+row_plus_1
                                )
                                {
                                    $( pawn_container ).children( '.pawn_next_270' ).fadeOut();
-                               }        
+                               }
                                if(
-                                   pawn_container.parent().attr( 'id' ) == $( this ).attr( 'data-column' )+( String.fromCharCode( $( this ).attr( 'data-row' ).charCodeAt(0)+1 ) )
-                                   || pawn_container.parent().attr( 'id' ) == ( String.fromCharCode( $( this ).attr( 'data-column' ).charCodeAt(0)-1 ) )+( String.fromCharCode( $( this ).attr( 'data-row' ).charCodeAt(0)+1 ) )
+                                   pawn_container.parent().attr( 'id' ) == ( String.fromCharCode( $( this ).attr( 'data-column' ).charCodeAt(0)-1 ) )+$( this ).attr( 'data-row' )
+                                   || pawn_container.parent().attr( 'id' ) == ( String.fromCharCode( $( this ).attr( 'data-column' ).charCodeAt(0)-1 ) )+row_plus_1
                                )
                                {
-                                   $( pawn_container ).children( '.pawn_next_0' ).fadeOut();
+                                   $( pawn_container ).children( '.pawn_next_90' ).fadeOut();
                                }        
                            }
                     }
@@ -372,7 +375,7 @@
                 }
                 else
                 {
-                    alert( 'Sorry, You are out of fences' );
+                    console.log( 'Sorry, You are out of fences' );
                 }
             }
 

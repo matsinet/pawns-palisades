@@ -317,12 +317,43 @@
                 );
                 $( '.q_fence_placed' ).each(
                     function( index, element ){
-                        console.log( element );
-                        console.log( this );
-                        //$( this ).attr( 'data-row' ) && $( this ).attr( 'data-column' )
+                           if( $( this ).attr( 'data-orientation' ) == 'h' )
+                           {
+                               if(
+                                   pawn_container.parent().attr( 'id' ) == $( this ).attr( 'data-column' )+$( this ).attr( 'data-row' )
+                                   || pawn_container.parent().attr( 'id' ) == ( String.fromCharCode( $( this ).attr( 'data-column' ).charCodeAt(0)-1 ) )+$( this ).attr( 'data-row' )
+                               )
+                               {
+                                   $( pawn_container ).children( '.pawn_next_180' ).fadeOut();
+                               }        
+                               if(
+                                   pawn_container.parent().attr( 'id' ) == $( this ).attr( 'data-column' )+( $( this ).attr( 'data-row' )+1  )
+                                   || pawn_container.parent().attr( 'id' ) == ( String.fromCharCode( $( this ).attr( 'data-column' ).charCodeAt(0)-1 ) )+( $( this ).attr( 'data-row' )+1 )
+                               )
+                               {
+                                   $( pawn_container ).children( '.pawn_next_0' ).fadeOut();
+                               }        
+                           }
+                           else
+                           {
+                               if(
+                                   pawn_container.parent().attr( 'id' ) == $( this ).attr( 'data-column' )+$( this ).attr( 'data-row' )
+                                   || pawn_container.parent().attr( 'id' ) == $( this ).attr( 'data-column' )+( $( this ).attr( 'data-row' )-1 )
+                               )
+                               {
+                                   $( pawn_container ).children( '.pawn_next_270' ).fadeOut();
+                               }        
+                               if(
+                                   pawn_container.parent().attr( 'id' ) == $( this ).attr( 'data-column' )+( String.fromCharCode( $( this ).attr( 'data-row' ).charCodeAt(0)+1 ) )
+                                   || pawn_container.parent().attr( 'id' ) == ( String.fromCharCode( $( this ).attr( 'data-column' ).charCodeAt(0)-1 ) )+( String.fromCharCode( $( this ).attr( 'data-row' ).charCodeAt(0)+1 ) )
+                               )
+                               {
+                                   $( pawn_container ).children( '.pawn_next_0' ).fadeOut();
+                               }        
+                           }
                     }
                 );
-                console.log( pawn_container.parent().attr( 'id' ) );
+                console.log( 'pawn:'+pawn_container.parent().attr( 'data-column' )+pawn_container.parent().attr( 'data-row' ) );
             }
             
             function place_fence( event )

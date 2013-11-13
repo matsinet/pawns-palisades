@@ -192,7 +192,7 @@
         .pawn_next_0
         {
             position: absolute;
-            top: -62px;
+            top: -63px;
         }
         
         .pawn_next_180
@@ -332,7 +332,7 @@
                             switch( $( this ).attr( 'class' ) )
                             {
                                 case 'pawn_next pawn_next_0':
-                                    $( this ).css( 'top', -62 );
+                                    $( this ).css( 'top', -63 );
                                     break;
                                 case 'pawn_next pawn_next_90':
                                     $( this ).css( 'left', 60 );
@@ -350,7 +350,6 @@
                 );
                 $( '.q_fence_placed' ).each(
                     function( index, element ){
-
                            row_minus_1 = parseInt( $( this ).attr( 'data-row' ) )-1;
                            row_plus_1 = parseInt( $( this ).attr( 'data-row' ) )+1;
                            if( $( this ).attr( 'data-orientation' ) == 'h' )
@@ -361,6 +360,7 @@
                                )
                                {
                                    $( pawn_container ).children( '.pawn_next_180' ).fadeOut();
+                                   alert( '180' );
                                }
                                if(
                                    pawn_container.parent().attr( 'id' ) == $( this ).attr( 'data-column' )+row_plus_1
@@ -368,7 +368,8 @@
                                )
                                {
                                    $( pawn_container ).children( '.pawn_next_0' ).fadeOut();
-                               }        
+                                   alert( '0' );
+                               }
                            }
                            else
                            {
@@ -378,6 +379,7 @@
                                )
                                {
                                    $( pawn_container ).children( '.pawn_next_270' ).fadeOut();
+                                   alert( '270' );
                                }
                                if(
                                    pawn_container.parent().attr( 'id' ) == ( String.fromCharCode( $( this ).attr( 'data-column' ).charCodeAt(0)-1 ) )+$( this ).attr( 'data-row' )
@@ -385,10 +387,15 @@
                                )
                                {
                                    $( pawn_container ).children( '.pawn_next_90' ).fadeOut();
+                                   alert( '90' );
                                }        
                            }
                     }
                 );
+                if( $( pawn_container ).attr( 'id' ) == 'pawn_green' && $( pawn_container ).parent().attr( 'data-row' ) == 9 )
+                {
+                    alert( 'Green Wins!!!' );
+                }
             }
             
             function place_fence( event )
@@ -501,7 +508,18 @@
                     $.cookies.del( pawn.attr( 'id' ) );
                     $.cookies.set( pawn.attr( 'id' ), pawn.parent().attr( 'id' ) );
                     pawn.children( '.pawn_next' ).hide();
-                    changeTurn();
+                    if( pawn.attr( 'id' ) == 'pawn_green' && pawn.parent().attr( 'data-row' ) == 9 )
+                    {
+                        alert( 'Green Wins!!!' );
+                    }
+                    else if( pawn.attr( 'id' ) == 'pawn_blue' && pawn.parent().attr( 'data-row' ) == 1 )
+                    {
+                        alert( 'Blue Wins!!!' );
+                    }
+                    else
+                    {
+                        changeTurn();
+                    }
                 } );
             }
 

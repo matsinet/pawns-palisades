@@ -1,55 +1,42 @@
 <html>
 <head>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+    <title>jQuoridor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="css/kube.min.css" />
     <link href="css/jquery-ui.min.css" rel="stylesheet">
 	<link href="css/jQuoridor.css" rel="stylesheet">
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container">
-                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="brand" href="#">Quoridor</a>
-                <div class="nav-collapse collapse">
-                    <ul class="nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="http://en.wikipedia.org/wiki/Quoridor" target="blank">About</a></li>
-                    </ul>
-                    <ul class="nav pull-right">
-                        <li><a href="https://bitbucket.org/matsinet/jquoridor" target="blank"><img src="/img/logoBitBucketPNG.png" alt="BitBucket" style="height: 25px;"/></a></li>
-                    </ul>
-                </div><!--/.nav-collapse -->
-            </div>
-        </div>
-    </div>
-    
-    <div class="container" style="margin-top: 40px;">
+    <div class="container">
+        <nav class="nav-g">
+            <ul>
+                <li>jQuoridor</li>
+                <li class="nav_push_right"><a href="http://en.wikipedia.org/wiki/Quoridor" target="blank">About</a></li>
+            </ul>
+        </nav>
         <div id="controlpanel" class="q_controlpanel">
-            <div class="row">
-                <div class="span4 offset4">Turn: <span id="turn">blue</span></div>
+            <div class="units-row">
+                <div class="units-row-end">
+                    <div class="unit-centered unit-30 center_text">Turn: <span id="turn">blue</span></div>
+                </div>
+                <div class="units-row-end">
+                    <div class="unit-20">&nbsp;</div>
+                    <div class="unit-30 center_text">Green Fences: <span id="green_fence_count">10</span></div>
+                    <div class="unit-30 center_text">Blue Fences: <span id="blue_fence_count">10</span></div>
+                </div>
             </div>
-            <div class="row">
-                <div class="span2 offset4">Green Fences: <span id="green_fence_count">10</span></div>
-                <div class="span2">Blue Fences: <span id="blue_fence_count">10</span></div>
-            </div>
-            <!--
-            <div class="row">
-                <div class="span6"></div>
-                <div class="span6"></div>
-            </div>
-            -->
         </div>
-        <div id="gameboard" class="q_gameboard"></div> <!-- /gameboard --> 
+        <div id="gameboard" class="q_gameboard"></div> <!-- /gameboard -->
+        <div class="units-row">
+            <div id="bitbucket_logo" class="unit-centered unit-30 center_text">
+                <a href="https://bitbucket.org/matsinet/jquoridor" target="blank"><img src="/img/logoBitBucketPNG.png" alt="BitBucket" style="height: 25px;"/></a>
+            </div>
+        </div>
     </div> <!-- /container -->
 
     <script src="js/jquery-2.0.3.min.js"></script>
     <script src="js/jquery-ui.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.overlaps.js"></script>
     <script src="js/jquery.cookies.2.2.0.min.js"></script>
 	<script src="js/jQuoridor.js"></script>

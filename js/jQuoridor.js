@@ -38,12 +38,9 @@ $(document).ready(function() {
 
 		$( pawn_container ).children( '.pawn_next' ).fadeIn().each(
 			function( index, element ){
-				if( $( this ).overlaps( '.q_tile' ).length == 0 )
-				{
-					$( this ).hide();
-				}
-				
-				if( $( this ).overlaps( '.pawn' ).length != 0 )
+				console.log( $( this ).overlaps( '.pawn' ) );
+
+				if( $( this ).overlaps( '.pawn' ).length > 0 )
 				{
 					switch( $( this ).attr( 'class' ) )
 					{
@@ -80,6 +77,10 @@ $(document).ready(function() {
 					}
 				}
 
+                if( $( this ).overlaps( '.q_tile' ).length == 0 )
+				{
+					$( this ).hide();
+				}
 			}
 		);
 		$( '.q_fence_placed' ).each(
@@ -126,10 +127,6 @@ $(document).ready(function() {
 				   }
 			}
 		);
-		if( $( pawn_container ).attr( 'id' ) == 'pawn_green' && $( pawn_container ).parent().attr( 'data-row' ) == 9 )
-		{
-			alert( 'Green Wins!!!' );
-		}
 	}
 	
 	function place_fence( event )
@@ -245,10 +242,12 @@ $(document).ready(function() {
 			if( pawn.attr( 'id' ) == 'pawn_green' && pawn.parent().attr( 'data-row' ) == 9 )
 			{
 				alert( 'Green Wins!!!' );
+                $( '.q_fence_intersection' ).unbind( 'click' );
 			}
 			else if( pawn.attr( 'id' ) == 'pawn_blue' && pawn.parent().attr( 'data-row' ) == 1 )
 			{
 				alert( 'Blue Wins!!!' );
+                $( '.q_fence_intersection' ).unbind( 'click' );
 			}
 			else
 			{

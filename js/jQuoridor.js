@@ -235,7 +235,14 @@ $(document).ready(function() {
 		$( '.pawn_next' ).click( function(){
 			pawn = $( this ).parent();
 			$( this ).overlaps( '.q_tile' ).append( pawn.detach() );
-			console.log( pawn.attr( 'id' ).substring(5)+' to '+pawn.parent().attr( 'id' ) );
+			pawn_color = pawn.attr( 'id' ).substring( 5 );
+            pawn_tile = pawn.parent().attr( 'id' );
+            console.log( pawn_color + ' to ' + pawn_tile );
+
+            pawn_object = { pawn_color : pawn_tile };
+
+            backend.update( pawn_object );
+
 			$.cookies.del( pawn.attr( 'id' ) );
 			$.cookies.set( pawn.attr( 'id' ), pawn.parent().attr( 'id' ) );
 			pawn.children( '.pawn_next' ).hide();
@@ -257,4 +264,6 @@ $(document).ready(function() {
 	}
 
 	main();
+
+    var backend = new Cenny( {url: 'http://quoridor.canisconsulting.com/server/cenny.php'} );
 } );

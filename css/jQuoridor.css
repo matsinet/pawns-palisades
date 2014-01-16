@@ -131,6 +131,25 @@
 	position: absolute;
 	left: -6px;
 	top: 6px;
+    color: white;
+}
+
+.fa-trash-o
+{
+    margin-left: 4px;
+    margin-top: 2px;
+}
+
+.fa-check
+{
+    margin-left: 3px;
+    margin-top: 3px;
+}
+
+.fa-repeat
+{
+    margin-left: 4px;
+    margin-top: 3px;
 }
 
 .q_fence_remove
@@ -143,6 +162,7 @@
 	position: absolute;
 	left: -6px;
 	top: 80px;
+    color: white;
 }
 
 .q_fence_confirm
@@ -155,6 +175,7 @@
 	position: absolute;
 	top: 43px;
 	left: -6px;
+    color: white;
 }
 		
 .q_fence_rotated

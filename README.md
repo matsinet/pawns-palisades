@@ -1,7 +1,27 @@
-jQuoridor
-=========
-I found Quoridor while on vacation and decided to make it a personal project to recreate it on the web.
+# jquoridor
 
-This is my personal project, for my enjoyment.  Take it as it is.
+> A Vue.js project
 
-Demo: http://quoridor.canisconsulting.com
+## Build Setup
+
+``` bash
+# install dependencies
+npm install
+
+# serve with hot reload at localhost:8080
+npm run dev
+
+# build for production with minification
+npm run build
+
+# run unit tests
+npm run unit
+
+# run e2e tests
+npm run e2e
+
+# run all tests
+npm test
+```
+
+For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).

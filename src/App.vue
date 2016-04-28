@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <img class="logo" src="./assets/logo.png">
+        <!--<img class="logo" src="./assets/logo.png">-->
         <scoreboard></scoreboard>
         <p>
             You may also want to checkout
@@ -11,12 +11,11 @@
 </template>
 
 <script>
-    import Hello from './components/Hello'
     import Scoreboard from './components/Scoreboard'
-
+    
     export default {
         components: {
-            Scoreboard: Scoreboard
+            Scoreboard
         }
     }
 </script>
@@ -50,4 +49,22 @@
         width: 100px;
         height: 100px
     }
+    
+    .green {
+        color: green;
+    }
+    
+    .blue {
+        color: blue;
+    }
+    
+    .red {
+        color: red;
+    }
+    
+    .yellow {
+        color: yellow;
+    }
+    
+    
 </style>

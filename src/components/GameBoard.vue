@@ -15,12 +15,18 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
 .gameboard {
-    background: black;
-    width: 100px;
-    height: 100px;
+    width: 550px;
+    height: 540px;
+    padding-top: 10px;
     margin-left: auto;
     margin-right: auto;
+    /*background-image: URL('wood.jpg');*/
+    background: gray;
+    position: relative;
+    border-top: 4px solid green;
+    border-bottom: 4px solid blue;
+    
 }
 </style>

@@ -8,7 +8,7 @@ Vue.use(Vuex)
 // the app starts up
 const state = {
     game: {
-        title: 'jQuoridor Score Board',
+        title: 'jQuoridor',
         pawn_count: 2,
         turn: 'green',
     },

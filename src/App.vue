@@ -2,20 +2,19 @@
     <div id="app">
         <!--<img class="logo" src="./assets/logo.png">-->
         <scoreboard></scoreboard>
-        <p>
-            You may also want to checkout
-            <a href="https://github.com/vuejs/vue-router/" target="_blank">vue-router</a> for routing and
-            <a href="https://github.com/vuejs/vuex/" target="_blank">vuex</a> for state management.
-        </p>
+        <gameboard></gameboard>
+        <footer></footer>
     </div>
 </template>
 
 <script>
-    import Scoreboard from './components/Scoreboard'
+    import Scoreboard from './components/ScoreBoard'
+    import Gameboard from './components/GameBoard'
     
     export default {
         components: {
-            Scoreboard
+            Scoreboard,
+            Gameboard
         }
     }
 </script>
@@ -65,6 +64,4 @@
     .yellow {
         color: yellow;
     }
-    
-    
 </style>

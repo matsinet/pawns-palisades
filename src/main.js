@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import store from './vuex/store'
+import store from './store/store'
 import App from './App'
 
 // important, teaches Vue components how to

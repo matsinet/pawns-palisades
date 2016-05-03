@@ -1,20 +1,22 @@
 <template>
     <div id="app">
-        <img class="logo" src="./assets/logo.png">
+        <!--<img class="vuejs-logo" src="./assets/logo.png">-->
         <scoreboard></scoreboard>
         <gameboard></gameboard>
-        <footer></footer>
+        <poweredby> </poweredby>
     </div>
 </template>
 
 <script>
     import Scoreboard from './components/ScoreBoard'
     import Gameboard from './components/GameBoard'
+    import Poweredby from './components/PoweredBy'
     
     export default {
         components: {
             Scoreboard,
-            Gameboard
+            Gameboard,
+            Poweredby
         }
     }
 </script>
@@ -32,11 +34,14 @@
     }
 
     #app {
-        color: #2c3e50;
-        margin-top: -100px;
-        max-width: 600px;
         font-family: Source Sans Pro, Helvetica, sans-serif;
-        text-align: center;
+        color: white;
+        width: 76vh;
+        margin-left: auto;
+        margin-right: auto;
+        border: 3px solid black;
+        border-radius: 20px;
+        background-color: black;
     }
 
     #app a {
@@ -44,9 +49,9 @@
         text-decoration: none;
     }
 
-    .logo {
-        width: 100px;
-        height: 100px
+    .vuejs-logo {
+        width: 20px;
+        height: 20px
     }
     
     .green {

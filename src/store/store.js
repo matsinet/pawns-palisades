@@ -11,6 +11,7 @@ const state = {
         title: 'jQuoridor',
         pawn_count: 2,
         turn: 'green',
+        powered_by: ''
     },
     players: {
         'green': {

@@ -33,8 +33,9 @@ export default {
     width: 6vh;
     height: 6vh;
     background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 1vh;
+    border-radius: .5vh;
     float: left;
     margin-left: 2vh;
+    text-align: center;
 }
 </style>

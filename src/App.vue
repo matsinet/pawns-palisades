@@ -36,7 +36,7 @@
     #app {
         font-family: Source Sans Pro, Helvetica, sans-serif;
         color: white;
-        width: 76vh;
+        width: 78vh;
         margin-left: auto;
         margin-right: auto;
         border: 3px solid black;

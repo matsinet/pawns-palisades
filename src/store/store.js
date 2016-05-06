@@ -9,26 +9,18 @@ Vue.use(Vuex)
 const state = {
     game: {
         title: 'jQuoridor',
-        pawn_count: 2,
-        turn: 'green',
-        powered_by: ''
+        pawn_count: 4,
+        turn: 'red',
+        powered_by: '',
     },
     players: {
-        'green': {
+        'red': {
             walls: 10,
             username: 'Bill',
         },
         'blue': {
             walls: 10,
             username: 'Ted',
-        },
-        'yellow': {
-            walls: 5,
-            username: 'Eddie',
-        },
-        'red': {
-            walls: 5,
-            username: 'Sammy',
         },
     }
 }
@@ -38,21 +30,21 @@ const mutations = {
     // TODO: set up our mutations
     NEXT_PLAYER: function(state) {
         switch(state.game.turn) {
-            case 'green':
+            case 'red':
                 this.set_turn(state, 'blue')
                 break
             case 'blue':
                 if(state.game.pawn_count == 2) {
-                    this.set_turn(state, 'green')
+                    this.set_turn(state, 'red')
                 } else {
                     this.set_turn(state, 'yellow')
                 }
                 break
             case 'yellow':
-                this.set_turn(state, 'red')
-                break
-            case 'red':
                 this.set_turn(state, 'green')
+                break
+            case 'green':
+                this.set_turn(state, 'red')
                 break
         }
     },
@@ -62,11 +54,28 @@ const mutations = {
     DECREMENT_WALL_COUNT: function(state, player) {
         state.players[player].walls-- 
     },
+    SET_PLAYER_COUNT: function(state, player_count) {
+        if(player_count == 4) {
+            state.players.yellow = {
+                    walls: 5,
+                    username: '',
+                }
+            state.players.green = {
+                    walls: 5,
+                    username: '',
+                }
+            
+            this.SET_PAWN_COUNT(state, 5)
+        } else {
+            delete state.players.yellow
+            delete state.players.green
+            
+            this.SET_PAWN_COUNT(state, 10)
+        }
+    },
     SET_PAWN_COUNT: function (state, pawn_count) {
-        if(pawn_count == 4) {
-            for(var player in state.players) {
-                state.players[player].walls = 5
-            }
+        for(var player in state.players) {
+            state.players[player].walls = pawn_count
         }
     }
 }

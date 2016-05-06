@@ -1,6 +1,6 @@
 <template>
-    <template v-for="player in players">
-        <div class="fence-count {{ $index }}" name="{{ $index }}">
+    <template v-for="(index, player) in players">
+        <div class="fence-count" name="{{ index }}-fence-count">
             {{ player.username }}'s Fences: {{ player.walls }}
         </div>
     </template>
@@ -11,7 +11,6 @@ export default {
     vuex: {
         getters: {
             players: state => state.players,
-            turn: state => state.game.turn
         }
     }
 }
@@ -21,6 +20,9 @@ export default {
 .fence-count {
     width: 50%;
     height: 1.5em;
+    line-height: 1.5em;
     float: left;
+    vertical-align: middle;
+    text-align: center;
 }
 </style>

@@ -1,27 +1,24 @@
 <template>
-    <!--<div class='intersection' v-on:click="notify" v-bind:class="[isfirst ? 'first-intersection' : '']"></div>-->
-    <div class='intersection' v-on:click="notify" v-bind:class="{ 'first-intersection': isfirst, 'last-intersection': islast }"></div>
+    <div class='intersection' v-on:click="notify" v-bind:class="{ 'first-intersection': isfirst, 'last-intersection': islast }">
+        <wall v-bind:class="[ wall == 'h' ? 'horizontal' : 'vertical' ]" v-if="wall"></wall>
+    </div>
 </template>
 
 <script>
+import Wall from './Wall'
+
 export default {
-    // data () {
-    //     return {
-    //         isFirst: this.isFirst
-    //     }
-    // },
+    components: {
+        Wall
+    },
     props: [
         'column',
         'row',
         'orientation',
         'isfirst',
-        'islast'
+        'islast',
+        'wall',
     ],
-    vuex: {
-        getters: {
-            turn: state => state.game.turn
-        }
-    },
     methods: {
         notify () {
             this.$dispatch(
@@ -29,7 +26,7 @@ export default {
                 {
                     column: this.column,
                     row: this.row,
-                    orientation: this.orientation
+                    orientation: this.wall
                 }
             );
             this.$el.style.background='black';

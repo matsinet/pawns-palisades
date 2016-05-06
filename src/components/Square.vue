@@ -1,12 +1,26 @@
 <template>
-    <div class='square' v-on:click="notify">{{ column }}{{ row }}</div>
+    <div class='square' v-on:click="notify">
+        <pawn v-bind:class="[ pawn ]" v-if="pawn">
+            <slot></slot>
+        </pawn>
+        <move v-bind:class="[ move ]" v-if="move"></move>
+    </div>
 </template>
 
 <script>
+import Pawn from './Pawn'
+import Move from './Move'
+
 export default {
+    components: {
+        Pawn,
+        Move
+    },
     props: [
         'column',
-        'row'
+        'row',
+        'pawn',
+        'move'
     ],
     vuex: {
         getters: {
@@ -32,7 +46,7 @@ export default {
 .square {
     width: 6vh;
     height: 6vh;
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, .3);
     border-radius: .5vh;
     float: left;
     margin-left: 2vh;

@@ -1,6 +1,6 @@
 <template>
     <div class='intersection' v-on:click="notify" v-bind:class="{ 'first-intersection': isfirst, 'last-intersection': islast }">
-        <wall v-bind:class="[ wall == 'h' ? 'horizontal' : 'vertical' ]" v-if="wall"></wall>
+        <wall v-bind:class="[ wall == 'v' ? 'vertical-wall' : '' ]" v-if="wall"></wall>
     </div>
 </template>
 
@@ -14,22 +14,22 @@ export default {
     props: [
         'column',
         'row',
-        'orientation',
         'isfirst',
         'islast',
         'wall',
     ],
     methods: {
         notify () {
-            this.$dispatch(
-                'wall',
-                {
-                    column: this.column,
-                    row: this.row,
-                    orientation: this.wall
-                }
-            );
-            this.$el.style.background='black';
+            if(typeof this.wall === 'undefined') {
+                this.$dispatch(
+                    'wall',
+                    {
+                        column: this.column,
+                        row: this.row,
+                        wall: this.wall ? this.wall : '',
+                    }
+                );
+            }
         }
     }
 }

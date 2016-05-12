@@ -1,31 +1,12 @@
 <template>
-    <div class='move' v-on:click="notify" v-bind:class="[ color ? color : '' ]"></div>
+    <div class='move' v-bind:class="[ color ? color : '' ]"></div>
 </template>
 
 <script>
 export default {
     props: [
-        'column',
-        'row',
         'color'
-    ],
-    vuex: {
-        getters: {
-            pawn_count: state => state.game.pawn_count
-        }
-    },
-    methods: {
-        notify () {
-            this.$dispatch(
-                'move',
-                {
-                    column: this.column,
-                    row: this.row,
-                    color: this.color
-                }
-            );
-        }
-    }
+    ]
 }
 </script>
 

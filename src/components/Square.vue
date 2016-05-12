@@ -1,6 +1,6 @@
 <template>
-    <div class='square' v-on:click="notify">
-        <pawn v-bind:class="[ pawn ]" v-if="pawn">
+    <div class='square' v-on:click="notify" data-column='{{ column }}' data-row='{{ row }}'>
+        <pawn v-bind:class="[ pawn ]" v-if="pawn" data-pawn='{{ pawn }}'>
             <slot></slot>
         </pawn>
         <move v-bind:class="[ move ]" v-if="move"></move>
@@ -29,13 +29,16 @@ export default {
     },
     methods: {
         notify () {
-            this.$dispatch(
-                'square',
-                {
-                    column: this.column,
-                    row: this.row
-                }
-            );
+            if(typeof this.move !== 'undefined') {
+                this.$dispatch(
+                    'move',
+                    {
+                        column: this.column,
+                        row: this.row,
+                        move: this.move
+                    }
+                );
+            }
             this.$el.style.background='black';
         }
     }

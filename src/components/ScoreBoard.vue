@@ -1,7 +1,10 @@
 <template>
     <div id="scoreboard">
         <div id='turn'>
-            Turn: <span class="{{ turn }}" id='player-name'>{{ player.username }} ({{ turn | capitalize }})</span>
+            Turn:
+            <span class="{{ turn }}" id='player-name'>
+                {{ players[turn].username }} ({{ turn | capitalize }})
+            </span>
         </div>
         <wallcount></wallcount>
     </div>
@@ -17,7 +20,7 @@
         vuex: {
             getters: {
                 title: state => state.game.title,
-                player: state => state.players[state.game.turn],
+                players: state => state.players,
                 turn: state => state.game.turn
             }
         }

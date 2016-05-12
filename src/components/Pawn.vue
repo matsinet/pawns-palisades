@@ -1,5 +1,5 @@
 <template>
-    <div class='pawn' v-on:click="notify" v-bind:class="[ color ? color : '' ]"></div>
+    <div class='pawn' v-bind:class="[ color ? color : '' ]"></div>
 </template>
 
 <script>
@@ -15,16 +15,16 @@ export default {
         }
     },
     methods: {
-        notify () {
-            this.$dispatch(
-                'pawn',
-                {
-                    column: this.column,
-                    row: this.row,
-                    color: this.color
-                }
-            );
-        }
+        // notify () {
+        //     this.$dispatch(
+        //         'pawn',
+        //         {
+        //             column: this.column,
+        //             row: this.row,
+        //             color: this.color
+        //         }
+        //     );
+        // }
     }
 }
 </script>

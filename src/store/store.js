@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
+import * as actions from './actions'
 // Make vue aware of vuex
 Vue.use(Vuex)
 
@@ -28,33 +28,33 @@ const state = {
 // Create an object storing various mutations. We will write the mutation
 const mutations = {
     // TODO: set up our mutations
-    NEXT_PLAYER: function(state) {
+    NEXT_PLAYER (state) {
         switch(state.game.turn) {
             case 'red':
-                this.set_turn(state, 'blue')
-                break
+                this.SET_TURN(state, 'blue');
+                break;
             case 'blue':
                 if(state.game.pawn_count == 2) {
-                    this.set_turn(state, 'red')
+                    this.SET_TURN(state, 'red');
                 } else {
-                    this.set_turn(state, 'yellow')
+                    this.SET_TURN(state, 'yellow');
                 }
-                break
+                break;
             case 'yellow':
-                this.set_turn(state, 'green')
-                break
+                this.SET_TURN(state, 'green');
+                break;
             case 'green':
-                this.set_turn(state, 'red')
-                break
+                this.SET_TURN(state, 'red');
+                break;
         }
     },
-    SET_TURN: function(state, player) {
+    SET_TURN (state, player) {
         state.game.turn = player;
     },
-    DECREMENT_WALL_COUNT: function(state, player) {
+    DECREMENT_WALL_COUNT (state, player) {
         state.players[player].walls-- 
     },
-    SET_PLAYER_COUNT: function(state, player_count) {
+    SET_PLAYER_COUNT (state, player_count) {
         if(player_count == 4) {
             state.players.yellow = {
                     walls: 5,
@@ -73,7 +73,7 @@ const mutations = {
             this.SET_PAWN_COUNT(state, 10)
         }
     },
-    SET_PAWN_COUNT: function (state, pawn_count) {
+    SET_PAWN_COUNT (state, pawn_count) {
         for(var player in state.players) {
             state.players[player].walls = pawn_count
         }
@@ -84,5 +84,6 @@ const mutations = {
 // This store can be linked to our app.
 export default new Vuex.Store({
     state,
-    mutations
+    mutations,
+    actions
 })

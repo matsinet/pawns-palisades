@@ -5,16 +5,8 @@
 <script>
 export default {
     props: [
-        'color',
-        'column',
-        'row'
+        'color'
     ],
-    // methods: {
-    //     move (color) {
-    //         console.log(this.color);
-    //         console.log('move pawn color');
-    //     },
-    // }
 }
 </script>
 

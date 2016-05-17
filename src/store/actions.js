@@ -32,5 +32,5 @@ export const nextPlayer = function({dispatch, state}, element, coords) {
     }
     
     // draw the next player's move options
-    
+    dispatch('DRAW_MOVES');
 }

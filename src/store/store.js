@@ -17,10 +17,12 @@ const state = {
         'red': {
             walls: 10,
             username: 'Bill',
+            coords: {row: 9, col: 'e'},
         },
         'blue': {
             walls: 10,
             username: 'Ted',
+            coords: {row: 1, col: 'e'}
         },
     },
     board: {
@@ -148,6 +150,32 @@ const mutations = {
             }
         }
         state.board[coords.row][coords.col].pawn = state.game.turn;
+        state.players[state.game.turn].coords = coords;
+    },
+    DRAW_MOVES (state) {
+        let coords = state.players[state.game.turn].coords;
+        
+        let row = coords.row;
+        let col = coords.col;
+        let colCode = coords.col.charCodeAt(0);
+        
+        // draw up
+        if((row + 1) < 10) {
+            state.board[row + 1][col].move = state.game.turn;
+        }
+        // draw down
+        if((row - 1) > 0) {
+            state.board[row - 1][col].move = state.game.turn;
+        }
+        // draw left
+        if((colCode - 1) > 97) {
+            state.board[row][String.fromCharCode(colCode - 1)].move = state.game.turn;
+        }
+        // draw right
+        if((colCode + 1) < 106) {
+            console.log(String.fromCharCode(colCode + 1));
+            state.board[row][String.fromCharCode(colCode + 1)].move = state.game.turn;
+        }
     },
     SET_PLAYER_COUNT (state, player_count) {
         if(player_count == 4) {

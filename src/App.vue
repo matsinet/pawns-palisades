@@ -6,7 +6,7 @@
             <poweredby></poweredby>
         </div>
         <div class="lobby">
-            <button v-on:click='nextPlayer'>Next Player</button>
+            <!--<button v-on:click='nextPlayer'>Next Player</button>-->
             <!--<mdl-select label="Turn" id="turn-select" :value.sync="setTurn" :options="players"></mdl-select>-->
         </div>
     </div>

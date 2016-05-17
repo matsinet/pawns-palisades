@@ -94,10 +94,10 @@
         <square v-bind:square="board[4].g" v-bind:coords="{row:4, col:'g'}"></square>
         <square v-bind:square="board[4].h" v-bind:coords="{row:4, col:'h'}"></square>
         <square v-bind:square="board[4].i" v-bind:coords="{row:4, col:'i'}"></square>
-        <intersection column="a" row="4" isfirst=true wall="v"></intersection>
+        <intersection column="a" row="4" isfirst=true></intersection>
         <intersection column="b" row="4"></intersection>
         <intersection column="c" row="4"></intersection>
-        <intersection column="d" row="4" wall="h"></intersection>
+        <intersection column="d" row="4"></intersection>
         <intersection column="e" row="4"></intersection>
         <intersection column="f" row="4"></intersection>
         <intersection column="g" row="4"></intersection>

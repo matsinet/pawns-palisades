@@ -43,10 +43,8 @@
     "map-stream": "0.0.6",
     "require-dot-file": "^0.4.0",
     "run-sequence": "^1.1.5",
-    "semantic-ui-dropdown": "^2.1.7",
-    "semantic-ui-popup": "^2.1.7",
-    "semantic-ui-segment": "^2.1.7",
     "vue": "^1.0.18",
+    "vue-mdl": "^0.7.5",
     "vuex": "^0.6.2",
     "yamljs": "^0.2.7"
   },

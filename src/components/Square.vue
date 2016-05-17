@@ -1,15 +1,14 @@
 <template>
-    <div class='square' v-on:click="notify" data-column='{{ column }}' data-row='{{ row }}'>
-        <pawn v-bind:class="[ pawn ]" v-if="pawn" data-pawn='{{ pawn }}'>
-            <slot></slot>
-        </pawn>
-        <move v-bind:class="[ move ]" v-if="move"></move>
+    <div id='s{{ coords.col }}{{ coords.row }}' class='square' v-on:click="notify">
+        <pawn v-bind:class="square.pawn" v-if="square.pawn"></pawn>
+        <move v-bind:class="square.move" v-if="square.move"></move>
     </div>
 </template>
 
 <script>
 import Pawn from './Pawn'
 import Move from './Move'
+import { nextPlayer } from '../store/actions'
 
 export default {
     components: {
@@ -17,29 +16,19 @@ export default {
         Move
     },
     props: [
-        'column',
-        'row',
-        'pawn',
-        'move'
+        'coords',
+        'square'
     ],
     vuex: {
-        getters: {
-            turn: state => state.game.turn
+        actions: {
+            nextPlayer
         }
     },
     methods: {
         notify () {
-            if(typeof this.move !== 'undefined') {
-                this.$dispatch(
-                    'move',
-                    {
-                        column: this.column,
-                        row: this.row,
-                        move: this.move
-                    }
-                );
+            if(this.square.move !== null) {
+                nextPlayer(this.$store, this.$el, this.coords);
             }
-            this.$el.style.background='black';
         }
     }
 }
@@ -54,5 +43,10 @@ export default {
     float: left;
     margin-left: 2vh;
     text-align: center;
+    /* set the transition */
+    transition: all 2s ease-in-out;
+}
+.move-right {
+    transform: translate(350px,0);
 }
 </style>

@@ -6,14 +6,8 @@
             <poweredby></poweredby>
         </div>
         <div class="lobby">
-            <select :value="turn" @input="setTurn">
-                <option v-for="(index, player) in players" value='{{ index }}'>
-                    {{ player.username }} ({{ index | capitalize }})
-                </option>
-                <!--<option value='blue'>Blue</option>-->
-                <!--<option value='green'>Green</option>-->
-                <!--<option value='yellow'>Yellow</option>-->
-            </select>
+            <button v-on:click='nextPlayer'>Next Player</button>
+            <!--<mdl-select label="Turn" id="turn-select" :value.sync="setTurn" :options="players"></mdl-select>-->
         </div>
     </div>
 </template>
@@ -22,7 +16,7 @@
 import Scoreboard from './components/ScoreBoard';
 import Gameboard from './components/GameBoard';
 import Poweredby from './components/PoweredBy';
-import { setTurn } from './store/actions'
+import { setTurn, nextPlayer } from './store/actions'
 
 export default {
     components: {
@@ -37,7 +31,8 @@ export default {
             pawns: state => state.game.pawn_count,
         },
         actions: {
-            setTurn
+            setTurn,
+            nextPlayer
         }
     }
 }

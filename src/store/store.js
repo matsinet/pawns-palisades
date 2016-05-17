@@ -9,8 +9,8 @@ Vue.use(Vuex)
 const state = {
     game: {
         title: 'jQuoridor',
-        pawn_count: 4,
-        turn: 'red',
+        pawn_count: 2,
+        turn: 'blue',
         powered_by: '',
     },
     players: {
@@ -22,41 +22,136 @@ const state = {
             walls: 10,
             username: 'Ted',
         },
+    },
+    board: {
+        1: {
+            a: {move: null, pawn: null, wall: null},
+            b: {move: null, pawn: null, wall: null},
+            c: {move: null, pawn: null, wall: null},
+            d: {move: 'blue', pawn: null, wall: null},
+            e: {move: null, pawn: 'blue', wall: null},
+            f: {move: 'blue', pawn: null, wall: null},
+            g: {move: null, pawn: null, wall: null},
+            h: {move: null, pawn: null, wall: null},
+            i: {move: null, pawn: null, wall: null},
+        },
+        2: {
+            a: {move: null, pawn: null, wall: null},
+            b: {move: null, pawn: null, wall: null},
+            c: {move: null, pawn: null, wall: null},
+            d: {move: null, pawn: null, wall: null},
+            e: {move: 'blue', pawn: null, wall: null},
+            f: {move: null, pawn: null, wall: null},
+            g: {move: null, pawn: null, wall: null},
+            h: {move: null, pawn: null, wall: null},
+            i: {move: null, pawn: null, wall: null},
+        },
+        3: {
+            a: {move: null, pawn: null, wall: null},
+            b: {move: null, pawn: null, wall: null},
+            c: {move: null, pawn: null, wall: null},
+            d: {move: null, pawn: null, wall: null},
+            e: {move: null, pawn: null, wall: null},
+            f: {move: null, pawn: null, wall: null},
+            g: {move: null, pawn: null, wall: null},
+            h: {move: null, pawn: null, wall: null},
+            i: {move: null, pawn: null, wall: null},
+        },
+        4: {
+            a: {move: null, pawn: null, wall: null},
+            b: {move: null, pawn: null, wall: null},
+            c: {move: null, pawn: null, wall: null},
+            d: {move: null, pawn: null, wall: null},
+            e: {move: null, pawn: null, wall: null},
+            f: {move: null, pawn: null, wall: null},
+            g: {move: null, pawn: null, wall: null},
+            h: {move: null, pawn: null, wall: null},
+            i: {move: null, pawn: null, wall: null},
+        },
+        5: {
+            a: {move: null, pawn: null, wall: null},
+            b: {move: null, pawn: null, wall: null},
+            c: {move: null, pawn: null, wall: null},
+            d: {move: null, pawn: null, wall: null},
+            e: {move: null, pawn: null, wall: null},
+            f: {move: null, pawn: null, wall: null},
+            g: {move: null, pawn: null, wall: null},
+            h: {move: null, pawn: null, wall: null},
+            i: {move: null, pawn: null, wall: null},
+        },
+        6: {
+            a: {move: null, pawn: null, wall: null},
+            b: {move: null, pawn: null, wall: null},
+            c: {move: null, pawn: null, wall: null},
+            d: {move: null, pawn: null, wall: null},
+            e: {move: null, pawn: null, wall: null},
+            f: {move: null, pawn: null, wall: null},
+            g: {move: null, pawn: null, wall: null},
+            h: {move: null, pawn: null, wall: null},
+            i: {move: null, pawn: null, wall: null},
+        },
+        7: {
+            a: {move: null, pawn: null, wall: null},
+            b: {move: null, pawn: null, wall: null},
+            c: {move: null, pawn: null, wall: null},
+            d: {move: null, pawn: null, wall: null},
+            e: {move: null, pawn: null, wall: null},
+            f: {move: null, pawn: null, wall: null},
+            g: {move: null, pawn: null, wall: null},
+            h: {move: null, pawn: null, wall: null},
+            i: {move: null, pawn: null, wall: null},
+        },
+        8: {
+            a: {move: null, pawn: null, wall: null},
+            b: {move: null, pawn: null, wall: null},
+            c: {move: null, pawn: null, wall: null},
+            d: {move: null, pawn: null, wall: null},
+            e: {move: null, pawn: null, wall: null},
+            f: {move: null, pawn: null, wall: null},
+            g: {move: null, pawn: null, wall: null},
+            h: {move: null, pawn: null, wall: null},
+            i: {move: null, pawn: null, wall: null},
+        },
+        9: {
+            a: {move: null, pawn: null, wall: null},
+            b: {move: null, pawn: null, wall: null},
+            c: {move: null, pawn: null, wall: null},
+            d: {move: null, pawn: null, wall: null},
+            e: {move: null, pawn: 'red', wall: null},
+            f: {move: null, pawn: null, wall: null},
+            g: {move: null, pawn: null, wall: null},
+            h: {move: null, pawn: null, wall: null},
+            i: {move: null, pawn: null, wall: null},
+        },
     }
 }
 
 // Create an object storing various mutations. We will write the mutation
 const mutations = {
-    // TODO: set up our mutations
-    NEXT_PLAYER (state) {
-        switch(state.game.turn) {
-            case 'red':
-                this.SET_TURN(state, 'blue');
-                break;
-            case 'blue':
-                if(state.game.pawn_count == 2) {
-                    this.SET_TURN(state, 'red');
-                } else {
-                    this.SET_TURN(state, 'yellow');
-                }
-                break;
-            case 'yellow':
-                this.SET_TURN(state, 'green');
-                break;
-            case 'green':
-                this.SET_TURN(state, 'red');
-                break;
-        }
-    },
     SET_TURN (state, player) {
         state.game.turn = player;
     },
     DECREMENT_WALL_COUNT (state, player) {
-        state.players[player].walls-- 
+        state.players[player].walls -= 1; 
+    },
+    MOVE_PLAYER (state, coords) {
+        for(let r = 1; r < 10; r++) {
+            // console.log(r);
+            for(let c = 97; c < 106; c++) {
+                let column = String.fromCharCode(c);
+                // console.log(column);
+                state.board[r][column].move = null;
+                
+                if(state.board[r][column].pawn == state.game.turn) {
+                    state.board[r][column].pawn = null;
+                }
+            }
+        }
+        state.board[coords.row][coords.col].pawn = state.game.turn;
     },
     SET_PLAYER_COUNT (state, player_count) {
         if(player_count == 4) {
-            state.players.yellow = {
+            state.players.orange = {
                     walls: 5,
                     username: '',
                 }
@@ -67,7 +162,7 @@ const mutations = {
             
             this.SET_PAWN_COUNT(state, 5)
         } else {
-            delete state.players.yellow
+            delete state.players.orange
             delete state.players.green
             
             this.SET_PAWN_COUNT(state, 10)

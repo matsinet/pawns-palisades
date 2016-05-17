@@ -11,20 +11,20 @@
 </template>
 
 <script>
-    import Wallcount from './WallCount'
-    
-    export default {
-        components: {
-            Wallcount
-        },
-        vuex: {
-            getters: {
-                title: state => state.game.title,
-                players: state => state.players,
-                turn: state => state.game.turn
-            }
+import Wallcount from './WallCount'
+
+export default {
+    components: {
+        Wallcount
+    },
+    vuex: {
+        getters: {
+            title: state => state.game.title,
+            players: state => state.players,
+            turn: state => state.game.turn
         }
     }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

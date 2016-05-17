@@ -3,30 +3,6 @@
 </template>
 
 <script>
-export default {
-    props: [
-        'column',
-        'row',
-        'color'
-    ],
-    vuex: {
-        getters: {
-            pawn_count: state => state.game.pawn_count
-        }
-    },
-    methods: {
-        // notify () {
-        //     this.$dispatch(
-        //         'pawn',
-        //         {
-        //             column: this.column,
-        //             row: this.row,
-        //             color: this.color
-        //         }
-        //     );
-        // }
-    }
-}
 </script>
 
 <style scoped>

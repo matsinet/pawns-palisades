@@ -146,6 +146,12 @@
         <square :square="board[1].h" :coords="{row:1, col:'h'}"></square>
         <square :square="board[1].i" :coords="{row:1, col:'i'}"></square>
     </div>
+    <div id="wall-selector" style='display: none;'>
+        <select class="ui dropdown">
+            <option value="h">Horizontal</option>
+            <option value="v">Vertical</option>
+        </select>
+    </div>
 </template>
 
 <script>
@@ -184,6 +190,10 @@ export default {
     background-image: url('../assets/wood.jpg');
     border-top: .75vh solid blue;
     border-bottom: .75vh solid red;
+    
+        
+    /* Set to override Semantic UI */
+    box-sizing: unset;
 }
 
 .players-2 {

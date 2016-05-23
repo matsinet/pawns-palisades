@@ -6,13 +6,13 @@
             <poweredby></poweredby>
         </div>
         <div class="lobby">
-            <!--<button v-on:click='nextPlayer'>Next Player</button>-->
-            <!--<mdl-select label="Turn" id="turn-select" :value.sync="setTurn" :options="players"></mdl-select>-->
         </div>
     </div>
 </template>
 
 <script>
+import '../node_modules/jquery/dist/jquery.min';
+import './assets/semantic/dist/semantic.min';
 import Scoreboard from './components/ScoreBoard';
 import Gameboard from './components/GameBoard';
 import Poweredby from './components/PoweredBy';
@@ -38,7 +38,9 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+@import './assets/semantic/dist/semantic.min.css';
+
 html {
     height: 100%;
 }
@@ -48,6 +50,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 100%;
+
 }
 
 .game {

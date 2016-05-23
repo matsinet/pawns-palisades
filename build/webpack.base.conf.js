@@ -1,3 +1,4 @@
+var webpack = require('webpack')
 var path = require('path')
 var config = require('../config')
 var utils = require('./utils')
@@ -18,7 +19,7 @@ module.exports = {
     alias: {
       'src': path.resolve(__dirname, '../src'),
       'assets': path.resolve(__dirname, '../src/assets'),
-      'components': path.resolve(__dirname, '../src/components')
+      'components': path.resolve(__dirname, '../src/components'),
     }
   },
   resolveLoader: {
@@ -56,5 +57,11 @@ module.exports = {
   },
   vue: {
     loaders: utils.cssLoaders()
-  }
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery",
+    })
+  ]
 }

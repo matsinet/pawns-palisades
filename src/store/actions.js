@@ -6,8 +6,6 @@ export const setTurn = function({ dispatch }, e) {
 }
 
 export const nextPlayer = function({dispatch, state}, element, coords) {
-    console.log(element);
-    
     // move the current player to the selected position
     dispatch('MOVE_PLAYER', coords);
     

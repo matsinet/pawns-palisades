@@ -1,34 +1,33 @@
 <template>
-    <div class='intersection' v-on:click="notify" v-bind:class="{ 'first-intersection': isfirst, 'last-intersection': islast }">
+    <div class='intersection' @click="notify" v-bind:class="{ 'first-intersection': isfirst, 'last-intersection': islast }">
         <wall v-bind:class="[ wall == 'v' ? 'vertical-wall' : '' ]" v-if="wall"></wall>
     </div>
 </template>
 
 <script>
 import Wall from './Wall'
+import { placeWall } from '../store/actions'
 
 export default {
     components: {
         Wall
     },
     props: [
-        'column',
-        'row',
+        'coords',
         'isfirst',
         'islast',
         'wall',
     ],
+    vuex: {
+        actions: {
+            placeWall
+        }
+    },
     methods: {
         notify () {
-            if(typeof this.wall === 'undefined') {
-                this.$dispatch(
-                    'wall',
-                    {
-                        column: this.column,
-                        row: this.row,
-                        wall: this.wall ? this.wall : '',
-                    }
-                );
+            if(this.wall == null) {
+                let wall = 'h';
+                placeWall(this.$store, this.$el, this.coords, wall);
             }
         }
     }

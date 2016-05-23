@@ -28,15 +28,15 @@ const state = {
     },
     board: {
         1: {
-            a: {move: null, pawn: null, wall: null},
-            b: {move: null, pawn: null, wall: null},
-            c: {move: null, pawn: null, wall: null},
-            d: {move: 'blue', pawn: null, wall: null},
-            e: {move: null, pawn: 'blue', wall: null},
-            f: {move: 'blue', pawn: null, wall: null},
-            g: {move: null, pawn: null, wall: null},
-            h: {move: null, pawn: null, wall: null},
-            i: {move: null, pawn: null, wall: null},
+            a: {move: null, pawn: null},
+            b: {move: null, pawn: null},
+            c: {move: null, pawn: null},
+            d: {move: 'blue', pawn: null},
+            e: {move: null, pawn: 'blue'},
+            f: {move: 'blue', pawn: null},
+            g: {move: null, pawn: null},
+            h: {move: null, pawn: null},
+            i: {move: null, pawn: null},
         },
         2: {
             a: {move: null, pawn: null, wall: null},
@@ -47,7 +47,7 @@ const state = {
             f: {move: null, pawn: null, wall: null},
             g: {move: null, pawn: null, wall: null},
             h: {move: null, pawn: null, wall: null},
-            i: {move: null, pawn: null, wall: null},
+            i: {move: null, pawn: null},
         },
         3: {
             a: {move: null, pawn: null, wall: null},
@@ -58,7 +58,7 @@ const state = {
             f: {move: null, pawn: null, wall: null},
             g: {move: null, pawn: null, wall: null},
             h: {move: null, pawn: null, wall: null},
-            i: {move: null, pawn: null, wall: null},
+            i: {move: null, pawn: null},
         },
         4: {
             a: {move: null, pawn: null, wall: null},
@@ -69,7 +69,7 @@ const state = {
             f: {move: null, pawn: null, wall: null},
             g: {move: null, pawn: null, wall: null},
             h: {move: null, pawn: null, wall: null},
-            i: {move: null, pawn: null, wall: null},
+            i: {move: null, pawn: null},
         },
         5: {
             a: {move: null, pawn: null, wall: null},
@@ -80,7 +80,7 @@ const state = {
             f: {move: null, pawn: null, wall: null},
             g: {move: null, pawn: null, wall: null},
             h: {move: null, pawn: null, wall: null},
-            i: {move: null, pawn: null, wall: null},
+            i: {move: null, pawn: null},
         },
         6: {
             a: {move: null, pawn: null, wall: null},
@@ -91,7 +91,7 @@ const state = {
             f: {move: null, pawn: null, wall: null},
             g: {move: null, pawn: null, wall: null},
             h: {move: null, pawn: null, wall: null},
-            i: {move: null, pawn: null, wall: null},
+            i: {move: null, pawn: null},
         },
         7: {
             a: {move: null, pawn: null, wall: null},
@@ -102,7 +102,7 @@ const state = {
             f: {move: null, pawn: null, wall: null},
             g: {move: null, pawn: null, wall: null},
             h: {move: null, pawn: null, wall: null},
-            i: {move: null, pawn: null, wall: null},
+            i: {move: null, pawn: null},
         },
         8: {
             a: {move: null, pawn: null, wall: null},
@@ -113,7 +113,7 @@ const state = {
             f: {move: null, pawn: null, wall: null},
             g: {move: null, pawn: null, wall: null},
             h: {move: null, pawn: null, wall: null},
-            i: {move: null, pawn: null, wall: null},
+            i: {move: null, pawn: null},
         },
         9: {
             a: {move: null, pawn: null, wall: null},
@@ -124,7 +124,7 @@ const state = {
             f: {move: null, pawn: null, wall: null},
             g: {move: null, pawn: null, wall: null},
             h: {move: null, pawn: null, wall: null},
-            i: {move: null, pawn: null, wall: null},
+            i: {move: null, pawn: null},
         },
     }
 }

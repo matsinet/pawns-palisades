@@ -1,150 +1,150 @@
 <template>
-    <div id="gameboard" v-bind:class="[pawns == 4 ? 'players-4' : 'players-2']">
-        <square v-bind:square="board[9].a" v-bind:coords="{row:9, col:'a'}"></square>
-        <square v-bind:square="board[9].b" v-bind:coords="{row:9, col:'b'}"></square>
-        <square v-bind:square="board[9].c" v-bind:coords="{row:9, col:'c'}"></square>
-        <square v-bind:square="board[9].d" v-bind:coords="{row:9, col:'d'}"></square>
-        <square v-bind:square="board[9].e" v-bind:coords="{row:9, col:'e'}"></square>
-        <square v-bind:square="board[9].f" v-bind:coords="{row:9, col:'f'}"></square>
-        <square v-bind:square="board[9].g" v-bind:coords="{row:9, col:'g'}"></square>
-        <square v-bind:square="board[9].h" v-bind:coords="{row:9, col:'h'}"></square>
-        <square v-bind:square="board[9].i" v-bind:coords="{row:9, col:'i'}"></square>
-        <intersection column="a" row="9" isfirst=true></intersection>
-        <intersection column="b" row="9"></intersection>
-        <intersection column="c" row="9"></intersection>
-        <intersection column="d" row="9"></intersection>
-        <intersection column="e" row="9"></intersection>
-        <intersection column="f" row="9"></intersection>
-        <intersection column="g" row="9"></intersection>
-        <intersection column="h" row="9" islast=true></intersection>
-        <square v-bind:square="board[8].a" v-bind:coords="{row:8, col:'a'}"></square>
-        <square v-bind:square="board[8].b" v-bind:coords="{row:8, col:'b'}"></square>
-        <square v-bind:square="board[8].c" v-bind:coords="{row:8, col:'c'}"></square>
-        <square v-bind:square="board[8].d" v-bind:coords="{row:8, col:'d'}"></square>
-        <square v-bind:square="board[8].e" v-bind:coords="{row:8, col:'e'}"></square>
-        <square v-bind:square="board[8].f" v-bind:coords="{row:8, col:'f'}"></square>
-        <square v-bind:square="board[8].g" v-bind:coords="{row:8, col:'g'}"></square>
-        <square v-bind:square="board[8].h" v-bind:coords="{row:8, col:'h'}"></square>
-        <square v-bind:square="board[8].i" v-bind:coords="{row:8, col:'i'}"></square>
-        <intersection column="a" row="8" isfirst=true></intersection>
-        <intersection column="b" row="8"></intersection>
-        <intersection column="c" row="8"></intersection>
-        <intersection column="d" row="8"></intersection>
-        <intersection column="e" row="8"></intersection>
-        <intersection column="f" row="8"></intersection>
-        <intersection column="g" row="8"></intersection>
-        <intersection column="h" row="8" islast=true></intersection>
-        <square v-bind:square="board[7].a" v-bind:coords="{row:7, col:'a'}"></square>
-        <square v-bind:square="board[7].b" v-bind:coords="{row:7, col:'b'}"></square>
-        <square v-bind:square="board[7].c" v-bind:coords="{row:7, col:'c'}"></square>
-        <square v-bind:square="board[7].d" v-bind:coords="{row:7, col:'d'}"></square>
-        <square v-bind:square="board[7].e" v-bind:coords="{row:7, col:'e'}"></square>
-        <square v-bind:square="board[7].f" v-bind:coords="{row:7, col:'f'}"></square>
-        <square v-bind:square="board[7].g" v-bind:coords="{row:7, col:'g'}"></square>
-        <square v-bind:square="board[7].h" v-bind:coords="{row:7, col:'h'}"></square>
-        <square v-bind:square="board[7].i" v-bind:coords="{row:7, col:'i'}"></square>
-        <intersection column="a" row="7" isfirst=true></intersection>
-        <intersection column="b" row="7"></intersection>
-        <intersection column="c" row="7"></intersection>
-        <intersection column="d" row="7"></intersection>
-        <intersection column="e" row="7"></intersection>
-        <intersection column="f" row="7"></intersection>
-        <intersection column="g" row="7"></intersection>
-        <intersection column="h" row="7" islast=true></intersection>
-        <square v-bind:square="board[6].a" v-bind:coords="{row:6, col:'a'}"></square>
-        <square v-bind:square="board[6].b" v-bind:coords="{row:6, col:'b'}"></square>
-        <square v-bind:square="board[6].c" v-bind:coords="{row:6, col:'c'}"></square>
-        <square v-bind:square="board[6].d" v-bind:coords="{row:6, col:'d'}"></square>
-        <square v-bind:square="board[6].e" v-bind:coords="{row:6, col:'e'}"></square>
-        <square v-bind:square="board[6].f" v-bind:coords="{row:6, col:'f'}"></square>
-        <square v-bind:square="board[6].g" v-bind:coords="{row:6, col:'g'}"></square>
-        <square v-bind:square="board[6].h" v-bind:coords="{row:6, col:'h'}"></square>
-        <square v-bind:square="board[6].i" v-bind:coords="{row:6, col:'i'}"></square>
-        <intersection column="a" row="6" isfirst=true></intersection>
-        <intersection column="b" row="6"></intersection>
-        <intersection column="c" row="6"></intersection>
-        <intersection column="d" row="6"></intersection>
-        <intersection column="e" row="6"></intersection>
-        <intersection column="f" row="6"></intersection>
-        <intersection column="g" row="6"></intersection>
-        <intersection column="h" row="6" islast=true></intersection>
-        <square v-bind:square="board[5].a" v-bind:coords="{row:5, col:'a'}"></square>
-        <square v-bind:square="board[5].b" v-bind:coords="{row:5, col:'b'}"></square>
-        <square v-bind:square="board[5].c" v-bind:coords="{row:5, col:'c'}"></square>
-        <square v-bind:square="board[5].d" v-bind:coords="{row:5, col:'d'}"></square>
-        <square v-bind:square="board[5].e" v-bind:coords="{row:5, col:'e'}"></square>
-        <square v-bind:square="board[5].f" v-bind:coords="{row:5, col:'f'}"></square>
-        <square v-bind:square="board[5].g" v-bind:coords="{row:5, col:'g'}"></square>
-        <square v-bind:square="board[5].h" v-bind:coords="{row:5, col:'h'}"></square>
-        <square v-bind:square="board[5].i" v-bind:coords="{row:5, col:'i'}"></square>
-        <intersection column="a" row="5" isfirst=true></intersection>
-        <intersection column="b" row="5"></intersection>
-        <intersection column="c" row="5"></intersection>
-        <intersection column="d" row="5"></intersection>
-        <intersection column="e" row="5"></intersection>
-        <intersection column="f" row="5"></intersection>
-        <intersection column="g" row="5"></intersection>
-        <intersection column="h" row="5" islast=true></intersection>
-        <square v-bind:square="board[4].a" v-bind:coords="{row:4, col:'a'}"></square>
-        <square v-bind:square="board[4].b" v-bind:coords="{row:4, col:'b'}"></square>
-        <square v-bind:square="board[4].c" v-bind:coords="{row:4, col:'c'}"></square>
-        <square v-bind:square="board[4].d" v-bind:coords="{row:4, col:'d'}"></square>
-        <square v-bind:square="board[4].e" v-bind:coords="{row:4, col:'e'}"></square>
-        <square v-bind:square="board[4].f" v-bind:coords="{row:4, col:'f'}"></square>
-        <square v-bind:square="board[4].g" v-bind:coords="{row:4, col:'g'}"></square>
-        <square v-bind:square="board[4].h" v-bind:coords="{row:4, col:'h'}"></square>
-        <square v-bind:square="board[4].i" v-bind:coords="{row:4, col:'i'}"></square>
-        <intersection column="a" row="4" isfirst=true></intersection>
-        <intersection column="b" row="4"></intersection>
-        <intersection column="c" row="4"></intersection>
-        <intersection column="d" row="4"></intersection>
-        <intersection column="e" row="4"></intersection>
-        <intersection column="f" row="4"></intersection>
-        <intersection column="g" row="4"></intersection>
-        <intersection column="h" row="4" islast=true></intersection>
-        <square v-bind:square="board[3].a" v-bind:coords="{row:3, col:'a'}"></square>
-        <square v-bind:square="board[3].b" v-bind:coords="{row:3, col:'b'}"></square>
-        <square v-bind:square="board[3].c" v-bind:coords="{row:3, col:'c'}"></square>
-        <square v-bind:square="board[3].d" v-bind:coords="{row:3, col:'d'}"></square>
-        <square v-bind:square="board[3].e" v-bind:coords="{row:3, col:'e'}"></square>
-        <square v-bind:square="board[3].f" v-bind:coords="{row:3, col:'f'}"></square>
-        <square v-bind:square="board[3].g" v-bind:coords="{row:3, col:'g'}"></square>
-        <square v-bind:square="board[3].h" v-bind:coords="{row:3, col:'h'}"></square>
-        <square v-bind:square="board[3].i" v-bind:coords="{row:3, col:'i'}"></square>
-        <intersection column="a" row="3" isfirst=true></intersection>
-        <intersection column="b" row="3"></intersection>
-        <intersection column="c" row="3"></intersection>
-        <intersection column="d" row="3"></intersection>
-        <intersection column="e" row="3"></intersection>
-        <intersection column="f" row="3"></intersection>
-        <intersection column="g" row="3"></intersection>
-        <intersection column="h" row="3" islast=true></intersection>
-        <square v-bind:square="board[2].a" v-bind:coords="{row:2, col:'a'}"></square>
-        <square v-bind:square="board[2].b" v-bind:coords="{row:2, col:'b'}"></square>
-        <square v-bind:square="board[2].c" v-bind:coords="{row:2, col:'c'}"></square>
-        <square v-bind:square="board[2].d" v-bind:coords="{row:2, col:'d'}"></square>
-        <square v-bind:square="board[2].e" v-bind:coords="{row:2, col:'e'}"></square>
-        <square v-bind:square="board[2].f" v-bind:coords="{row:2, col:'f'}"></square>
-        <square v-bind:square="board[2].g" v-bind:coords="{row:2, col:'g'}"></square>
-        <square v-bind:square="board[2].h" v-bind:coords="{row:2, col:'h'}"></square>
-        <square v-bind:square="board[2].i" v-bind:coords="{row:2, col:'i'}"></square>
-        <intersection column="a" row="2" isfirst=true></intersection>
-        <intersection column="b" row="2"></intersection>
-        <intersection column="c" row="2"></intersection>
-        <intersection column="d" row="2"></intersection>
-        <intersection column="e" row="2"></intersection>
-        <intersection column="f" row="2"></intersection>
-        <intersection column="g" row="2"></intersection>
-        <intersection column="h" row="2" islast=true></intersection>
-        <square v-bind:square="board[1].a" v-bind:coords="{row:1, col:'a'}"></square>
-        <square v-bind:square="board[1].b" v-bind:coords="{row:1, col:'b'}"></square>
-        <square v-bind:square="board[1].c" v-bind:coords="{row:1, col:'c'}"></square>
-        <square v-bind:square="board[1].d" v-bind:coords="{row:1, col:'d'}"></square>
-        <square v-bind:square="board[1].e" v-bind:coords="{row:1, col:'e'}"></square>
-        <square v-bind:square="board[1].f" v-bind:coords="{row:1, col:'f'}"></square>
-        <square v-bind:square="board[1].g" v-bind:coords="{row:1, col:'g'}"></square>
-        <square v-bind:square="board[1].h" v-bind:coords="{row:1, col:'h'}"></square>
-        <square v-bind:square="board[1].i" v-bind:coords="{row:1, col:'i'}"></square>
+    <div id="gameboard" :class="[pawns == 4 ? 'players-4' : 'players-2']">
+        <square :square="board[9].a" :coords="{row:9, col:'a'}"></square>
+        <square :square="board[9].b" :coords="{row:9, col:'b'}"></square>
+        <square :square="board[9].c" :coords="{row:9, col:'c'}"></square>
+        <square :square="board[9].d" :coords="{row:9, col:'d'}"></square>
+        <square :square="board[9].e" :coords="{row:9, col:'e'}"></square>
+        <square :square="board[9].f" :coords="{row:9, col:'f'}"></square>
+        <square :square="board[9].g" :coords="{row:9, col:'g'}"></square>
+        <square :square="board[9].h" :coords="{row:9, col:'h'}"></square>
+        <square :square="board[9].i" :coords="{row:9, col:'i'}"></square>
+        <intersection :wall="board[9].a.wall" :coords="{row: 9, col:'a'}" isfirst=true></intersection>
+        <intersection :wall="board[9].b.wall" :coords="{row: 9, col:'b'}"></intersection>
+        <intersection :wall="board[9].c.wall" :coords="{row: 9, col:'c'}"></intersection>
+        <intersection :wall="board[9].d.wall" :coords="{row: 9, col:'d'}"></intersection>
+        <intersection :wall="board[9].e.wall" :coords="{row: 9, col:'e'}"></intersection>
+        <intersection :wall="board[9].f.wall" :coords="{row: 9, col:'f'}"></intersection>
+        <intersection :wall="board[9].g.wall" :coords="{row: 9, col:'g'}"></intersection>
+        <intersection :wall="board[9].h.wall" :coords="{row: 9, col:'h'}" islast=true></intersection>
+        <square :square="board[8].a" :coords="{row:8, col:'a'}"></square>
+        <square :square="board[8].b" :coords="{row:8, col:'b'}"></square>
+        <square :square="board[8].c" :coords="{row:8, col:'c'}"></square>
+        <square :square="board[8].d" :coords="{row:8, col:'d'}"></square>
+        <square :square="board[8].e" :coords="{row:8, col:'e'}"></square>
+        <square :square="board[8].f" :coords="{row:8, col:'f'}"></square>
+        <square :square="board[8].g" :coords="{row:8, col:'g'}"></square>
+        <square :square="board[8].h" :coords="{row:8, col:'h'}"></square>
+        <square :square="board[8].i" :coords="{row:8, col:'i'}"></square>
+        <intersection :wall="board[8].a.wall" :coords="{row: 8, col:'a'}" isfirst=true></intersection>
+        <intersection :wall="board[8].b.wall" :coords="{row: 8, col:'b'}"></intersection>
+        <intersection :wall="board[8].c.wall" :coords="{row: 8, col:'c'}"></intersection>
+        <intersection :wall="board[8].d.wall" :coords="{row: 8, col:'d'}"></intersection>
+        <intersection :wall="board[8].e.wall" :coords="{row: 8, col:'e'}"></intersection>
+        <intersection :wall="board[8].f.wall" :coords="{row: 8, col:'f'}"></intersection>
+        <intersection :wall="board[8].g.wall" :coords="{row: 8, col:'g'}"></intersection>
+        <intersection :wall="board[8].h.wall" :coords="{row: 8, col:'h'}" islast=true></intersection>
+        <square :square="board[7].a" :coords="{row:7, col:'a'}"></square>
+        <square :square="board[7].b" :coords="{row:7, col:'b'}"></square>
+        <square :square="board[7].c" :coords="{row:7, col:'c'}"></square>
+        <square :square="board[7].d" :coords="{row:7, col:'d'}"></square>
+        <square :square="board[7].e" :coords="{row:7, col:'e'}"></square>
+        <square :square="board[7].f" :coords="{row:7, col:'f'}"></square>
+        <square :square="board[7].g" :coords="{row:7, col:'g'}"></square>
+        <square :square="board[7].h" :coords="{row:7, col:'h'}"></square>
+        <square :square="board[7].i" :coords="{row:7, col:'i'}"></square>
+        <intersection :wall="board[7].a.wall" :coords="{row: 7, col:'a'}" isfirst=true></intersection>
+        <intersection :wall="board[7].b.wall" :coords="{row: 7, col:'b'}"></intersection>
+        <intersection :wall="board[7].c.wall" :coords="{row: 7, col:'c'}"></intersection>
+        <intersection :wall="board[7].d.wall" :coords="{row: 7, col:'d'}"></intersection>
+        <intersection :wall="board[7].e.wall" :coords="{row: 7, col:'e'}"></intersection>
+        <intersection :wall="board[7].f.wall" :coords="{row: 7, col:'f'}"></intersection>
+        <intersection :wall="board[7].g.wall" :coords="{row: 7, col:'g'}"></intersection>
+        <intersection :wall="board[7].h.wall" :coords="{row: 7, col:'h'}" islast=true></intersection>
+        <square :square="board[6].a" :coords="{row:6, col:'a'}"></square>
+        <square :square="board[6].b" :coords="{row:6, col:'b'}"></square>
+        <square :square="board[6].c" :coords="{row:6, col:'c'}"></square>
+        <square :square="board[6].d" :coords="{row:6, col:'d'}"></square>
+        <square :square="board[6].e" :coords="{row:6, col:'e'}"></square>
+        <square :square="board[6].f" :coords="{row:6, col:'f'}"></square>
+        <square :square="board[6].g" :coords="{row:6, col:'g'}"></square>
+        <square :square="board[6].h" :coords="{row:6, col:'h'}"></square>
+        <square :square="board[6].i" :coords="{row:6, col:'i'}"></square>
+        <intersection :wall="board[6].a.wall" :coords="{row: 6, col:'a'}" isfirst=true></intersection>
+        <intersection :wall="board[6].b.wall" :coords="{row: 6, col:'b'}"></intersection>
+        <intersection :wall="board[6].c.wall" :coords="{row: 6, col:'c'}"></intersection>
+        <intersection :wall="board[6].d.wall" :coords="{row: 6, col:'d'}"></intersection>
+        <intersection :wall="board[6].e.wall" :coords="{row: 6, col:'e'}"></intersection>
+        <intersection :wall="board[6].f.wall" :coords="{row: 6, col:'f'}"></intersection>
+        <intersection :wall="board[6].g.wall" :coords="{row: 6, col:'g'}"></intersection>
+        <intersection :wall="board[6].h.wall" :coords="{row: 6, col:'h'}" islast=true></intersection>
+        <square :square="board[5].a" :coords="{row:5, col:'a'}"></square>
+        <square :square="board[5].b" :coords="{row:5, col:'b'}"></square>
+        <square :square="board[5].c" :coords="{row:5, col:'c'}"></square>
+        <square :square="board[5].d" :coords="{row:5, col:'d'}"></square>
+        <square :square="board[5].e" :coords="{row:5, col:'e'}"></square>
+        <square :square="board[5].f" :coords="{row:5, col:'f'}"></square>
+        <square :square="board[5].g" :coords="{row:5, col:'g'}"></square>
+        <square :square="board[5].h" :coords="{row:5, col:'h'}"></square>
+        <square :square="board[5].i" :coords="{row:5, col:'i'}"></square>
+        <intersection :wall="board[5].a.wall" :coords="{row: 5, col:'a'}" isfirst=true></intersection>
+        <intersection :wall="board[5].b.wall" :coords="{row: 5, col:'b'}"></intersection>
+        <intersection :wall="board[5].c.wall" :coords="{row: 5, col:'c'}"></intersection>
+        <intersection :wall="board[5].d.wall" :coords="{row: 5, col:'d'}"></intersection>
+        <intersection :wall="board[5].e.wall" :coords="{row: 5, col:'e'}"></intersection>
+        <intersection :wall="board[5].f.wall" :coords="{row: 5, col:'f'}"></intersection>
+        <intersection :wall="board[5].g.wall" :coords="{row: 5, col:'g'}"></intersection>
+        <intersection :wall="board[5].h.wall" :coords="{row: 5, col:'h'}" islast=true></intersection>
+        <square :square="board[4].a" :coords="{row:4, col:'a'}"></square>
+        <square :square="board[4].b" :coords="{row:4, col:'b'}"></square>
+        <square :square="board[4].c" :coords="{row:4, col:'c'}"></square>
+        <square :square="board[4].d" :coords="{row:4, col:'d'}"></square>
+        <square :square="board[4].e" :coords="{row:4, col:'e'}"></square>
+        <square :square="board[4].f" :coords="{row:4, col:'f'}"></square>
+        <square :square="board[4].g" :coords="{row:4, col:'g'}"></square>
+        <square :square="board[4].h" :coords="{row:4, col:'h'}"></square>
+        <square :square="board[4].i" :coords="{row:4, col:'i'}"></square>
+        <intersection :wall="board[4].a.wall" :coords="{row: 4, col:'a'}" isfirst=true></intersection>
+        <intersection :wall="board[4].b.wall" :coords="{row: 4, col:'b'}"></intersection>
+        <intersection :wall="board[4].c.wall" :coords="{row: 4, col:'c'}"></intersection>
+        <intersection :wall="board[4].d.wall" :coords="{row: 4, col:'d'}"></intersection>
+        <intersection :wall="board[4].e.wall" :coords="{row: 4, col:'e'}"></intersection>
+        <intersection :wall="board[4].f.wall" :coords="{row: 4, col:'f'}"></intersection>
+        <intersection :wall="board[4].g.wall" :coords="{row: 4, col:'g'}"></intersection>
+        <intersection :wall="board[4].h.wall" :coords="{row: 4, col:'h'}" islast=true></intersection>
+        <square :square="board[3].a" :coords="{row:3, col:'a'}"></square>
+        <square :square="board[3].b" :coords="{row:3, col:'b'}"></square>
+        <square :square="board[3].c" :coords="{row:3, col:'c'}"></square>
+        <square :square="board[3].d" :coords="{row:3, col:'d'}"></square>
+        <square :square="board[3].e" :coords="{row:3, col:'e'}"></square>
+        <square :square="board[3].f" :coords="{row:3, col:'f'}"></square>
+        <square :square="board[3].g" :coords="{row:3, col:'g'}"></square>
+        <square :square="board[3].h" :coords="{row:3, col:'h'}"></square>
+        <square :square="board[3].i" :coords="{row:3, col:'i'}"></square>
+        <intersection :wall="board[3].a.wall" :coords="{row: 3, col:'a'}" isfirst=true></intersection>
+        <intersection :wall="board[3].b.wall" :coords="{row: 3, col:'b'}"></intersection>
+        <intersection :wall="board[3].c.wall" :coords="{row: 3, col:'c'}"></intersection>
+        <intersection :wall="board[3].d.wall" :coords="{row: 3, col:'d'}"></intersection>
+        <intersection :wall="board[3].e.wall" :coords="{row: 3, col:'e'}"></intersection>
+        <intersection :wall="board[3].f.wall" :coords="{row: 3, col:'f'}"></intersection>
+        <intersection :wall="board[3].g.wall" :coords="{row: 3, col:'g'}"></intersection>
+        <intersection :wall="board[3].h.wall" :coords="{row: 3, col:'h'}" islast=true></intersection>
+        <square :square="board[2].a" :coords="{row:2, col:'a'}"></square>
+        <square :square="board[2].b" :coords="{row:2, col:'b'}"></square>
+        <square :square="board[2].c" :coords="{row:2, col:'c'}"></square>
+        <square :square="board[2].d" :coords="{row:2, col:'d'}"></square>
+        <square :square="board[2].e" :coords="{row:2, col:'e'}"></square>
+        <square :square="board[2].f" :coords="{row:2, col:'f'}"></square>
+        <square :square="board[2].g" :coords="{row:2, col:'g'}"></square>
+        <square :square="board[2].h" :coords="{row:2, col:'h'}"></square>
+        <square :square="board[2].i" :coords="{row:2, col:'i'}"></square>
+        <intersection :wall="board[2].a.wall" :coords="{row: 2, col:'a'}" isfirst=true></intersection>
+        <intersection :wall="board[2].b.wall" :coords="{row: 2, col:'b'}"></intersection>
+        <intersection :wall="board[2].c.wall" :coords="{row: 2, col:'c'}"></intersection>
+        <intersection :wall="board[2].d.wall" :coords="{row: 2, col:'d'}"></intersection>
+        <intersection :wall="board[2].e.wall" :coords="{row: 2, col:'e'}"></intersection>
+        <intersection :wall="board[2].f.wall" :coords="{row: 2, col:'f'}"></intersection>
+        <intersection :wall="board[2].g.wall" :coords="{row: 2, col:'g'}"></intersection>
+        <intersection :wall="board[2].h.wall" :coords="{row: 2, col:'h'}" islast=true></intersection>
+        <square :square="board[1].a" :coords="{row:1, col:'a'}"></square>
+        <square :square="board[1].b" :coords="{row:1, col:'b'}"></square>
+        <square :square="board[1].c" :coords="{row:1, col:'c'}"></square>
+        <square :square="board[1].d" :coords="{row:1, col:'d'}"></square>
+        <square :square="board[1].e" :coords="{row:1, col:'e'}"></square>
+        <square :square="board[1].f" :coords="{row:1, col:'f'}"></square>
+        <square :square="board[1].g" :coords="{row:1, col:'g'}"></square>
+        <square :square="board[1].h" :coords="{row:1, col:'h'}"></square>
+        <square :square="board[1].i" :coords="{row:1, col:'i'}"></square>
     </div>
 </template>
 
@@ -166,31 +166,6 @@ export default {
              pawns: state => state.game.pawn_count,
              board: state => state.board,
          }
-    },
-    // created () {
-    //     // Draw the game board applying the appropriate row and column
-    //     console.log('created')
-    // },
-    events: {
-        move (data) {
-            console.log(data)
-            alert('Move ' + data.column + ":" + data.row + ":" + data.move);
-        },
-        wall (data) {
-            console.log(data)
-            alert('Wall ' + data.column + ":" + data.row + ":" + data.wall);
-        }
-    },
-    methods: {
-        init () {
-            
-        },
-        drawMoves () {
-            let pawn = this.findPawn(this.turn);
-        },
-        placeWall (column, row, orientation) {
-            
-        }
     }
 }
 </script>

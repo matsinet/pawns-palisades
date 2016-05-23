@@ -1,9 +1,11 @@
 export const SET_TURN = function(state, player) {
     state.game.turn = player;
 };
+
 export const DECREMENT_WALL_COUNT = function(state, player) {
-        state.players[player].walls -= 1; 
-    };
+    state.players[player].walls -= 1; 
+};
+    
 export const MOVE_PLAYER = function(state, coords) {
     for(let r = 1; r < 10; r++) {
         // console.log(r);
@@ -20,6 +22,7 @@ export const MOVE_PLAYER = function(state, coords) {
     state.board[coords.row][coords.col].pawn = state.game.turn;
     state.players[state.game.turn].coords = coords;
 };
+
 export const DRAW_MOVES = function(state) {
     let coords = state.players[state.game.turn].coords;
     
@@ -65,6 +68,7 @@ export const DRAW_MOVES = function(state) {
         }
     }
 };
+
 export const SET_PLAYER_COUNT = function(state, player_count) {
     if(player_count == 4) {
         state.players.orange = {
@@ -84,6 +88,11 @@ export const SET_PLAYER_COUNT = function(state, player_count) {
         this.SET_PAWN_COUNT(state, 10)
     }
 };
+
+export const PLACE_WALL = function(state, coords, orientation) {
+    state.board[coords.row][coords.col].wall = orientation;
+};
+
 export const SET_PAWN_COUNT = function(state, pawn_count) {
     for(var player in state.players) {
         state.players[player].walls = pawn_count

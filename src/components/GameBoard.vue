@@ -146,14 +146,15 @@
         <square :square="board[1].h" :coords="{row:1, col:'h'}"></square>
         <square :square="board[1].i" :coords="{row:1, col:'i'}"></square>
     </div>
-    <div class="ui special popup" id="wall-selector">
+    <div class="ui wide special popup" id="wall-selector">
         <div class="header">Wall Orientation</div>
         <select class="ui dropdown" v-model='orientation' placeholder="Select Orientation">
             <option value="" selected></option>
             <option value="h">Horizontal</option>
             <option value="v">Vertical</option>
         </select>
-        <div class="ui button" @click="insertWall">Place Wall<div>
+        <div class="ui button" @click="insertWall">Place Wall</div>
+        <div class="ui button" @click="cancelWall">Cancel</div>
     </div>
 </template>
 
@@ -162,7 +163,7 @@ import Square from './Square'
 import Intersection from './Intersection'
 import Wall from './Wall'
 import Pawn from './Pawn'
-import { placeWall } from '../store/actions'
+import { placeWall, nextPlayer, drawMoves } from '../store/actions'
 
 export default {
     data: function () {
@@ -176,7 +177,12 @@ export default {
                 $('.intersection').popup('hide');
                 placeWall(this.$store, this.orientation);
                 this.orientation = '';
+                nextPlayer(this.$store);
             }
+        },
+        cancelWall () {
+            $('.intersection').popup('hide');
+            drawMoves(this.$store);
         }
     },
     components: {
@@ -193,7 +199,9 @@ export default {
             board: state => state.board,
         },
         actions: {
-            placeWall
+            placeWall,
+            nextPlayer,
+            drawMoves
         }
     },
 }

@@ -11,8 +11,7 @@ export const MOVE_PLAYER = function(state, coords) {
         // console.log(r);
         for(let c = 97; c < 106; c++) {
             let column = String.fromCharCode(c);
-            // console.log(column);
-            state.board[r][column].move = null;
+            // state.board[r][column].move = null;
             
             if(state.board[r][column].pawn == state.game.turn) {
                 state.board[r][column].pawn = null;
@@ -22,6 +21,15 @@ export const MOVE_PLAYER = function(state, coords) {
     state.board[coords.row][coords.col].pawn = state.game.turn;
     state.players[state.game.turn].coords = coords;
 };
+
+export const HIDE_MOVES = function(state) {
+    for(let r = 1; r < 10; r++) {
+        for(let c = 97; c < 106; c++) {
+            let column = String.fromCharCode(c);
+            state.board[r][column].move = null;
+        }
+    }
+}
 
 export const DRAW_MOVES = function(state) {
     let coords = state.players[state.game.turn].coords;

@@ -5,10 +5,18 @@ export const setTurn = function({ dispatch }, e) {
     dispatch('SET_TURN', e.target.value);
 }
 
-export const nextPlayer = function({dispatch, state}, element, coords) {
+export const movePlayer = function({dispatch, state}, coords) {
     // move the current player to the selected position
-    dispatch('MOVE_PLAYER', coords);
-    
+    dispatch('MOVE_PLAYER', coords);    
+}
+
+export const hideMoves = function({dispatch, state}) {
+    // move the current player to the selected position
+    dispatch('HIDE_MOVES');    
+}
+
+export const nextPlayer = function({dispatch, state}) {
+    dispatch('HIDE_MOVES');
     // change the turn to the next player
     switch(state.game.turn) {
         case 'red':
@@ -29,6 +37,11 @@ export const nextPlayer = function({dispatch, state}, element, coords) {
             break;
     }
     
+    // draw the next player's move options
+    dispatch('DRAW_MOVES');
+}
+    
+export const drawMoves = function({dispatch, state}) {
     // draw the next player's move options
     dispatch('DRAW_MOVES');
 }

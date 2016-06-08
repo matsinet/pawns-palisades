@@ -30,7 +30,9 @@
 }
 
 .vertical-wall {
-    transform: rotate(90deg);
-    left: -5.9vh;
+    height: 13.5vh;
+    width: 1.75vh;
+    left: 0;
+    top: -6vh;
 }
 </style>

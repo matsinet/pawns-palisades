@@ -8,7 +8,7 @@
 <script>
 import Pawn from './Pawn'
 import Move from './Move'
-import { nextPlayer } from '../store/actions'
+import { movePlayer, nextPlayer } from '../store/actions'
 
 export default {
     components: {
@@ -21,13 +21,15 @@ export default {
     ],
     vuex: {
         actions: {
+            movePlayer,
             nextPlayer
         }
     },
     methods: {
         notify () {
             if(this.square.move !== null) {
-                nextPlayer(this.$store, this.$el, this.coords);
+                movePlayer(this.$store, this.coords);
+                nextPlayer(this.$store);
             }
         }
     }

@@ -10,7 +10,7 @@
 
 <script>
 import Wall from './Wall'
-import { updateMoveCoords } from '../store/actions'
+import { updateMoveCoords, hideMoves } from '../store/actions'
 
 export default {
     data: function () {
@@ -32,15 +32,17 @@ export default {
             move: state => state.move,
         },
         actions: {
-            updateMoveCoords
+            updateMoveCoords,
+            hideMoves
         }
     },
     methods: {
         'selectOrientation' () {
-            jQuery(this.$el).css('background-color', 'white');
+            // jQuery(this.$el).css('background-color', 'white');
             updateMoveCoords(this.$store, this.coords);
             if(this.wall == null) {
                 $('.intersection').popup('show');
+                hideMoves(this.$store);
             }
         },
     },
@@ -49,9 +51,10 @@ export default {
         $('.intersection').popup({
             popup: '#wall-selector',
             exclusive: true,
-            position: 'top right',
+            position: 'top left',
             on: 'click',
-            // offset: '40',
+            closable: false,
+            offset: $( window ).height() * .05,
         });
     }
 }

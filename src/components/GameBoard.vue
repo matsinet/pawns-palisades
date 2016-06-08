@@ -146,33 +146,56 @@
         <square :square="board[1].h" :coords="{row:1, col:'h'}"></square>
         <square :square="board[1].i" :coords="{row:1, col:'i'}"></square>
     </div>
-    <div id="wall-selector" style='display: none;'>
-        <select class="ui dropdown">
+    <div class="ui special popup" id="wall-selector">
+        <div class="header">Wall Orientation</div>
+        <select class="ui dropdown" v-model='orientation' placeholder="Select Orientation">
+            <option value="" selected></option>
             <option value="h">Horizontal</option>
             <option value="v">Vertical</option>
         </select>
+        <div class="ui button" @click="insertWall">Place Wall<div>
     </div>
 </template>
 
 <script>
 import Square from './Square'
 import Intersection from './Intersection'
+import Wall from './Wall'
 import Pawn from './Pawn'
+import { placeWall } from '../store/actions'
 
 export default {
+    data: function () {
+        return {
+            orientation: '',
+        }
+    },
+    methods: {
+        insertWall () {
+            if( this.orientation !== '') {
+                $('.intersection').popup('hide');
+                placeWall(this.$store, this.orientation);
+                this.orientation = '';
+            }
+        }
+    },
     components: {
         Square,
         Intersection,
+        Wall,
         Pawn
     },
-     vuex: {
-         getters: {
-             players: state => state.players,
-             turn: state => state.game.turn,
-             pawns: state => state.game.pawn_count,
-             board: state => state.board,
-         }
-    }
+    vuex: {
+        getters: {
+            players: state => state.players,
+            turn: state => state.game.turn,
+            pawns: state => state.game.pawn_count,
+            board: state => state.board,
+        },
+        actions: {
+            placeWall
+        }
+    },
 }
 </script>
 

@@ -14,6 +14,10 @@ const state = {
         turn: 'blue',
         powered_by: '',
     },
+    move: {
+        coords: {},
+        orientation: 'h',
+    },
     players: {
         'red': {
             walls: 10,

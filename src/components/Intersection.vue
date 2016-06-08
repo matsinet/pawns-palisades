@@ -1,14 +1,23 @@
 <template>
-    <div class='intersection' @click="notify" v-bind:class="{ 'first-intersection': isfirst, 'last-intersection': islast }">
-        <wall v-bind:class="[ wall == 'v' ? 'vertical-wall' : '' ]" v-if="wall"></wall>
+    <div 
+        class='intersection'
+        :class="{ 'first-intersection': isfirst, 'last-intersection': islast }"
+        @click="selectOrientation"
+    >
+        <wall :class="[ wall == 'v' ? 'vertical-wall' : '' ]" v-if="wall"></wall>
     </div>
 </template>
 
 <script>
 import Wall from './Wall'
-import { placeWall } from '../store/actions'
+import { updateMoveCoords } from '../store/actions'
 
 export default {
+    data: function () {
+        return {
+            orientation: 'h'
+        }
+    },
     components: {
         Wall
     },
@@ -19,17 +28,31 @@ export default {
         'wall',
     ],
     vuex: {
+        getters: {
+            move: state => state.move,
+        },
         actions: {
-            placeWall
+            updateMoveCoords
         }
     },
     methods: {
-        notify () {
+        'selectOrientation' () {
+            jQuery(this.$el).css('background-color', 'white');
+            updateMoveCoords(this.$store, this.coords);
             if(this.wall == null) {
-                let wall = 'h';
-                placeWall(this.$store, this.$el, this.coords, wall);
+                $('.intersection').popup('show');
             }
-        }
+        },
+    },
+    ready () {
+        // Enable the pop up on the intersection
+        $('.intersection').popup({
+            popup: '#wall-selector',
+            exclusive: true,
+            position: 'top right',
+            on: 'click',
+            // offset: '40',
+        });
     }
 }
 </script>

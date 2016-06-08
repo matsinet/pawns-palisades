@@ -33,6 +33,10 @@ export const nextPlayer = function({dispatch, state}, element, coords) {
     dispatch('DRAW_MOVES');
 }
 
-export const placeWall = function({dispatch, state}, element, coords, orientation) {
-    dispatch('PLACE_WALL', coords, orientation);
+export const updateMoveCoords = function({dispatch, state}, coords) {
+    dispatch('UPDATE_MOVE_COORDS', coords);
+}
+
+export const placeWall = function({dispatch, state}, orientation) {
+    dispatch('PLACE_WALL', orientation);
 }

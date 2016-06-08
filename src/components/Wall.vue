@@ -24,10 +24,13 @@
     border: .25vh outset black;
     border-radius: .5vh;
     position: relative;
-    left: -6vh;  
+    left: -6vh;
+    /*margin-right: -4vh;*/
+    float: left;
 }
 
 .vertical-wall {
     transform: rotate(90deg);
+    left: -5.9vh;
 }
 </style>

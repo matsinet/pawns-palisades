@@ -89,8 +89,12 @@ export const SET_PLAYER_COUNT = function(state, player_count) {
     }
 };
 
-export const PLACE_WALL = function(state, coords, orientation) {
-    state.board[coords.row][coords.col].wall = orientation;
+export const UPDATE_MOVE_COORDS = function(state, coords) {
+    state.move.coords = coords;
+}
+
+export const PLACE_WALL = function(state, orientation) {
+    state.board[state.move.coords.row][state.move.coords.col].wall = orientation;
 };
 
 export const SET_PAWN_COUNT = function(state, pawn_count) {

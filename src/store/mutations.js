@@ -8,10 +8,8 @@ export const DECREMENT_WALL_COUNT = function(state, player) {
     
 export const MOVE_PLAYER = function(state, coords) {
     for(let r = 1; r < 10; r++) {
-        // console.log(r);
         for(let c = 97; c < 106; c++) {
             let column = String.fromCharCode(c);
-            // state.board[r][column].move = null;
             
             if(state.board[r][column].pawn == state.game.turn) {
                 state.board[r][column].pawn = null;
@@ -103,6 +101,7 @@ export const UPDATE_MOVE_COORDS = function(state, coords) {
 
 export const PLACE_WALL = function(state, orientation) {
     state.board[state.move.coords.row][state.move.coords.col].wall = orientation;
+    DECREMENT_WALL_COUNT(state, state.game.turn);
 };
 
 export const SET_PAWN_COUNT = function(state, pawn_count) {

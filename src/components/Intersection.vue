@@ -1,7 +1,6 @@
 <template>
     <div 
         class='intersection'
-        :class="{ 'first-intersection': isfirst, 'last-intersection': islast }"
         @click="selectOrientation"
     >
         <wall :class="[ wall == 'v' ? 'vertical-wall' : '' ]" v-if="wall"></wall>
@@ -23,8 +22,6 @@ export default {
     },
     props: [
         'coords',
-        'isfirst',
-        'islast',
         'wall',
     ],
     vuex: {
@@ -54,7 +51,7 @@ export default {
             position: 'top left',
             on: 'click',
             closable: false,
-            offset: $( window ).height() * .05,
+            offset: $( '.intersection' ).first().width(),
         });
     }
 }
@@ -69,10 +66,10 @@ export default {
     float: left;
     margin-left: 6vh;
 }
-.first-intersection {
+.intersection:first-child {
     margin-left: 8vh;
 }
-.last-intersection {
+.intersection:last-child {
     margin-right: 8vh;
 }
 </style>

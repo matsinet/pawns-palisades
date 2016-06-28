@@ -52,4 +52,5 @@ export const updateMoveCoords = function({dispatch, state}, coords) {
 
 export const placeWall = function({dispatch, state}, orientation) {
     dispatch('PLACE_WALL', orientation);
+    // clear the wall.errors
 }

@@ -27,7 +27,7 @@ export const HIDE_MOVES = function(state) {
             state.board[r][column].move = null;
         }
     }
-}
+};
 
 export const DRAW_MOVES = function(state) {
     let coords = state.players[state.game.turn].coords;
@@ -36,29 +36,32 @@ export const DRAW_MOVES = function(state) {
     let col = coords.col;
     let colCode = coords.col.charCodeAt(0);
     
-    // draw up
-    if((row + 1) < 10) {
-        let up = state.board[row + 1][col];
-        if(up.pawn == null) {
-            up.move = state.game.turn;
-        } else if((row + 2) < 10) {
-            state.board[row + 2][col].move = state.game.turn;
-        }
-    }
-    // draw down
+     // draw down
     if((row - 1) > 0) {
-        
         let down = state.board[row - 1][col];
-        if(down.pawn == null) {
+        console.log(down);
+        if(down.pawn == null && down.wall != 'h') {
+            console.log(down.wall);
             down.move = state.game.turn;
         } else if((row - 2) > 0) {
             state.board[row - 2][col].move = state.game.turn;
         }
     }
+    // draw up
+    if((row + 1) < 10) {
+        let up = state.board[row + 1][col];
+        console.log(up);
+        if(up.pawn == null && up.wall != 'h') {
+            up.move = state.game.turn;
+        } else if((row + 2) < 10) {
+            state.board[row + 2][col].move = state.game.turn;
+        }
+    }
     // draw left
     if((colCode - 1) > 96) {
         let left = state.board[row][String.fromCharCode(colCode - 1)];
-        if(left.pawn == null) {
+        console.log(left);
+        if(left.pawn == null && left.pawn != 'v') {
             left.move = state.game.turn;
         } else if ((colCode - 2) > 96){
             state.board[row][String.fromCharCode(colCode - 2)].move = state.game.turn;
@@ -67,7 +70,8 @@ export const DRAW_MOVES = function(state) {
     // draw right
     if((colCode + 1) < 106) {
         let right = state.board[row][String.fromCharCode(colCode + 1)];
-        if(right.pawn == null) {
+        console.log(right);
+        if(right.pawn == null && right.pawn != 'v') {
             right.move = state.game.turn;
         } else if((colCode + 2) < 106){
             state.board[row][String.fromCharCode(colCode + 2)].move = state.game.turn;
@@ -97,7 +101,7 @@ export const SET_PLAYER_COUNT = function(state, player_count) {
 
 export const UPDATE_MOVE_COORDS = function(state, coords) {
     state.move.coords = coords;
-}
+};
 
 export const PLACE_WALL = function(state, orientation) {
     state.board[state.move.coords.row][state.move.coords.col].wall = orientation;

@@ -1,4 +1,4 @@
-# jquoridor
+# Pawns & Palisades
 
 > A Vue.js project
 

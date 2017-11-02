@@ -1,0 +1,350 @@
+
+1. Replace "vue": "^1.0.18" with "vue": "^2.0.0", then run: npm install
+  Line 47: package.json
+  Reason: If you are using pre-2.0 Vue through NPM, you have to update it in your package.json file
+  More info: http://vuejs.org/guide/migration.html#
+
+2. Replace "vuex": "^0.6.2" with "vuex": "^1.0.0", then run: npm install
+  Line 49: package.json
+  Reason: Vuex 1.0 is the earliest supported version compatible with Vue 2.0
+  More info: http://vuejs.org/guide/migration-vuex.html#
+
+3. Replace "vue-loader": "^8.2.1" with "vue-loader": "^9.0.0", then run: npm install
+  Line 96: package.json
+  Reason: vue-loader 9.0 is the earliest supported version compatible with Vue 2.0
+  More info: http://vuejs.org/guide/migration.html#
+
+4. Replace activate with beforeRouteEnter in the component
+  Line 299: src/assets/semantic/src/definitions/behaviors/state.js
+  Reason: The activate router lifecycle hook has been removed
+  More info: http://vuejs.org/guide/migration-vue-router.html#activate
+
+5. Replace deactivate with beforeDestroy (or destroyed) in the component
+  Line 310: src/assets/semantic/src/definitions/behaviors/state.js
+  Reason: The deactivate router lifecycle hook has been removed
+  More info: http://vuejs.org/guide/migration-vue-router.html#deactivate
+
+6. Replace activate with beforeRouteEnter in the component
+  Line 700: src/assets/semantic/src/definitions/behaviors/state.js
+  Reason: The activate router lifecycle hook has been removed
+  More info: http://vuejs.org/guide/migration-vue-router.html#activate
+
+7. Replace deactivate with beforeDestroy (or destroyed) in the component
+  Line 701: src/assets/semantic/src/definitions/behaviors/state.js
+  Reason: The deactivate router lifecycle hook has been removed
+  More info: http://vuejs.org/guide/migration-vue-router.html#deactivate
+
+8. Replace activate with beforeRouteEnter in the component
+  Line 1539: src/assets/semantic/src/definitions/modules/dropdown.js
+  Reason: The activate router lifecycle hook has been removed
+  More info: http://vuejs.org/guide/migration-vue-router.html#activate
+
+9. Replace activate with beforeRouteEnter in the component
+  Line 533: src/assets/semantic/src/definitions/modules/tab.js
+  Reason: The activate router lifecycle hook has been removed
+  More info: http://vuejs.org/guide/migration-vue-router.html#activate
+
+10. Replace deactivate with beforeDestroy (or destroyed) in the component
+  Line 579: src/assets/semantic/src/definitions/modules/tab.js
+  Reason: The deactivate router lifecycle hook has been removed
+  More info: http://vuejs.org/guide/migration-vue-router.html#deactivate
+
+11. Replace deactivate with beforeDestroy (or destroyed) in the component
+  Line 897: src/assets/semantic/src/definitions/modules/tab.js
+  Reason: The deactivate router lifecycle hook has been removed
+  More info: http://vuejs.org/guide/migration-vue-router.html#deactivate
+
+12. Replace '/*rtl:' with '/:rtl:+'
+  Line 27: src/assets/semantic/src/themes/default/modules/accordion.overrides
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+13. Replace '/*rtl:' with '/:rtl:+'
+  Line 36: src/assets/semantic/src/themes/default/modules/dropdown.overrides
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+14. Replace "/*rtl:" with "/:rtl:+"
+  Line 41: src/assets/semantic/src/themes/default/modules/dropdown.overrides
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+15. Replace "/*rtl:" with "/:rtl:+"
+  Line 46: src/assets/semantic/src/themes/default/modules/dropdown.overrides
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+16. Replace '/*rtl:' with '/:rtl:+'
+  Line 42: src/assets/semantic/src/themes/github/modules/dropdown.overrides
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+17. Replace "/*rtl:" with "/:rtl:+"
+  Line 47: src/assets/semantic/src/themes/github/modules/dropdown.overrides
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+18. Replace "/*rtl:" with "/:rtl:+"
+  Line 52: src/assets/semantic/src/themes/github/modules/dropdown.overrides
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+19. Replace '/assets/**/' with '/assets/:*+/'
+  Line 134: src/assets/semantic/tasks/admin/components/create.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+20. Replace 'dist/themes/default/**/*' with 'dist/themes/default/:*+/*'
+  Line 155: src/assets/semantic/tasks/admin/distributions/create.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+21. Replace 'src/definitions/**/*' with 'src/definitions/:*+/*'
+  Line 176: src/assets/semantic/tasks/admin/distributions/create.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+22. Replace 'src/_site/**/*' with 'src/_site/:*+/*'
+  Line 188: src/assets/semantic/tasks/admin/distributions/create.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+23. Replace 'src/themes/**/*' with 'src/themes/:*+/*'
+  Line 191: src/assets/semantic/tasks/admin/distributions/create.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+24. Replace '/**/assets/**/*.*' with '/:*+/assets/**/*.*'
+  Line 30: src/assets/semantic/tasks/build/assets.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+25. Replace '/**/' with '/:*+/'
+  Line 70: src/assets/semantic/tasks/build/css.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+26. Replace '/**/' with '/:*+/'
+  Line 58: src/assets/semantic/tasks/build/javascript.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+27. Replace '/**/' with '/:*+/'
+  Line 54: src/assets/semantic/tasks/collections/internal.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+28. Replace '/**/' with '/:*+/'
+  Line 67: src/assets/semantic/tasks/collections/internal.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+29. Replace '/**/' with '/:*+/'
+  Line 81: src/assets/semantic/tasks/collections/internal.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+30. Replace '/**/' with '/:*+/'
+  Line 94: src/assets/semantic/tasks/collections/internal.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+31. Replace '/**/' with '/:*+/'
+  Line 114: src/assets/semantic/tasks/collections/internal.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+32. Replace '/**/' with '/:*+/'
+  Line 126: src/assets/semantic/tasks/collections/internal.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+33. Replace '/**/' with '/:*+/'
+  Line 139: src/assets/semantic/tasks/collections/internal.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+34. Replace '/**/' with '/:*+/'
+  Line 151: src/assets/semantic/tasks/collections/internal.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+35. Replace '/**/' with '/:*+/'
+  Line 175: src/assets/semantic/tasks/collections/internal.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+36. Replace '/**/' with '/:*+/'
+  Line 187: src/assets/semantic/tasks/collections/internal.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+37. Replace '/**/' with '/:*+/'
+  Line 201: src/assets/semantic/tasks/collections/internal.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+38. Replace '/**/' with '/:*+/'
+  Line 214: src/assets/semantic/tasks/collections/internal.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+39. Replace '**/*.html.eco' with '**/:.html.eco+'
+  Line 9: src/assets/semantic/tasks/config/docs.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+40. Replace 'examples/**/*.*' with 'examples/:*+/*.*'
+  Line 93: src/assets/semantic/tasks/docs/build.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+41. Replace 'src/**/*.*' with 'src/:*+/*.*'
+  Line 104: src/assets/semantic/tasks/docs/build.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+42. Replace '/**/' with '/:*+/'
+  Line 121: src/assets/semantic/tasks/docs/build.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+43. Replace '/**/assets/**/' with '/:*+/assets/**/'
+  Line 165: src/assets/semantic/tasks/docs/build.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+44. Replace '/**/' with '/:*+/'
+  Line 171: src/assets/semantic/tasks/docs/build.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+45. Replace 'src/**/*.*' with 'src/:*+/*.*'
+  Line 67: src/assets/semantic/tasks/docs/serve.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+46. Replace 'examples/**/*.*' with 'examples/:*+/*.*'
+  Line 85: src/assets/semantic/tasks/docs/serve.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+47. Replace '/**/*.less' with '/:*+/*.less'
+  Line 104: src/assets/semantic/tasks/docs/serve.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+48. Replace '/**/*.{overrides,variables}' with '/:*+/*.{overrides,variables}'
+  Line 105: src/assets/semantic/tasks/docs/serve.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+49. Replace '/**/*.{overrides,variables}' with '/:*+/*.{overrides,variables}'
+  Line 106: src/assets/semantic/tasks/docs/serve.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+50. Replace '/**/*.js' with '/:*+/*.js'
+  Line 217: src/assets/semantic/tasks/docs/serve.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+51. Replace '/**/assets/**/' with '/:*+/assets/**/'
+  Line 243: src/assets/semantic/tasks/docs/serve.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+52. Replace '/**/' with '/:*+/'
+  Line 64: src/assets/semantic/tasks/rtl/build.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+53. Replace '/**/assets/**/' with '/:*+/assets/**/'
+  Line 109: src/assets/semantic/tasks/rtl/build.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+54. Replace '/**/' with '/:*+/'
+  Line 115: src/assets/semantic/tasks/rtl/build.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+55. Replace '/**/*.less' with '/:*+/*.less'
+  Line 68: src/assets/semantic/tasks/rtl/watch.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+56. Replace '/**/*.{overrides,variables}' with '/:*+/*.{overrides,variables}'
+  Line 69: src/assets/semantic/tasks/rtl/watch.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+57. Replace '/**/*.{overrides,variables}' with '/:*+/*.{overrides,variables}'
+  Line 70: src/assets/semantic/tasks/rtl/watch.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+58. Replace '/**/*.js' with '/:*+/*.js'
+  Line 183: src/assets/semantic/tasks/rtl/watch.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+59. Replace '/**/assets/**/' with '/:*+/assets/**/'
+  Line 210: src/assets/semantic/tasks/rtl/watch.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+60. Replace '/**/*.less' with '/:*+/*.less'
+  Line 81: src/assets/semantic/tasks/watch.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+61. Replace '/**/*.{overrides,variables}' with '/:*+/*.{overrides,variables}'
+  Line 82: src/assets/semantic/tasks/watch.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+62. Replace '/**/*.{overrides,variables}' with '/:*+/*.{overrides,variables}'
+  Line 83: src/assets/semantic/tasks/watch.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+63. Replace '/**/*.js' with '/:*+/*.js'
+  Line 193: src/assets/semantic/tasks/watch.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+64. Replace '/**/assets/**/*.*' with '/:*+/assets/**/*.*'
+  Line 220: src/assets/semantic/tasks/watch.js
+  Reason: The syntax for route matching has changed since Vue Router now uses path-to-regexp under the hood
+  More info: http://vuejs.org/guide/migration-vue-router.html#One-or-More-Named-Parameters
+
+65. Replace ready with mounted, then use Vue.nextTick if you need an in-document guarantee
+  Line 46: src/components/Intersection.vue
+  Reason: ready lifecycle hook has been removed
+  More info: http://vuejs.org/guide/migration.html#ready
+
+66. Update class="{{ turn }}" to v-bind:class="turn"
+  Line 5: src/components/ScoreBoard.vue
+  Reason: Interpolation within attributes has been removed
+  More info: http://vuejs.org/guide/migration.html#Interpolation-within-Attributes
+
+67. Replace the built-in capitalize filter with a custom filter, method, or computed property using npmjs.com/package/lodash.capitalize
+  Line 6: src/components/ScoreBoard.vue
+  Reason: Built-in filters have been removed in favor of external, specialized utility libraries
+  More info: http://vuejs.org/guide/migration.html#Replacing-the-capitalize-Filter
+
+68. Switch argument order in v-for="(index, player) in players" to (player, index)
+  Line 2: src/components/WallCount.vue
+  Reason: Argument order for v-for has been updated to match JavaScript conventions
+  More info: http://vuejs.org/guide/migration.html#v-for-Argument-Order-for-Arrays
+
+69. Update name="{{ index }}-fence-count" to v-bind:name="index + '-fence-count'"
+  Line 3: src/components/WallCount.vue
+  Reason: Interpolation within attributes has been removed
+  More info: http://vuejs.org/guide/migration.html#Interpolation-within-Attributes
+
+70. Replace activate with beforeRouteEnter in the component
+  Line 3126: src/assets/semantic/src/definitions/modules/dropdown.js
+  Reason: The activate router lifecycle hook has been removed
+  More info: http://vuejs.org/guide/migration-vue-router.html#activate

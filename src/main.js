@@ -1,21 +1,14 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
-import VueMdl from 'vue-mdl';
-import store from './store/store';
-import App from './App';
+import { createApp } from 'vue'
+import { createPinia } from 'pinia'
 
-// important, teaches Vue components how to
-// handle Vuex-related options
-Vue.use(Vuex);
+import App from './App.vue'
+import router from './router'
 
-// handle VueMdl options
-Vue.use(VueMdl);
+import './assets/main.css'
 
-/* eslint-disable no-new */
-new Vue({
-    el: 'body',
-    store,
-    components: {
-        App,
-    }
-});
+const app = createApp(App)
+
+app.use(createPinia())
+app.use(router)
+
+app.mount('#app')

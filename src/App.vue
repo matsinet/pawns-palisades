@@ -1,99 +1,85 @@
-<template>
-    <div id="app">
-        <div class="game">
-            <scoreboard></scoreboard>
-            <gameboard></gameboard>
-            <poweredby></poweredby>
-        </div>
-        <div class="lobby">
-        </div>
-    </div>
-</template>
-
-<script>
-import '../node_modules/jquery/dist/jquery.min';
-import './assets/semantic/dist/semantic.min';
-import Scoreboard from './components/ScoreBoard';
-import Gameboard from './components/GameBoard';
-import Poweredby from './components/PoweredBy';
-import { setTurn, nextPlayer } from './store/actions'
-
-export default {
-    components: {
-        Scoreboard,
-        Gameboard,
-        Poweredby
-    },
-    vuex: {
-        getters: {
-            players: state => state.players,
-            turn: state => state.game.turn,
-            pawns: state => state.game.pawn_count,
-        },
-        actions: {
-            setTurn,
-            nextPlayer
-        }
-    }
-}
+<script setup>
+import { RouterLink, RouterView } from 'vue-router'
+import HelloWorld from './components/HelloWorld.vue'
 </script>
 
-<style lang="scss">
-@import './assets/semantic/dist/semantic.min.css';
+<template>
+  <header>
+    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
-html {
-    height: 100%;
+    <div class="wrapper">
+      <HelloWorld msg="You did it!" />
+
+      <nav>
+        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/about">About</RouterLink>
+      </nav>
+    </div>
+  </header>
+
+  <RouterView />
+</template>
+
+<style scoped>
+header {
+  line-height: 1.5;
+  max-height: 100vh;
 }
 
-body {
+.logo {
+  display: block;
+  margin: 0 auto 2rem;
+}
+
+nav {
+  width: 100%;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+nav a.router-link-exact-active {
+  color: var(--color-text);
+}
+
+nav a.router-link-exact-active:hover {
+  background-color: transparent;
+}
+
+nav a {
+  display: inline-block;
+  padding: 0 1rem;
+  border-left: 1px solid var(--color-border);
+}
+
+nav a:first-of-type {
+  border: 0;
+}
+
+@media (min-width: 1024px) {
+  header {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
+    place-items: center;
+    padding-right: calc(var(--section-gap) / 2);
+  }
 
-}
+  .logo {
+    margin: 0 2rem 0 0;
+  }
 
-.game {
-    font-family: Source Sans Pro, Helvetica, sans-serif;
-    color: white;
-    width: 78vh;
-    margin-left: auto;
-    margin-right: auto;
-    border: 3px solid black;
-    border-radius: 20px;
-    background-color: black;
-    display: inline-block;
-}
+  header .wrapper {
+    display: flex;
+    place-items: flex-start;
+    flex-wrap: wrap;
+  }
 
-.game a {
-    color: #42b983;
-    text-decoration: none;
-}
+  nav {
+    text-align: left;
+    margin-left: -1rem;
+    font-size: 1rem;
 
-.lobby {
-    width: 24vh;
-    /*background-color: black;*/
-    display: inline-block;
-}
-
-.vuejs-logo {
-    width: 20px;
-    height: 20px
-}
-
-.green {
-    color: green;
-}
-
-.blue {
-    color: blue;
-}
-
-.red {
-    color: red;
-}
-
-.yellow {
-    color: yellow;
+    padding: 1rem 0;
+    margin-top: 1rem;
+  }
 }
 </style>

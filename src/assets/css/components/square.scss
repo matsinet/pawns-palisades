@@ -14,9 +14,14 @@
 }
 
 .move {
-    display: hidden;
+    display: none;
+    width: 90%;
+    height: 90%;
+    border-radius: 100%;
+    border: .2em dashed white;
+    opacity: .5;
 }
 
-.is-turn {
+.is-enabled {
     display: block;
 }

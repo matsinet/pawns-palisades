@@ -15,10 +15,6 @@ const hooks = {
   },
   after: async (params, state = {}) => {
     // console.log("home View afterHook fired");
-    document.querySelector('img').alt = "Savvy Coders Rocks";
-    return {
-      afterHook: "home"
-    };
   }
 };
 

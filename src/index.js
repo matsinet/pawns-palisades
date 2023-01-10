@@ -9,6 +9,8 @@ import "./assets/css/styles.scss";
 
 const router = new Navigo("/");
 
+window.router = router;
+
 function render(viewName) {
   
   let view = views[viewName];
@@ -145,7 +147,13 @@ router.hooks({
   },
   already: async (params) => {
     let viewName = getViewNameFromParams(params);
+
+    console.log('matsinet - viewName:', viewName);
     
+    if (! (viewName in views)) {
+      return;
+    }
+
     // TODO: Add spinner to beforeHook processing
     if ('hooks' in views[viewName] && 'before' in views[viewName].hooks) {
       const viewData = await views[viewName].hooks.before(params, store[viewName]);
@@ -155,7 +163,7 @@ router.hooks({
         store[viewName] = state;
       }
     } else {
-      console.log("No component afterHook found!");
+      console.log("No component beforeHook found!");
     }
 
     for (const key in components) {
@@ -166,6 +174,19 @@ router.hooks({
     }
 
     render(viewName);
+
+    if ('hooks' in views[viewName] && 'after' in views[viewName].hooks) {
+      const viewData = views[viewName].hooks.after(params, store[viewName]);
+    } else {
+      console.log("No component afterHook found!");
+    }
+
+    for (const key in components) {
+      const component = components[key];
+      if('hooks' in component) {
+        component.hooks.after(params, store[viewName]);
+      }
+    }
   }
 });
 

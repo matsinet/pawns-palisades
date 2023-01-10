@@ -4,8 +4,8 @@ import '../assets/css/components/sidebar.scss';
 const render = (state = {}) => html`<aside class="menu m-4">
     <p class="menu-label mb-0">Game</p>
     <ul class="menu-list">
-      <li><a href="/lobby" class="active" data-navigo>Lobby</a></li>
-      <li><a href="/game" data-navigo>Current Game</a></li>
+      <li><a href="/" class="active" data-navigo>Lobby</a></li>
+      <li><a href="/game" data-navigo>Game</a></li>
     </ul>
     <p class="menu-label mb-0">Admin</p>
     <ul class="menu-list">

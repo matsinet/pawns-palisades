@@ -13,9 +13,6 @@ const hooks = {
   },
   after: async (params, state = {}) => {
     // console.log("Component header afterHook fired");
-    document.querySelectorAll('.anchor').forEach(element => element.addEventListener('click', event => {
-      console.log(event.target);
-    }))
   }
 };
 

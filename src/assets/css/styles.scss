@@ -1,0 +1,103 @@
+@charset "utf-8";
+
+// Import Bulma first
+@import 'bulma';
+
+// Import BulmaTagsInput main Sass File
+@import '../../../node_modules/@creativebulma/bulma-tagsinput/src/sass/index';
+
+// Set your brand colors
+$red-orange-color-wheel: #f6511dff;
+$honey-yellow: #ffb400ff;
+$carolina-blue: #00a6edff;
+$apple-green: #7fb800ff;
+$prussian-blue: #0d2c54ff;
+
+// $primary: $prussian-blue;
+// $secondary: gray;
+
+$header-height: 64px;
+
+$action-buttons-one: 80.5px;
+$action-buttons-two: 137.5px;
+$action-buttons-three: 189.5px;
+$action-buttons-four: 241.5px;
+$action-buttons-five: 293.5px;
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+
+// The rest...
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+.green {
+  background-color: green;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.red {
+  background-color: red;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.is-capitalized {
+  text-transform: capitalize;
+}
+
+.is-truncated {
+  width: 25ch;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.is-not-clickable {
+  pointer-events: none;
+}
+
+.has-bottom-border {
+  border-bottom: black thin 2px;
+}
+
+form .column {
+  padding-bottom: 0;
+}
+
+.pt-7 {
+  padding-top: 3.25em
+}
+
+.pt-8 {
+  padding-top: 3.5em
+}
+
+.divider {
+  border-top: 3px solid #bbb;
+  border-radius: 2px;
+}
+
+.is-sidebar-closed {
+  i {
+    visibility: visible;
+  }
+}
+
+.is-sidebar-open {
+  i {
+    visibility: hidden;
+  }
+}

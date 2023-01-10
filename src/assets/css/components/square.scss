@@ -1,0 +1,22 @@
+.square {
+    background-color: rgba(255, 255, 255, .3);
+    border-radius: 6px;
+    padding: 10%;
+    transition: all 2s ease-in-out;
+}
+
+.pawn {
+    display: none;
+    width: 90%;
+    height: 90%;
+    border-radius: 100%;
+    border: .2em solid white;
+}
+
+.move {
+    display: hidden;
+}
+
+.is-turn {
+    display: block;
+}

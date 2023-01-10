@@ -1,0 +1,10 @@
+.anchor {
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 2px;
+    transition: all .2s ease-in-out;
+}
+
+.anchor:hover {
+    background-color: rgba(255, 255, 255, 1);
+    transform: scale(1.3);
+}

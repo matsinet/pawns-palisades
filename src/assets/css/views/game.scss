@@ -1,0 +1,36 @@
+#game-board {
+    width: 70vh;
+    height: 70vh;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1em;
+    background: gray;
+    padding-top: 1.5em;
+    padding-bottom: 2em;
+    border-radius: 2em;
+    background-image: url('../../img/wood.jpg');
+    background-size: cover;
+    border-top: .35em solid blue;
+    border-bottom: .35em solid red;
+    
+        
+    /* Set to override Semantic UI */
+    box-sizing: unset;
+
+    display: grid;
+    grid-template-columns: repeat(8, 4fr 1fr) 4fr;
+    grid-template-rows: repeat(8, 4fr 1fr) 4fr;
+}
+
+.players-4 {
+    border-left: .35em solid yellow;
+    border-right: .35em solid green;
+}
+
+.popupErrorMessage {
+    list-style-type: none;
+    list-style-position: outside;
+    color: red;
+    font-weight: bold;
+    margin-left: -30px;
+}

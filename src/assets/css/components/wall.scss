@@ -1,0 +1,28 @@
+.wall {
+    transition: all .5s ease-in-out;
+    z-index: 2;
+}
+
+.horizontal {
+    height: 100%;
+    width: 900%;
+    background-color: black;
+    border: 2px solid white;
+    transform: translateX(-45%);
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.vertical {
+    height: 100%;
+    width: 900%;
+    background-color: black;
+    border: 2px solid white;
+    transform: translateX(-45%) rotate(90deg);
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.is-placing {
+    border: 2px dashed white;
+}

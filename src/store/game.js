@@ -6,12 +6,12 @@ export default {
       players: 2,
       blue: {
         pawn: [1, 'e'],
-        walls: self.players === 2 ? 10 : 5,
+        walls: 10,
         winningSide: 9
       },
       red: {
         pawn: [9, 'e'],
-        walls: self.players === 2 ? 10 : 5,
+        walls: 10,
         winningSide: 1
       },
       green: {

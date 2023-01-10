@@ -4,7 +4,7 @@ import * as store from "../store";
 function initBoard() {
     const gameBoard = document.getElementById('game-board');
     let rows = 1;
-    squareRow = 1;
+    let squareRow = 1;
     let content = '';
     while (rows <= 17) {
         let columns = 1;

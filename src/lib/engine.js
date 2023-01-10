@@ -36,8 +36,6 @@ function initBoard() {
     gameBoard.innerHTML = content;
 
     document.querySelectorAll('.anchor').forEach(element => element.addEventListener('click', event => {
-        console.log('matsinet - event.target:', event.target);
-        let orientation = 'h';
         if (event.target.classList.contains('wall')) {
             if (event.target.classList.contains('horizontal')) {
                 event.target.classList.remove('horizontal');
@@ -165,18 +163,40 @@ function removeMoves() {
 function placeWall(element) {
     const row = parseInt(element.dataset.row);
     const column = element.dataset.column.charCodeAt(0);
-    const orientation = element.dataset.orientation;
 
-    element.innerHTML = wall.render('h');
+    let orientation = 'h';
 
-    store.game.currentState.walls.push([row, String.fromCharCode(column), orientation, store.game.currentState.turn]);
-    store.game.currentState[store.game.currentState.turn].walls -= 1;
+    const leftWallColumn = String.fromCharCode(column - 1)
+    const leftWall = document.querySelector(`.anchor[data-row="${row}"][data-column="${leftWallColumn}"] .wall`);    
+    const rightWallColumn = String.fromCharCode(column + 1)
+    const rightWall = document.querySelector(`.anchor[data-row="${row}"][data-column="${rightWallColumn}"] .wall`);
+    const aboveWall = document.querySelector(`.anchor[data-row="${row - 1}"][data-column="${element.dataset.column}"] .wall`);    
+    const belowWall = document.querySelector(`.anchor[data-row="${row + 2}"][data-column="${element.dataset.column}"] .wall`);
 
-    element.addEventListener('click', event => {
-        event.preventDefault();
-        event.stopPropagation();
-        console.log('matsinet - event.target:', event.target);
-    });
+    // TODO: Wall placement still needs work, try placing wall in a "cross" then put a wall in a corner
+    if ((leftWall && leftWall.classList.contains('horizontal')) || (rightWall && rightWall.classList.contains('horizontal'))) {
+        orientation = 'v';
+    } else if ((aboveWall && aboveWall.classList.contains('vertical'))|| (belowWall && belowWall.classList.contains('vertical'))) {
+        orientation = 'h';
+    } else if ((leftWall && leftWall.classList.contains('horizontal')) || (aboveWall && aboveWall.classList.contains('horizontal'))) {
+        orientation = 'v';
+    } else if ((leftWall !== null || rightWall !== null) && (aboveWall !== null || belowWall !== null)) {
+        orientation = 'x';
+        console.log('Wall cannot be placed');
+    }
+
+    if (orientation !== 'x') {
+        element.innerHTML = wall.render(orientation);
+
+        store.game.currentState.walls.push([row, String.fromCharCode(column), orientation, store.game.currentState.turn]);
+        store.game.currentState[store.game.currentState.turn].walls -= 1;
+    }
+
+    // element.addEventListener('click', event => {
+    //     event.preventDefault();
+    //     event.stopPropagation();
+    //     console.log('matsinet - event.target:', event.target);
+    // });
 
     // changeTurn();
     // window.router.navigate('/game');

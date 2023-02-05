@@ -15,14 +15,14 @@ export default {
         winningSide: 1
       },
       green: {
-        pawn: [5, 'a'],
-        walls: 5,
-        winningSide: 'i'
-      },
-      yellow: {
         pawn: [5, 'i'],
         walls: 5,
         winningSide: 'a'
+      },
+      yellow: {
+        pawn: [5, 'a'],
+        walls: 5,
+        winningSide: 'i'
       },
       walls: [],
       turn: 'blue',

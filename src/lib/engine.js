@@ -98,7 +98,6 @@ function drawMoves(state) {
     }
 
     // draw down
-
     if ((row - 1) > 0) {
         let moveRow = row - 1;
         if (opponentPawnRow === moveRow && opponentPawnColumn === column) {

@@ -4,7 +4,7 @@ import '../assets/css/components/square.scss';
 const render = (state = {}) => {
   // ASCII character 'a' is 97, row 1 + 96 = 97
   return html`
-    <div class="square" data-row="${state.row}" data-column="${String.fromCharCode(state.column + 96)}">
+    <div class="square" data-row="${state.row}" data-column="${state.column}">
       <div class="pawn"></div>
       <div class="move"></div>
     </div>

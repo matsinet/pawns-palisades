@@ -40,7 +40,6 @@ function getViewNameFromParams(params) {
   }
 
   if (params?.data?.id && !params?.data?.action) {
-    
     if (actions.includes(params.data.id)) {
       actionName = params.data.id;
     } else {
@@ -48,7 +47,6 @@ function getViewNameFromParams(params) {
     }
     
     viewName += upperFirst(camelCase(actionName));
-
   }
   
   if (params?.data?.subView) {

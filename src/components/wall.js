@@ -5,8 +5,8 @@ const render = (orientation = 'h') => {
     const className = orientation === 'h' ? 'horizontal' : 'vertical';
     return html`
         <div class="wall ${className} is-placing">
-            <!-- <div class="place">O</div>
-            <div class="remove">X</div> -->
+            <span class="place">O</span>
+            <span class="remove">X</span>
         </div>
     `;
 };

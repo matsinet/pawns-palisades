@@ -34,29 +34,6 @@ function drawBoard() {
   }
 
   gameBoard.innerHTML = content;
-
-  document.querySelectorAll('.anchor')
-    .forEach(element => element.addEventListener('click', event => {
-      console.log(event.target.dataset);
-      if (event.target.dataset.wallPlaced === 'false') {
-        if (event.target.classList.contains('wall')) {
-          if (event.target.classList.contains('horizontal')) {
-            event.target.classList.remove('horizontal');
-            event.target.classList.add('vertical');
-            event.target.dataset.orientation = 'v';
-            // event.target.dataset.wallPlaced = 'true';
-          } else {
-            event.target.classList.remove('vertical');
-            event.target.classList.add('horizontal');
-            event.target.dataset.orientation = 'h';
-            // event.target.dataset.wallPlaced = 'true';
-          }
-        } else {
-          removeMoves();
-          // placeWall(event.target);
-        }
-      }
-    }));
 }
 
 function changeTurn() {
@@ -135,7 +112,7 @@ function redrawPieces(state) {
 
   walls.forEach(wall => {
     const anchor = document.querySelector(`[data-row="${wall.position[0]}"][data-col="${wall.position[1]}"].anchor`);
-    anchor.innerHTML = wallElement.render(wall.position[0], wall.position[1], wall.orientation);
+    anchor.innerHTML = wallElement.render(wall.position[0], wall.position[1], wall.orientation, wall.isConfirmed);
   });
 
   // wallElement.hooks.after({});

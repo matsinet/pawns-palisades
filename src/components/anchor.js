@@ -26,7 +26,13 @@ const hooks = {
     // console.log("Component header beforeHook fired");
   },
   after: async (params, state = {}) => {
-    // console.log("Component header afterHook fired");
+    console.log("Component anchor afterHook fired");
+    document.querySelectorAll('.anchor')
+      .forEach(element => element.addEventListener('click', event => {
+        const {row, col} = event.target.dataset;
+        store.game.currentState.walls.horizontal[row][col] = 9;
+        router.navigate('/game');
+      }));
   }
 };
 

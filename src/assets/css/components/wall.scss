@@ -5,6 +5,11 @@
     color: white;
 }
 
+.wall.is-confirmed > * {
+    display: none;
+    visibility: hidden;
+}
+
 .horizontal {
     height: 100%;
     width: 900%;

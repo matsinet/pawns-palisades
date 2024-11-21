@@ -176,14 +176,15 @@ export default {
       row.forEach((cell, colIndex) => {
         if (cell > 0) {
           walls.push({
-            position: [ rowIndex, colIndex ],
-            orientation: 'horizontal',
             blocksCells: [
               [ rowIndex, colIndex ],
               [ rowIndex, colIndex + 1 ],
               [ rowIndex + 1, colIndex ],
               [ rowIndex + 1, colIndex + 1 ]
-            ]
+            ],
+            isConfirmed: cell === 1,
+            orientation: 'horizontal',
+            position: [ rowIndex, colIndex ]
           });
         }
       });

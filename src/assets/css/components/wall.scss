@@ -25,6 +25,49 @@
     box-sizing: border-box;
 }
 
-.is-placing {
-    //border: 2px dashed white;
+.vertical nav {
+    transform: rotate(-90deg);
+}
+
+.wall-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 26px;
+    width: 26px;
+    border-radius: 7px;
+    position: absolute;
+    top: calc(50% - 13px);
+}
+
+.wall-control nav {
+    font-size: 20px;
+}
+
+.rotate {
+    border-radius: 100%;
+    border: 1px black solid;
+    background-color: white;
+    right: calc(50% - 13px);
+    color: black;
+}
+
+.confirm {
+    border: 1px white solid;
+    background-color: darkblue;
+    right: calc(85% - 13px);
+}
+
+.remove {
+    border: 1px white solid;
+    background-color: darkred;
+    right: calc(15% - 13px);
+}
+
+.remove .material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 100,
+        'GRAD' 0,
+        'opsz' 24
 }

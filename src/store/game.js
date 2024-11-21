@@ -15,8 +15,26 @@ export default {
       [ 0, 0, 0, 0, 2, 0, 0, 0, 0 ]
     ],
     walls: {
-      horizontal: Array(8).fill().map(() => Array(8).fill(0)),
-      vertical: Array(8).fill().map(() => Array(8).fill(0))
+      horizontal: [
+        [ 0, 0, 0, 0, 0, 0, 0, 0 ],
+        [ 0, 0, 0, 0, 0, 0, 0, 0 ],
+        [ 0, 0, 0, 1, 0, 0, 0, 0 ],
+        [ 0, 0, 0, 0, 0, 0, 0, 0 ],
+        [ 0, 0, 0, 0, 0, 0, 0, 0 ],
+        [ 0, 0, 0, 0, 0, 0, 0, 0 ],
+        [ 0, 0, 0, 0, 0, 0, 0, 0 ],
+        [ 0, 0, 0, 0, 0, 0, 0, 0 ]
+      ],
+      vertical: [
+        [ 0, 0, 0, 0, 0, 0, 0, 0 ],
+        [ 0, 0, 0, 0, 0, 0, 0, 0 ],
+        [ 0, 0, 0, 0, 0, 0, 0, 0 ],
+        [ 0, 0, 0, 0, 0, 0, 0, 0 ],
+        [ 0, 0, 0, 0, 0, 0, 0, 0 ],
+        [ 0, 0, 0, 0, 0, 0, 0, 0 ],
+        [ 0, 0, 0, 0, 0, 0, 0, 0 ],
+        [ 0, 0, 0, 1, 0, 0, 0, 0 ]
+      ]
     },
     players: [
       { id: 1, walls: 10, color: 'blue', name: 'John' },
@@ -26,8 +44,6 @@ export default {
     playerCount: 2,
     complete: false
   },
-
-  pawnColors: [ 'blue', 'red', 'green', 'yellow' ],
 
   getPlayerCount: function () {
     return this.currentState.playerCount;
@@ -48,7 +64,7 @@ export default {
     const currentPosition = this.findPlayerPosition(playerId);
     if (!currentPosition) return [];
 
-    const { row, col }= currentPosition;
+    const { row, col } = currentPosition;
     const possibleMoves = [];
     const directions = [ [ -1, 0 ], [ 1, 0 ], [ 0, -1 ], [ 0, 1 ] ]; // Up, Down, Left, Right
 
@@ -112,11 +128,11 @@ export default {
     if (fromRow === toRow) {
       // Horizontal move
       const wallCol = Math.min(fromCol, toCol);
-      return walls.vertical?.[fromRow]?.[wallCol] === 1;
+      return walls.vertical?.[fromRow]?.[wallCol] > 0;
     } else {
       // Vertical move
       const wallRow = Math.min(fromRow, toRow);
-      return walls.horizontal?.[wallRow]?.[fromCol] === 1;
+      return walls.horizontal?.[wallRow]?.[fromCol] > 0;
     }
   },
 
@@ -150,6 +166,48 @@ export default {
         walls.horizontal[row][col] === 0 &&
         walls.horizontal[row][col + 1] === 0);
     }
+  },
+
+  findAllWalls: function () {
+    const walls = [];
+
+    // Find horizontal walls
+    this.currentState.walls.horizontal.forEach((row, rowIndex) => {
+      row.forEach((cell, colIndex) => {
+        if (cell > 0) {
+          walls.push({
+            position: [ rowIndex, colIndex ],
+            orientation: 'horizontal',
+            blocksCells: [
+              [ rowIndex, colIndex ],
+              [ rowIndex, colIndex + 1 ],
+              [ rowIndex + 1, colIndex ],
+              [ rowIndex + 1, colIndex + 1 ]
+            ]
+          });
+        }
+      });
+    });
+
+    // Find vertical walls
+    this.currentState.walls.vertical.forEach((row, rowIndex) => {
+      row.forEach((cell, colIndex) => {
+        if (cell > 0) {
+          walls.push({
+            position: [ rowIndex, colIndex ],
+            orientation: 'vertical',
+            blocksCells: [
+              [ rowIndex, colIndex ],
+              [ rowIndex + 1, colIndex ],
+              [ rowIndex, colIndex + 1 ],
+              [ rowIndex + 1, colIndex + 1 ]
+            ]
+          });
+        }
+      });
+    });
+
+    return walls;
   }
 };
 

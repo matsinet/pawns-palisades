@@ -7,9 +7,7 @@ const render = (state = {}) => {
     <div
       class="anchor"
       data-row="${state.row}"
-      data-column="${state.column}"
-      data-orientation="${state.orientation || 'false'}"
-      data-wall-placed="${state.wallPlaced || 'false'}"
+      data-col="${state.column}"
     >
       ${
         state.wallPlaced === 'true' ? `

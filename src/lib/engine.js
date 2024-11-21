@@ -1,4 +1,4 @@
-import {anchor, spacer, square, wall} from "../components";
+import {anchor, spacer, square, wall as wallElement} from "../components";
 import * as store from "../store";
 
 function drawBoard() {
@@ -23,7 +23,7 @@ function drawBoard() {
         if (columns % 2) {
           content += spacer.render()
         } else {
-          content += anchor.render({column: squareColumn + 1, row: squareRow - 1});
+          content += anchor.render({column: squareColumn, row: squareRow - 1});
           squareColumn++;
         }
       }
@@ -75,91 +75,6 @@ function changeTurn() {
   store.game.currentState.turn = colors[nextIndex];
 }
 
-function drawMoves(state) {
-  // const pawnDiv = document.querySelector(`div.square:has(div.${state.turn})`);
-
-  // pawnDiv.classList.add('is-turn');
-
-  // const row = parseInt(pawnDiv.dataset.row);
-  // const column = parseInt(pawnDiv.dataset.column);
-
-  // const nextColor = state.turn === 'blue' ? 'red' : 'blue';
-  // const opponentPawn = document.querySelector(`div.square:has(div.${nextColor})`);
-  // const opponentPawnRow = parseInt(opponentPawn.dataset.row);
-  // const opponentPawnColumn = parseInt(opponentPawn.dataset.column);
-
-  // const moves = [];
-
-  // // draw up
-  // if ((row + 1) <= 9) {
-  //   let moveRow = row + 1;
-  //   if (opponentPawnRow === moveRow && opponentPawnColumn === column) {
-  //     moveRow = row + 2;
-  //     if (moveRow <= 9) {
-  //       moves.push([moveRow, column]);
-  //     }
-  //   } else {
-  //     moves.push([moveRow, column]);
-  //   }
-  // }
-
-  // // draw down
-  // if ((row - 1) >= 1) {
-  //   let moveRow = row - 1;
-  //   if (opponentPawnRow === moveRow && opponentPawnColumn === column) {
-  //     moveRow = row - 2;
-  //     if (moveRow >= 1) {
-  //       moves.push([moveRow, column]);
-  //     }
-  //   } else {
-  //     moves.push([moveRow, column]);
-  //   }
-  // }
-
-  // // draw left
-  // if ((column - 1) >= 1) {
-  //   let moveColumn = column - 1;
-  //   if (opponentPawnRow === row && opponentPawnColumn === moveColumn) {
-  //     moveColumn = column - 2;
-  //     // Prevent the jump pawn from going off the board
-  //     if (moveColumn >= 1) {
-  //       moves.push([row, moveColumn]);
-  //     }
-  //   } else {
-  //     moves.push([row, moveColumn]);
-  //   }
-  // }
-
-  // // draw right
-  // if ((column + 1) <= 9) {
-  //   let moveColumn = column + 1;
-  //   if (opponentPawnRow === row && opponentPawnColumn === moveColumn) {
-  //     moveColumn = column + 2;
-  //     if (moveColumn <= 9) {
-  //       moves.push([row, moveColumn]);
-  //     }
-  //   } else {
-  //     moves.push([row, moveColumn]);
-  //   }
-  // }
-
-  // console.log('matsinet - moves:', moves);
-
-  // moves.forEach(move => {
-  //   const movePawn = document.querySelector(`[data-row="${move[0]}"][data-column="${move[1]}"] .move`);
-  //   movePawn.classList.add('is-enabled');
-  //   movePawn.classList.add(state.turn);
-
-  //   movePawn.addEventListener('click', (event => {
-  //     console.log('matsinet - move:', move);
-  //     store.game.currentState[state.turn].pawn = move;
-  //     store.game.currentState.turn = state.turn === 'blue' ? 'red' : 'blue';
-
-  //     window.router.navigate('/game');
-  //   }));
-  // });
-}
-
 function removeMoves() {
   console.log("removeMoves fired");
   document.querySelectorAll('.move').forEach(element => element.classList.remove('is-enabled'));
@@ -167,16 +82,16 @@ function removeMoves() {
 
 function placeWall(element) {
   const row = parseInt(element.dataset.row);
-  const column = parseInt(element.dataset.column);
+  const column = parseInt(element.dataset.col);
 
   let orientation = 'h';
 
   const leftWallColumn = column - 1;
-  const leftWall = document.querySelector(`.anchor[data-row="${row}"][data-column="${leftWallColumn}"] .wall`);
+  const leftWall = document.querySelector(`.anchor[data-row="${row}"][data-col="${leftWallColumn}"] .wall`);
   const rightWallColumn = column + 1;
-  const rightWall = document.querySelector(`.anchor[data-row="${row}"][data-column="${rightWallColumn}"] .wall`);
-  const aboveWall = document.querySelector(`.anchor[data-row="${row - 1}"][data-column="${element.dataset.column}"] .wall`);
-  const belowWall = document.querySelector(`.anchor[data-row="${row + 2}"][data-column="${element.dataset.column}"] .wall`);
+  const rightWall = document.querySelector(`.anchor[data-row="${row}"][data-col="${rightWallColumn}"] .wall`);
+  const aboveWall = document.querySelector(`.anchor[data-row="${row - 1}"][data-col="${element.dataset.col}"] .wall`);
+  const belowWall = document.querySelector(`.anchor[data-row="${row + 2}"][data-col="${element.dataset.col}"] .wall`);
 
   // TODO: Wall placement still needs work, try placing wall in a "cross" then put a wall in a corner
   if ((leftWall && leftWall.classList.contains('horizontal')) || (rightWall && rightWall.classList.contains('horizontal'))) {
@@ -208,22 +123,26 @@ function placeWall(element) {
 }
 
 function redrawPieces(state) {
-  // Draw pawns for 2 player game
-  const player1Position = state.findPlayerPosition(state.currentState.players[0].id);
-  const player2Position = state.findPlayerPosition(state.currentState.players[1].id);
+  state.currentState.players.forEach((player) => {
+    const position = state.findPlayerPosition(player.id);
+    const pawn = document.querySelector(`[data-row="${position.row}"][data-col="${position.col}"] .pawn`);
+    pawn.classList.add(player.color);
+    pawn.classList.toggle('is-enabled');
+  });
 
-  const bluePawn = document.querySelector(`[data-row="${player1Position.row}"][data-column="${player1Position.col}"] .pawn`);
-  const redPawn = document.querySelector(`[data-row="${player2Position.row}"][data-column="${player2Position.col}"] .pawn`);
+  const walls = state.findAllWalls();
+  console.log('matsinet-walls', walls);
 
-  bluePawn.classList.add('blue');
-  bluePawn.classList.toggle('is-enabled');
-  redPawn.classList.add('red');
-  redPawn.classList.toggle('is-enabled');
+  walls.forEach(wall => {
+    const anchor = document.querySelector(`[data-row="${wall.position[0]}"][data-col="${wall.position[1]}"].anchor`);
+    anchor.innerHTML = wallElement.render(wall.position[0], wall.position[1], wall.orientation);
+  });
+
+  // wallElement.hooks.after({});
 
   const moves = state.findPossibleMoves(state.currentState.turn);
-
   moves.forEach(move => {
-    const movePawn = document.querySelector(`[data-row="${move[0]}"][data-column="${move[1]}"] .move`);
+    const movePawn = document.querySelector(`[data-row="${move[0]}"][data-col="${move[1]}"] .move`);
     movePawn.classList.add('is-enabled', state.getPlayerById(state.currentState.turn).color);
 
     movePawn.addEventListener('click', (event => {
@@ -254,8 +173,8 @@ function redrawPieces(state) {
   //   store.game.currentState.blue.walls = 5;
   //   store.game.currentState.red.walls = 5;
 
-  //   const yellowPawn = document.querySelector(`[data-row="${state.yellow.pawn[0]}"][data-column="${state.yellow.pawn[1]}"] .pawn`);
-  //   const greenPawn = document.querySelector(`[data-row="${state.green.pawn[0]}"][data-column="${state.green.pawn[1]}"] .pawn`);
+  //   const yellowPawn = document.querySelector(`[data-row="${state.yellow.pawn[0]}"][data-col="${state.yellow.pawn[1]}"] .pawn`);
+  //   const greenPawn = document.querySelector(`[data-row="${state.green.pawn[0]}"][data-col="${state.green.pawn[1]}"] .pawn`);
 
   //   yellowPawn.classList.add('yellow');
   //   yellowPawn.classList.toggle('is-enabled');
@@ -275,7 +194,7 @@ function redrawPieces(state) {
 
   // // Draw walls
   // state.walls.forEach(wallData => {
-  //   const anchor = document.querySelector(`.anchor[data-row="${wallData[0]}"][data-column="${wallData[1]}"]`);
+  //   const anchor = document.querySelector(`.anchor[data-row="${wallData[0]}"][data-col="${wallData[1]}"]`);
   //   anchor.dataset.wallPlaced = 'true';
   //   anchor.dataset.orientation = 'horizontal'
   //   // anchor.innerHTML = wall.render(wallData[2]);

@@ -146,11 +146,7 @@ router.hooks({
   already: async (params) => {
     let viewName = getViewNameFromParams(params);
 
-    console.log('matsinet - viewName:', viewName);
-    
-    if (! (viewName in views)) {
-      return;
-    }
+    if (! (viewName in views)) return;
 
     // TODO: Add spinner to beforeHook processing
     if ('hooks' in views[viewName] && 'before' in views[viewName].hooks) {

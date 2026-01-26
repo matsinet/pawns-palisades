@@ -23,7 +23,7 @@ function drawBoard() {
         if (columns % 2) {
           content += spacer.render()
         } else {
-          content += anchor.render({column: squareColumn, row: squareRow - 1});
+          content += anchor.render({ column: squareColumn, row: squareRow - 1 });
           squareColumn++;
         }
       }
@@ -107,33 +107,43 @@ function redrawPieces(state) {
     pawn.classList.toggle('is-enabled');
   });
 
+  // Render th walls
   const walls = state.findAllWalls();
-  console.log('matsinet-walls', walls);
-
   walls.forEach(wall => {
     const anchor = document.querySelector(`[data-row="${wall.position[0]}"][data-col="${wall.position[1]}"].anchor`);
     anchor.innerHTML = wallElement.render(wall.position[0], wall.position[1], wall.orientation, wall.isConfirmed);
   });
 
-  // wallElement.hooks.after({});
+  // Only render moves and enable gameplay if game is not complete
+  if (!state.currentState.complete) {
+    // Render the moves for the current player
+    const moves = state.findPossibleMoves(state.currentState.turn);
+    moves.forEach(move => {
+      const movePawn = document.querySelector(`[data-row="${move[0]}"][data-col="${move[1]}"] .move`);
+      movePawn.classList.add('is-enabled', state.getPlayerById(state.currentState.turn).color);
 
-  const moves = state.findPossibleMoves(state.currentState.turn);
-  moves.forEach(move => {
-    const movePawn = document.querySelector(`[data-row="${move[0]}"][data-col="${move[1]}"] .move`);
-    movePawn.classList.add('is-enabled', state.getPlayerById(state.currentState.turn).color);
+      movePawn.addEventListener('click', (() => {
+        const currentPlayerPosition = state.findPlayerPosition(state.currentState.turn);
+        const currentPlayerId = state.currentState.turn;
 
-    movePawn.addEventListener('click', (event => {
-      const currentPlayerPosition = state.findPlayerPosition(state.currentState.turn);
+        store.game.currentState.board[move[0]][move[1]] = currentPlayerId;
+        store.game.currentState.board[currentPlayerPosition.row][currentPlayerPosition.col] = 0;
 
-      store.game.currentState.board[move[0]][move[1]] = state.currentState.turn;
-      store.game.currentState.board[currentPlayerPosition.row][currentPlayerPosition.col] = 0;
-      store.game.currentState.turn = state.getNextTurn();
+        // Check if the current player won
+        if (store.game.checkWinner(currentPlayerId)) {
+          store.game.currentState.complete = true;
+          store.game.currentState.winner = currentPlayerId;
+        } else {
+          // Only advance turn if game is not over
+          store.game.currentState.turn = state.getNextTurn();
+        }
 
-      console.log('matsinet-store.game.currentState', store.game.currentState);
+        console.log('matsinet-store.game.currentState', store.game.currentState);
 
-      window.router.navigate('/game');
-    }));
-  });
+        window.router.navigate('/game');
+      }));
+    });
+  }
 
   // if (state.blue.pawn[0] === state.blue.winningSide) {
   //   alert("Blue wins");

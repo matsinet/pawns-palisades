@@ -5,3 +5,5 @@ export { default as login } from "./login";
 export { default as auth } from "./auth";
 export { default as pageNotFound } from "./pageNotFound";
 export { default as game } from "./game";
+export { default as lobby } from "./lobby";
+export { default as lobbyWaiting } from "./lobby";

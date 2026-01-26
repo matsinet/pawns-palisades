@@ -160,6 +160,7 @@ router.hooks({
       console.log("No component beforeHook found!");
     }
 
+    // Todo: Make this only run component in the active view
     for (const key in components) {
       const component = components[key];
       if('hooks' in component) {

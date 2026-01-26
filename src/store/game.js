@@ -18,7 +18,7 @@ export default {
       horizontal: [
         [ 0, 0, 0, 0, 0, 0, 0, 0 ],
         [ 0, 0, 0, 0, 0, 0, 0, 0 ],
-        [ 0, 0, 0, 1, 0, 0, 0, 0 ],
+        [ 0, 0, 0, 0, 0, 0, 0, 0 ],
         [ 0, 0, 0, 0, 0, 0, 0, 0 ],
         [ 0, 0, 0, 0, 0, 0, 0, 0 ],
         [ 0, 0, 0, 0, 0, 0, 0, 0 ],
@@ -33,7 +33,7 @@ export default {
         [ 0, 0, 0, 0, 0, 0, 0, 0 ],
         [ 0, 0, 0, 0, 0, 0, 0, 0 ],
         [ 0, 0, 0, 0, 0, 0, 0, 0 ],
-        [ 0, 0, 0, 1, 0, 0, 0, 0 ]
+        [ 0, 0, 0, 0, 0, 0, 0, 0 ]
       ]
     },
     players: [
@@ -42,7 +42,8 @@ export default {
     ],
     turn: 1,
     playerCount: 2,
-    complete: false
+    complete: false,
+    winner: null
   },
 
   getPlayerCount: function () {
@@ -56,6 +57,23 @@ export default {
   getNextTurn: function () {
     const nextTurn = this.currentState.turn + 1;
     return nextTurn <= this.currentState.playerCount ? nextTurn : 1;
+  },
+
+  checkWinner: function (playerId) {
+    const position = this.findPlayerPosition(playerId);
+    if (!position) return false;
+
+    // Player 1 starts at row 0, wins by reaching row 8
+    if (playerId === 1 && position.row === 8) {
+      return true;
+    }
+
+    // Player 2 starts at row 8, wins by reaching row 0
+    if (playerId === 2 && position.row === 0) {
+      return true;
+    }
+
+    return false;
   },
 
   findPossibleMoves: function (playerId) {
@@ -82,6 +100,7 @@ export default {
             const jumpRow = newRow + dRow;
             const jumpCol = newCol + dCol;
 
+            console.log('matsinet-!this.isWallBlocking([ newRow, newCol ], [ jumpRow, jumpCol ])', !this.isWallBlocking([ newRow, newCol ], [ jumpRow, jumpCol ]));
             if (this.isValidCell(jumpRow, jumpCol) && !this.isWallBlocking([ newRow, newCol ], [ jumpRow, jumpCol ])) {
               if (board[jumpRow][jumpCol] === 0) {
                 // Can jump over opponent
@@ -121,19 +140,52 @@ export default {
   },
 
   isWallBlocking: function (from, to) {
-    const walls = this.currentState.walls;
+    const walls = this.findAllWalls();
     const [ fromRow, fromCol ] = from;
     const [ toRow, toCol ] = to;
 
-    if (fromRow === toRow) {
-      // Horizontal move
-      const wallCol = Math.min(fromCol, toCol);
-      return walls.vertical?.[fromRow]?.[wallCol] > 0;
-    } else {
-      // Vertical move
-      const wallRow = Math.min(fromRow, toRow);
-      return walls.horizontal?.[wallRow]?.[fromCol] > 0;
+    // Check each wall to see if it blocks the movement
+    for (const wall of walls) {
+      const [ wallRow, wallCol ] = wall.position;
+
+      // Moving vertically (up or down)
+      if (fromCol === toCol && fromRow !== toRow) {
+        // Horizontal walls block vertical movement
+        if (wall.orientation === 'horizontal') {
+          const minRow = Math.min(fromRow, toRow);
+          const maxRow = Math.max(fromRow, toRow);
+
+          // Wall blocks movement if:
+          // 1. The wall is between the from and to rows (wallRow is between minRow and maxRow-1)
+          // 2. The movement column is within the wall's span (fromCol === wallCol or fromCol === wallCol + 1)
+          if (wallRow >= minRow && wallRow < maxRow) {
+            if (fromCol === wallCol || fromCol === wallCol + 1) {
+              return true;
+            }
+          }
+        }
+      }
+
+      // Moving horizontally (left or right)
+      if (fromRow === toRow && fromCol !== toCol) {
+        // Vertical walls block horizontal movement
+        if (wall.orientation === 'vertical') {
+          const minCol = Math.min(fromCol, toCol);
+          const maxCol = Math.max(fromCol, toCol);
+
+          // Wall blocks movement if:
+          // 1. The wall is between the from and to columns (wallCol is between minCol and maxCol-1)
+          // 2. The movement row is within the wall's span (fromRow === wallRow or fromRow === wallRow + 1)
+          if (wallCol >= minCol && wallCol < maxCol) {
+            if (fromRow === wallRow || fromRow === wallRow + 1) {
+              return true;
+            }
+          }
+        }
+      }
     }
+
+    return false;
   },
 
   findPlayerPosition: function (player) {
@@ -195,14 +247,15 @@ export default {
       row.forEach((cell, colIndex) => {
         if (cell > 0) {
           walls.push({
-            position: [ rowIndex, colIndex ],
-            orientation: 'vertical',
             blocksCells: [
               [ rowIndex, colIndex ],
               [ rowIndex + 1, colIndex ],
               [ rowIndex, colIndex + 1 ],
               [ rowIndex + 1, colIndex + 1 ]
-            ]
+            ],
+            isConfirmed: cell === 1,
+            orientation: 'vertical',
+            position: [ rowIndex, colIndex ]
           });
         }
       });
